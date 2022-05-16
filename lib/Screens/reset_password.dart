@@ -1,39 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:vyam_vandor/Screens/reset_password.dart';
 import 'package:vyam_vandor/Services/firebase_auth_api.dart';
 import 'package:vyam_vandor/widgets/custom_text_field.dart';
 import 'package:vyam_vandor/widgets/primary_button.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class ResetPassScreen extends StatefulWidget {
+  const ResetPassScreen({Key? key}) : super(key: key);
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _ResetPassScreen createState() => _ResetPassScreen();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _ResetPassScreen extends State<ResetPassScreen> {
   TextEditingController? _emailController;
-  TextEditingController? _passwordController;
 
   @override
   void initState() {
     super.initState();
     _emailController = TextEditingController();
-    _passwordController = TextEditingController();
   }
 
   @override
   void dispose() {
     super.dispose();
     _emailController!.dispose();
-    _passwordController!.dispose();
   }
 
   Future _signIn() async {
     try {
       FirebaseAuthApi().signIn(
         email: _emailController!.text.trim(),
-        password: _passwordController!.text,
         context: context,
       );
     } catch (e) {
@@ -73,39 +69,16 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(
                   height: 20,
                 ),
-                CustomTextFiled(
-                  hintText: 'Password',
-                  textEditingController: _passwordController,
-                  obscure: true,
-                ),
-                const SizedBox(
-                  height: 5,
-                ),
-                TextButton(
-                  child: Padding(
-                    padding: const EdgeInsets.only(right: 15.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: const [
-                        Text("Forgot password?",
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.grey,
-                            )),
-                      ],
-                    ),
-                  ),
-                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(
-                      builder: ((context) => ResetPassScreen()))),
-                ),
                 const SizedBox(
                   height: 55,
                 ),
                 buildPrimaryButton(
                   () {
-                    _signIn();
+                    FirebaseAuth.instance
+                        .sendPasswordResetEmail(email: _emailController!.text);
+                    Navigator.of(context).pop();
                   },
-                  'log in',
+                  'Send Request',
                 )
               ],
             ),
