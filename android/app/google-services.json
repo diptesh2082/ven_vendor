@@ -1,0 +1,105 @@
+{
+  "project_info": {
+    "project_number": "307925634075",
+    "project_id": "vyam-f99ab",
+    "storage_bucket": "vyam-f99ab.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:307925634075:android:64936e0987369a3208fcbe",
+        "android_client_info": {
+          "package_name": "com.example.vyam_vandor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "307925634075-eor486qatoohnsg2hlcc0ehe55v6b77r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCda5p31iGswCodulgMqLELDARSg21NRR4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "307925634075-eor486qatoohnsg2hlcc0ehe55v6b77r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:307925634075:android:b7893f42cbfe5f1608fcbe",
+        "android_client_info": {
+          "package_name": "com.vyam.vyam_2_final"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "307925634075-eor486qatoohnsg2hlcc0ehe55v6b77r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCda5p31iGswCodulgMqLELDARSg21NRR4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "307925634075-eor486qatoohnsg2hlcc0ehe55v6b77r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:307925634075:android:e5d29c2e07072f6008fcbe",
+        "android_client_info": {
+          "package_name": "com.vyamdip.vyam_2_final"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "307925634075-sop3pj8pujqg58hhiu2msa7hkok8pasj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.vyamdip.vyam_2_final",
+            "certificate_hash": "f4304cd4c25f4e5807c7d92a677f7c085fc53028"
+          }
+        },
+        {
+          "client_id": "307925634075-eor486qatoohnsg2hlcc0ehe55v6b77r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCda5p31iGswCodulgMqLELDARSg21NRR4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "307925634075-eor486qatoohnsg2hlcc0ehe55v6b77r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
