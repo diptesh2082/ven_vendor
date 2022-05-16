@@ -13,6 +13,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:vyam_vandor/Services/firebase_firestore_api.dart';
 import 'package:vyam_vandor/controllers/gym_controller.dart';
 import 'package:vyam_vandor/widgets/amenites.dart';
+import 'package:vyam_vandor/widgets/dashboard_map.dart';
 import 'package:vyam_vandor/widgets/know_trainer.dart';
 
 class DashBoardScreen extends StatefulWidget {
@@ -493,32 +494,37 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                               fontWeight: FontWeight.w700),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            left: 8.0, right: 8.0, top: 10.0, bottom: 14),
-                        child: SizedBox(
-                          height: 50,
-                          width: double.infinity,
-                          child: Card(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(12.0)),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: const [
-                                  Padding(
-                                    padding:
-                                        EdgeInsets.only(left: 8.0, top: 14.0),
-                                    child: Text(
-                                      'Bus stand, Barakar, near pratham lodge',
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontFamily: "Poppins",
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w400),
+                      InkWell(
+                          onTap: (){
+                            Get.to(()=>DashboardMap());
+                          },
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              left: 8.0, right: 8.0, top: 10.0, bottom: 14),
+                          child: SizedBox(
+                            height: 50,
+                            width: double.infinity,
+                            child: Card(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(12.0)),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: const [
+                                    Padding(
+                                      padding:
+                                          EdgeInsets.only(left: 8.0, top: 14.0),
+                                      child: Text(
+                                        'Bus stand, Barakar, near pratham lodge',
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontFamily: "Poppins",
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w400),
+                                      ),
                                     ),
-                                  ),
-                                ],
-                              )),
+                                  ],
+                                )),
+                          ),
                         ),
                       ),
                     ],

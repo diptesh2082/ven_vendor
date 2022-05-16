@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
             );
           }
           if (snapshot.hasData) {
-            return DashboardMap(
+            return HomeScreen(
 
                 // email: gymId,
             );
