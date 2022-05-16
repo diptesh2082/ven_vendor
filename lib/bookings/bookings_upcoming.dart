@@ -42,7 +42,7 @@ class UpcomingBookings extends StatelessWidget {
                       );
                     }
                     if (snap.data == null) {
-                      return const Text("No Active Bookings");
+                      return const Text("No Upcoming Bookings");
                     }
                     var doc = snap.data.docs;
                     // if (snap.hasData){
@@ -50,7 +50,7 @@ class UpcomingBookings extends StatelessWidget {
                     // }
 
                     return doc.length==0?
-                    const Text("No Active Bookings"):
+                    const Text("No Completed Bookings"):
                     ListView.builder(
                       physics:
                       const BouncingScrollPhysics(),

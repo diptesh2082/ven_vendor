@@ -78,7 +78,7 @@ class _MonthSalesState extends State<MonthSales> {
                     // }
 
                     return doc.length==0?
-                    const Text("No Active Bookings"):
+                    const Text("No Completed Bookings"):
                     ListView.builder(
                       physics:
                       const BouncingScrollPhysics(),
