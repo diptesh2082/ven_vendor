@@ -7,6 +7,7 @@ import 'package:vyam_vandor/Screens/book_details_dashboard.dart';
 import 'package:vyam_vandor/Screens/login_screen.dart';
 
 import 'package:vyam_vandor/Services/firebase_firestore_api.dart';
+import 'package:vyam_vandor/widgets/dashboard_map.dart';
 
 import 'Screens/home__screen.dart';
 
@@ -53,9 +54,10 @@ class MyApp extends StatelessWidget {
             );
           }
           if (snapshot.hasData) {
-            return HomeScreen(
+            return DashboardMap(
+
                 // email: gymId,
-                );
+            );
           }
           return const LoginScreen();
         },
