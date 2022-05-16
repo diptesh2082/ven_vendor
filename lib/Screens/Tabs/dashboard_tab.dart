@@ -494,39 +494,39 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                               fontWeight: FontWeight.w700),
                         ),
                       ),
-                      InkWell(
-                          onTap: (){
-                            Get.to(()=>DashboardMap());
-                          },
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                              left: 8.0, right: 8.0, top: 10.0, bottom: 14),
-                          child: SizedBox(
-                            height: 50,
-                            width: double.infinity,
-                            child: Card(
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(12.0)),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: const [
-                                    Padding(
-                                      padding:
-                                          EdgeInsets.only(left: 8.0, top: 14.0),
+                      Align(
+                        alignment: Alignment.center,
+                        child: InkWell(
+                            onTap: (){
+                              Get.to(()=>DashboardMap());
+                            },
+                          child: FittedBox(
+                            child: SizedBox(
+                              height: 60,
+                              width: MediaQuery.of(context).size.width*.98,
+                              child: Card(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(12.0)),
+                                  child: SizedBox(
+                                    width: MediaQuery.of(context).size.width*.75,
+                                    child: Center(
                                       child: Text(
-                                        'Bus stand, Barakar, near pratham lodge',
-                                        style: TextStyle(
+                                        '${gym_details["address"]}',
+                                        style: GoogleFonts.poppins(
                                             color: Colors.black,
-                                            fontFamily: "Poppins",
+
                                             fontSize: 12,
                                             fontWeight: FontWeight.w400),
                                       ),
                                     ),
-                                  ],
-                                )),
+                                  )),
+                            ),
                           ),
                         ),
                       ),
+                      SizedBox(
+                        height: 16,
+                      )
                     ],
                   ),
                 ),
