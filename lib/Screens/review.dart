@@ -26,7 +26,7 @@ class _ReviewState extends State<Review> {
   TextEditingController title = TextEditingController();
   TextEditingController exp = TextEditingController();
   var _ratingController = TextEditingController();
-
+  bool isLoad=true;
 
   var review;
   var star=0.0;
@@ -77,7 +77,7 @@ class _ReviewState extends State<Review> {
         .listen((snap) async {
       if (snap.docs.isNotEmpty){
         print("documentexist");
-        Get.find<BookingController>().review_number.value=snap.docs.length;
+
         var d=snap.docs;
         var b=0.0;
         var star1=0.0;
@@ -115,8 +115,12 @@ class _ReviewState extends State<Review> {
         // getRatingCount(await Get.find<BookingController>().review.value);
       }
 
+
     });
 
+    setState(() {
+      isLoad=false;
+    });
   }
 
 
@@ -126,6 +130,7 @@ class _ReviewState extends State<Review> {
     // print(doc["name"]);
     // print(_id);
   getRating();
+
     // print(star);
     super.initState();
   }
@@ -133,7 +138,9 @@ class _ReviewState extends State<Review> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Scaffold(
+    return isLoad?
+        Center(child: CircularProgressIndicator())
+        :Scaffold(
       appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,

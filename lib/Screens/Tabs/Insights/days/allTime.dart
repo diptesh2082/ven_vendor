@@ -24,8 +24,10 @@ class AllTime extends StatefulWidget {
 class AllTimeState extends State<AllTime> {
   final _auth = FirebaseAuth.instance;
   String totalBooking = '0';
+  // String totalSales = '0';
   BookingController bookingController = Get.find<BookingController>();
   getDocumentsLength() async {
+    double d=0.0;
     await FirebaseFirestore.instance
         .collection('bookings')
          .where('vendorId', isEqualTo: gymId.toString())
@@ -34,6 +36,11 @@ class AllTimeState extends State<AllTime> {
         .snapshots().listen((snapshot) {
       if (snapshot.docs.isNotEmpty) {
         bookingController.booking.value=snapshot.docs.length;
+        snapshot.docs.forEach((element) {
+          d = d + double.parse(element["booking_price"].toString());
+        });
+        bookingController.total_sales.value=d.toInt();
+
         // setState(() {
         //   totalBooking = snapshot.docs.length.toString();
         // });
@@ -41,6 +48,7 @@ class AllTimeState extends State<AllTime> {
       else if (snapshot.docs.isEmpty) {
         setState(() {
           totalBooking = 0.toString();
+
         });
       }
     });
@@ -102,81 +110,82 @@ class AllTimeState extends State<AllTime> {
                       children: [
                         Row(
                           children: [
-                            GestureDetector(
-                              onTap: () {
-                                Get.to(() => const Sales());
-                              },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(12),
-                                  color: HexColor("292F3D"),
-                                ),
-                                width: size.width * 0.45,
-                                height: 290,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: ClipRRect(
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        Row(
-                                          children: [
-                                            const Text(
-                                              "Sales",
+                            Obx(
+                        ()=> GestureDetector(
+                                onTap: () {
+                                  Get.to(() => const Sales());
+                                },
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(12),
+                                    color: HexColor("292F3D"),
+                                  ),
+                                  width: size.width * 0.45,
+                                  height: 290,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: ClipRRect(
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              const Text(
+                                                "Sales",
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                              const Spacer(),
+                                              // const SizedBox(
+                                              //   width: 240,
+                                              // ),
+                                              // Image.asset(
+                                              //     "Assets/trend-down.png"),
+                                              const SizedBox(
+                                                width: 2,
+                                              ),
+                                               Text(
+                                                "₹ ${bookingController.booking.value}",
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          const SizedBox(
+                                            height: 5,
+                                          ),
+                                          const Align(
+                                            alignment: Alignment.topLeft,
+                                            child: Text(
+                                              "Total sales",
                                               style: TextStyle(
                                                 color: Colors.white,
                                               ),
                                             ),
-                                            const Spacer(),
-                                            // const SizedBox(
-                                            //   width: 240,
-                                            // ),
-                                            Image.asset(
-                                                "Assets/trend-down.png"),
-                                            const SizedBox(
-                                              width: 2,
-                                            ),
-                                            const Text(
-                                              "₹ 100",
-                                              style: TextStyle(
-                                                color: Colors.white,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        const SizedBox(
-                                          height: 5,
-                                        ),
-                                        const Align(
-                                          alignment: Alignment.topLeft,
-                                          child: Text(
-                                            "Total sales",
+                                          ),
+                                          const SizedBox(
+                                            height: 42,
+                                          ),
+                                          Text(
+                                            "${bookingController.total_sales.value.toString()}", // DATABASE CALLLING FOR TOTAL SALES VALUE
                                             style: TextStyle(
                                               color: Colors.white,
+                                              fontSize: 35,
                                             ),
                                           ),
-                                        ),
-                                        const SizedBox(
-                                          height: 42,
-                                        ),
-                                        Text(
-                                          snapshot.data.get(
-                                              'total_sales'), // DATABASE CALLLING FOR TOTAL SALES VALUE
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 35,
+                                          const SizedBox(
+                                            height: 54,
                                           ),
-                                        ),
-                                        const SizedBox(
-                                          height: 54,
-                                        ),
-                                        Image.asset(
-                                          "Assets/Vector 7.png",
-                                          width: size.width * 0.4,
-                                          fit: BoxFit.fitWidth,
-                                        )
-                                      ],
+                                          Image.asset(
+                                            "Assets/Vector 7.png",
+                                            width: size.width * 0.4,
+                                            fit: BoxFit.fitWidth,
+                                          )
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -250,46 +259,71 @@ class AllTimeState extends State<AllTime> {
                                 const SizedBox(
                                   height: 20,
                                 ),
-                                InkWell(
-                                  onTap: (){
-                                    Get.to(()=>Review());
-                                  },
-                                  child: Container(
-                                    decoration: BoxDecoration(
+                                StreamBuilder<QuerySnapshot>(
+                                  stream: FirebaseFirestore.instance.collection("Reviews")
+                                    .where("gym_id",isEqualTo: gymId).snapshots(),
+                                  builder: (context, snapshot) {
+                                    if(snapshot.connectionState==ConnectionState.waiting){
+                                      return Center(child: CircularProgressIndicator());
+                                    }
+                                    if(snapshot.hasError){
+                                      return Container(
+
+                                          child: Center(child: Text(
+                                            "No reviews yet"
+                                          )),
+                                          decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(12),
-                                      color: HexColor("292F3D"),
+                                    color: HexColor("292F3D"),
                                     ),
                                     width: size.width * 0.45,
                                     height: 135,
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: ClipRRect(
-                                        child: Column(
-                                          children: const [
-                                            Align(
-                                              alignment: Alignment.topLeft,
-                                              child: Text(
-                                                "Reviews",
-                                                style: TextStyle(
-                                                  color: Colors.white,
+                                      );
+                                    }
+                                    var reviews=snapshot.data!.docs.length;
+                                    Get.find<BookingController>().review_number.value=snapshot.data!.docs.length;
+                                    return InkWell(
+                                      onTap: (){
+                                        Get.to(()=>Review());
+                                      },
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(12),
+                                          color: HexColor("292F3D"),
+                                        ),
+                                        width: size.width * 0.45,
+                                        height: 135,
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: ClipRRect(
+                                            child: Column(
+                                              children:  [
+                                                Align(
+                                                  alignment: Alignment.topLeft,
+                                                  child: Text(
+                                                    "Reviews",
+                                                    style: TextStyle(
+                                                      color: Colors.white,
+                                                    ),
+                                                  ),
                                                 ),
-                                              ),
+                                                SizedBox(
+                                                  height: 21,
+                                                ),
+                                                Text(
+                                                  "${reviews}",
+                                                  style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 35,
+                                                  ),
+                                                ),
+                                              ],
                                             ),
-                                            SizedBox(
-                                              height: 21,
-                                            ),
-                                            Text(
-                                              "144",
-                                              style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 35,
-                                              ),
-                                            ),
-                                          ],
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ),
+                                    );
+                                  }
                                 )
                               ],
                             )
