@@ -28,5 +28,9 @@ class BookingController extends GetxController{
   var on_line_7=0.obs;
   var off_line_month=0.obs;
   var on_line_month=0.obs;
+  var booking_7=0.obs;
+  var booking_15=0.obs;
+  var booking_30=0.obs;
+  // var sales
 
 }

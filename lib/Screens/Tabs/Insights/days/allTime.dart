@@ -43,6 +43,9 @@ class AllTimeState extends State<AllTime> {
         var on_line_7=0.0;
         var off_line_month=0.0;
         var on_line_month=0.0;
+        var booking_7=0.0;
+        var booking_15=0.0;
+        var booking_30=0.0;
         snapshot.docs.forEach((element) {
 
           d = d + double.parse(element["booking_price"].toString());
@@ -65,6 +68,15 @@ class AllTimeState extends State<AllTime> {
           if (element["payment_method"]=="online" && DateTime.now().difference(element["booking_date"].toDate()).inDays<=30  ){
             on_line_month=on_line_month+double.parse(element["booking_price"].toString());
           }
+          if( DateTime.now().difference(element["booking_date"].toDate()).inDays<=7 ){
+            booking_7=booking_7+1.0;
+          }
+          if( DateTime.now().difference(element["booking_date"].toDate()).inDays<=15 ){
+            booking_15=booking_15+1.0;
+          }
+          if( DateTime.now().difference(element["booking_date"].toDate()).inDays<=15 ){
+            booking_30=booking_30+1.0;
+          }
           bookingController.total_sales.value=d.toInt();
           bookingController.off_line_all.value=off_line_all.toInt();
           bookingController.on_line_all.value=on_line_all.toInt();
@@ -72,6 +84,9 @@ class AllTimeState extends State<AllTime> {
           bookingController.on_line_7.value=on_line_7.toInt();
           bookingController.off_line_month.value=off_line_month.toInt();
           bookingController.on_line_month.value=on_line_month.toInt();
+          bookingController.booking_7.value=booking_7.toInt();
+          bookingController.booking_15.value=booking_15.toInt();
+          bookingController.booking_30.value=booking_30.toInt();
         }
 
         );
@@ -81,10 +96,10 @@ class AllTimeState extends State<AllTime> {
         // });
       }
       else if (snapshot.docs.isEmpty) {
-        setState(() {
+        // setState(() {
           totalBooking = 0.toString();
 
-        });
+        // });
       }
     });
    // await FirebaseFirestore.instance
@@ -119,21 +134,8 @@ class AllTimeState extends State<AllTime> {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      body: StreamBuilder<DocumentSnapshot>(
-        stream: FirebaseFirestore.instance
-            .collection('product_details')
-            .doc(gymId.toString())
-            .snapshots(),
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.data == null) {
-            return Container();
-          }
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-          return SingleChildScrollView(
+      body:
+          SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.all(12),
               child: Column(
@@ -294,76 +296,7 @@ class AllTimeState extends State<AllTime> {
                                 const SizedBox(
                                   height: 20,
                                 ),
-                                StreamBuilder<QuerySnapshot>(
-                                  stream: FirebaseFirestore.instance.collection("Reviews")
-                                    .where("gym_id",isEqualTo: gymId).snapshots(),
-                                  builder: (context, snapshot) {
-                                    if(snapshot.connectionState==ConnectionState.waiting){
-                                      return Center(child: CircularProgressIndicator());
-                                    }
-                                    if(snapshot.hasError){
-                                      return Container(
-
-                                          child: Center(child: Text(
-                                            "No reviews yet"
-                                          )),
-                                          decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(12),
-                                    color: HexColor("292F3D"),
-                                    ),
-                                    width: size.width * 0.45,
-                                    height: 135,
-                                      );
-                                    }
-                                    var reviews=snapshot.data!.docs.length;
-                                    Get.find<BookingController>().review_number.value=snapshot.data!.docs.length;
-                                    return InkWell(
-                                      onTap: (){
-                                        Get.to(()=>Review(),duration: Duration(
-                                          milliseconds: 500,
-                                        ),
-                                        // curve: Curve.flipped()
-                                        );
-                                      },
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(12),
-                                          color: HexColor("292F3D"),
-                                        ),
-                                        width: size.width * 0.45,
-                                        height: 135,
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: ClipRRect(
-                                            child: Column(
-                                              children:  [
-                                                Align(
-                                                  alignment: Alignment.topLeft,
-                                                  child: Text(
-                                                    "Reviews",
-                                                    style: TextStyle(
-                                                      color: Colors.white,
-                                                    ),
-                                                  ),
-                                                ),
-                                                SizedBox(
-                                                  height: 21,
-                                                ),
-                                                Text(
-                                                  "${reviews}",
-                                                  style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 35,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    );
-                                  }
-                                )
+                                ReviewsBox(size: size)
                               ],
                             )
                           ],
@@ -458,9 +391,98 @@ class AllTimeState extends State<AllTime> {
                 ],
               ),
             ),
+          )
+
+    );
+  }
+}
+
+class ReviewsBox extends StatelessWidget {
+  const ReviewsBox({
+    Key? key,
+    required this.size,
+  }) : super(key: key);
+
+  final Size size;
+
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<QuerySnapshot>(
+      stream: FirebaseFirestore.instance.collection("Reviews")
+        .where("gym_id",isEqualTo: gymId).snapshots(),
+      builder: (context, snapshot) {
+        if(snapshot.connectionState==ConnectionState.waiting){
+          return Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12),
+              color: HexColor("292F3D"),
+            ),
+            width: size.width * 0.45,
+            height: 135,
           );
-        },
-      ),
+        }
+        if(snapshot.hasError){
+          return Container(
+
+              child: Center(child: Text(
+                "No reviews yet"
+              )),
+              decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+        color: HexColor("292F3D"),
+        ),
+        width: size.width * 0.45,
+        height: 135,
+          );
+        }
+        var reviews=snapshot.data!.docs.length;
+        Get.find<BookingController>().review_number.value=snapshot.data!.docs.length;
+        return InkWell(
+          onTap: (){
+            Get.to(()=>Review(),duration: Duration(
+              milliseconds: 500,
+            ),
+            // curve: Curve.flipped()
+            );
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12),
+              color: HexColor("292F3D"),
+            ),
+            width: size.width * 0.45,
+            height: 135,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ClipRRect(
+                child: Column(
+                  children:  [
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        "Reviews",
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 21,
+                    ),
+                    Text(
+                      "${reviews}",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 35,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        );
+      }
     );
   }
 }

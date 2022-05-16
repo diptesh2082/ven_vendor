@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:vyam_vandor/Screens/login_screen.dart';
 import 'package:vyam_vandor/Services/firebase_auth_api.dart';
 import 'package:vyam_vandor/widgets/custom_text_field.dart';
 import 'package:vyam_vandor/widgets/primary_button.dart';
@@ -63,7 +65,7 @@ class _ResetPassScreen extends State<ResetPassScreen> {
                 ),
                 const SizedBox(height: 60),
                 CustomTextFiled(
-                  hintText: 'Username',
+                  hintText: 'Email',
                   textEditingController: _emailController,
                 ),
                 const SizedBox(
@@ -75,8 +77,9 @@ class _ResetPassScreen extends State<ResetPassScreen> {
                 buildPrimaryButton(
                   () {
                     FirebaseAuth.instance
-                        .sendPasswordResetEmail(email: _emailController!.text);
-                    Navigator.of(context).pop();
+                        .sendPasswordResetEmail(email: _emailController!.text.trim());
+                    Get.offAll(()=>LoginScreen());
+                    FirebaseAuth.instance.signOut();
                   },
                   'Send Request',
                 )

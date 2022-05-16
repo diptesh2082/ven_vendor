@@ -1,10 +1,14 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:vyam_vandor/sales/sales_7days.dart';
 import 'package:vyam_vandor/sales/sales_all_time.dart';
 
 import '../../../sales/sales_month.dart';
+import '../../InsiteFilter.dart';
+import '../../reset_password.dart';
 import 'days/allTime.dart';
 import 'days/days15.dart';
 import 'days/days30.dart';
@@ -158,17 +162,23 @@ class _InsightsTabState extends State<InsightsTab> {
           elevation: 0,
           backgroundColor: Colors.transparent,
           centerTitle: true,
-          title: Text(
-            "Insights",
-            style: GoogleFonts.poppins(
-                color: HexColor("3A3A3A"),
-                fontSize: 18,
-                fontWeight: FontWeight.w600),
+          title: GestureDetector(
+            onTap: (){
+              FirebaseAuth.instance.signOut();
+              Get.to(()=>ResetPassScreen());
+            },
+            child: Text(
+              "Insights",
+              style: GoogleFonts.poppins(
+                  color: HexColor("3A3A3A"),
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600),
+            ),
           ),
         ),
         body:  TabBarView(
             physics: NeverScrollableScrollPhysics(),
-            children: [AllTime(), AllTimeSales(),DaysSales(),MonthSales(),]),
+            children: [AllTime(), InsitesFilter(days: 7,),InsitesFilter(days: 15),InsitesFilter(days: 30,),]),
       ),
     );
   }

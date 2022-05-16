@@ -21,6 +21,7 @@ import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../widgets/past_booking.dart';
+import '../reset_password.dart';
 import 'notifications.dart';
 
 class HomeTab extends StatefulWidget {
@@ -66,7 +67,7 @@ class _HomeTabState extends State<HomeTab> {
   Widget build(BuildContext context) {
     print("hi this is my gym  $gymId");
     return SafeArea(
-      child: StreamBuilder(
+      child: StreamBuilder<DocumentSnapshot>(
           stream: FirebaseFirestore.instance
               .collection("product_details")
               // .where(field)
@@ -80,15 +81,20 @@ class _HomeTabState extends State<HomeTab> {
                 child: CircularProgressIndicator(),
               );
             }
+            if (snapshot.hasData==false) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(
                 child: CircularProgressIndicator(),
               );
             }
-            print(snapshot.data);
-            print(snapshot.data.get("branch"));
-            print(snapshot.data.get("gym_status"));
-            print(gymId.toString());
+            // print(snapshot.data);
+            // print(snapshot.data.get("branch"));
+            // print(snapshot.data.get("gym_status"));
+            // print(gymId.toString());
             return Stack(
               children: [
                 Scaffold(
@@ -615,9 +621,9 @@ class _HomeTabState extends State<HomeTab> {
                 FirebaseFirestoreAPi()
                     .updateGymStatusToFirestore(isGymOpened: value);
                 print(value);
-                setState(() {
+                // setState(() {
                   status = value;
-                });
+                // });
                 FirebaseFirestoreAPi()
                     .updateGymStatusToFirestore(isGymOpened: value);
               },
@@ -640,13 +646,17 @@ class _HomeTabState extends State<HomeTab> {
           Column(
             children: [
               DrawerTitleWidget(
-                callback: () {
-                  Navigator.pop(context);
-                },
+                // callback: () {
+                //   Navigator.pop(context);
+                // },
               ),
-              buildDrawerListItem(
-                title: 'Change Password',
-                iconData: 'lock',
+              InkWell(
+                onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                    builder: ((context) => ResetPassScreen()))),
+                child: buildDrawerListItem(
+                  title: 'Change Password',
+                  iconData: 'lock',
+                ),
               ),
               InkWell(
                   child: buildDrawerListItem(
