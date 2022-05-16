@@ -81,8 +81,8 @@ class _SalesState extends State<Sales> {
                   child:  TabBarView(
                     children: [
                       AllSales(),
-                      DaysFilter(),
-                      DaysFilter(),
+                      DaysFilter(filter: "7",),
+                      DaysFilter(filter: "30",),
                     ],
                   ),
                 ),

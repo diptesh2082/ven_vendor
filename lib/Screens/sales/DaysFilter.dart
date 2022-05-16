@@ -18,7 +18,8 @@ import '../order_details_screen.dart';
 // import '../Screens/order_details_screen.dart';
 
 class DaysFilter extends StatefulWidget {
-  const DaysFilter({Key? key}) : super(key: key);
+  final filter;
+  const DaysFilter({Key? key, required this.filter}) : super(key: key);
 
   @override
   State<DaysFilter> createState() => _DaysFilterState();
@@ -64,125 +65,200 @@ class _DaysFilterState extends State<DaysFilter> {
                 SizedBox(
                   height: 10,
                 ),
-                StreamBuilder(
-                  stream: FirebaseFirestore.instance
-                      .collection('bookings')
-                      .where("vendorId",isEqualTo: gymId)
-                      .orderBy("booking_date",descending: true)
-                      .where("booking_status".toLowerCase(),isEqualTo: "upcoming")
-                      .snapshots(),
-                  builder: (BuildContext context,
-                      AsyncSnapshot snap) {
-                    if (snap.connectionState ==
-                        ConnectionState.waiting) {
-                      return const Center(
-                        child: CircularProgressIndicator(),
-                      );
-                    }
-                    if (snap.data == null) {
-                      return const Text("No Active Bookings");
-                    }
-                    var doc = snap.data.docs;
-                    // if (snap.hasData){
-                    //
-                    // }
 
-                    return doc.length==0?
-                    const Text("No Upcoming Bookings"):
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
                         children: [
-                          Material(
-                            child: Container(
+                          Obx(
+                                ()=> Column(
+                              children: [
+                                if(widget.filter=="7")
+                                Material(
+                                  child: Container(
+                                    height: 196,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(15),
+                                    ),
+                                    child:Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        Image.asset("Assets/Images/UPI-logo.png",
+                                          height: 30,
+                                          width: 60,
+                                        ),
+                                        SizedBox(
+                                          height: 8,
+                                        ),
+                                        Text("Online Payment",
+                                          style: GoogleFonts.poppins(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w500
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 8,
+                                        ),
+                                        Text("₹ ${Get.find<BookingController>().on_line_7.value}",
+                                          style: GoogleFonts.poppins(
+                                              fontSize: 24,
+                                              fontWeight: FontWeight.w700
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                    width: MediaQuery.of(context).size.width*.41,
+                                  ),
+                                  borderRadius: BorderRadius.circular(15),
+                                  color: Colors.white,
+                                  elevation: 5,
+                                ),
+                                if(widget.filter=="30")
+                                Material(
+                                  child: Container(
 
-                              height: 196,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              child:Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Image.asset("Assets/Images/UPI-logo.png",
-                                    height: 30,
-                                    width: 60,
-                                  ),
-                                  SizedBox(
-                                    height: 8,
-                                  ),
-                                  Text("Online Payment",
-                                    style: GoogleFonts.poppins(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w500
+                                    height: 196,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(15),
                                     ),
-                                  ),
-                                  SizedBox(
-                                    height: 8,
-                                  ),
-                                  Text("₹ 200",
-                                    style: GoogleFonts.poppins(
-                                        fontSize: 24,
-                                        fontWeight: FontWeight.w700
+                                    child:Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        Image.asset("Assets/Images/UPI-logo.png",
+                                          height: 30,
+                                          width: 60,
+                                        ),
+                                        SizedBox(
+                                          height: 8,
+                                        ),
+                                        Text("Online Payment",
+                                          style: GoogleFonts.poppins(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w500
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 8,
+                                        ),
+                                        Text("₹ ${Get.find<BookingController>().on_line_month.value}",
+                                          style: GoogleFonts.poppins(
+                                              fontSize: 24,
+                                              fontWeight: FontWeight.w700
+                                          ),
+                                        )
+                                      ],
                                     ),
-                                  )
-                                ],
-                              ),
-                              width: MediaQuery.of(context).size.width*.41,
+                                    width: MediaQuery.of(context).size.width*.41,
+                                  ),
+                                  borderRadius: BorderRadius.circular(15),
+                                  color: Colors.white,
+                                  elevation: 5,
+                                ),
+                              ],
                             ),
-                            borderRadius: BorderRadius.circular(15),
-                            color: Colors.white,
-                            elevation: 5,
                           ),
                           Spacer(),
-                          Material(
-                            elevation: 5,
-                            borderRadius: BorderRadius.circular(15),
-                            child: Container(
-                              height: 196,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              child:Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Image.asset("Assets/Images/bi_cash.png",
-                                    height: 35,
-                                    width: 60,
-                                  ),
-                                  SizedBox(
-                                    height: 8,
-                                  ),
-                                  Text("Cash Payment",
-                                    style: GoogleFonts.poppins(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w500
+                          Obx(
+                          ()=> Column(
+                            children: [
+                              if(widget.filter=="7")
+                              Material(
+                                  elevation: 5,
+                                  borderRadius: BorderRadius.circular(15),
+                                  child: Container(
+                                    height: 196,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(15),
                                     ),
-                                  ),
-                                  SizedBox(
-                                    height: 8,
-                                  ),
-                                  Text("₹ 500",
-                                    style: GoogleFonts.poppins(
-                                        fontSize: 24,
-                                        fontWeight: FontWeight.w700
+                                    child:Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        Image.asset("Assets/Images/bi_cash.png",
+                                          height: 35,
+                                          width: 60,
+                                        ),
+                                        SizedBox(
+                                          height: 8,
+                                        ),
+                                        Text("Cash Payment",
+                                          style: GoogleFonts.poppins(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w500
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 8,
+                                        ),
+                                        Text("₹ ${Get.find<BookingController>().off_line_7.value}",
+                                          style: GoogleFonts.poppins(
+                                              fontSize: 24,
+                                              fontWeight: FontWeight.w700
+                                          ),
+                                        )
+                                      ],
                                     ),
-                                  )
-                                ],
-                              ),
-                              width: MediaQuery.of(context).size.width*.41,
-                            ),
-                            color: Colors.white,
+                                    width: MediaQuery.of(context).size.width*.41,
+                                  ),
+                                  color: Colors.white,
 
+                                ),
+                              if(widget.filter=="30")
+                              Material(
+                                elevation: 5,
+                                borderRadius: BorderRadius.circular(15),
+                                child: Container(
+                                  height: 196,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(15),
+                                  ),
+                                  child:Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      Image.asset("Assets/Images/bi_cash.png",
+                                        height: 35,
+                                        width: 60,
+                                      ),
+                                      SizedBox(
+                                        height: 8,
+                                      ),
+                                      Text("Cash Payment",
+                                        style: GoogleFonts.poppins(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w500
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 8,
+                                      ),
+                                      Text("₹ ${Get.find<BookingController>().off_line_month.value}",
+                                        style: GoogleFonts.poppins(
+                                            fontSize: 24,
+                                            fontWeight: FontWeight.w700
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                  width: MediaQuery.of(context).size.width*.41,
+                                ),
+                                color: Colors.white,
+
+                              ),
+                            ],
+                          ),
                           ),
                         ],
                       ),
-                    );
-                  },
-                )
+                    ),
+                //   },
+                // )
               ],
             ),
           ),

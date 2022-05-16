@@ -22,4 +22,11 @@ class BookingController extends GetxController{
   var total_sales=0.obs;
   var review_number=0.obs;
   RxString search="".obs;
+  var off_line_all=0.obs;
+  var on_line_all=0.obs;
+  var off_line_7=0.obs;
+  var on_line_7=0.obs;
+  var off_line_month=0.obs;
+  var on_line_month=0.obs;
+
 }

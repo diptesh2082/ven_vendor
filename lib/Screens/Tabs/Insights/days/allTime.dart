@@ -27,7 +27,7 @@ class AllTimeState extends State<AllTime> {
   // String totalSales = '0';
   BookingController bookingController = Get.find<BookingController>();
   getDocumentsLength() async {
-    double d=0.0;
+
     await FirebaseFirestore.instance
         .collection('bookings')
          .where('vendorId', isEqualTo: gymId.toString())
@@ -36,10 +36,45 @@ class AllTimeState extends State<AllTime> {
         .snapshots().listen((snapshot) {
       if (snapshot.docs.isNotEmpty) {
         bookingController.booking.value=snapshot.docs.length;
+        double d=0.0;
+        var off_line_all=0.0;
+        var on_line_all=0.0;
+        var off_line_7=0.0;
+        var on_line_7=0.0;
+        var off_line_month=0.0;
+        var on_line_month=0.0;
         snapshot.docs.forEach((element) {
+
           d = d + double.parse(element["booking_price"].toString());
-        });
-        bookingController.total_sales.value=d.toInt();
+          if (element["payment_method"]=="offline"){
+            off_line_all=off_line_all+double.parse(element["booking_price"].toString());
+
+          }
+          if( DateTime.now().difference(element["booking_date"].toDate()).inDays<=7  && element["payment_method"]=="offline"){
+            off_line_7=off_line_7+double.parse(element["booking_price"].toString());
+          }
+          if( DateTime.now().difference(element["booking_date"].toDate()).inDays<=30  && element["payment_method"]=="offline"){
+            off_line_month=off_line_month+double.parse(element["booking_price"].toString());
+          }
+          if (element["payment_method"]=="online"){
+            on_line_all=on_line_all+double.parse(element["booking_price"].toString());
+          }
+          if (element["payment_method"]=="online" && DateTime.now().difference(element["booking_date"].toDate()).inDays<=7  ){
+            on_line_7=on_line_7+double.parse(element["booking_price"].toString());
+          }
+          if (element["payment_method"]=="online" && DateTime.now().difference(element["booking_date"].toDate()).inDays<=30  ){
+            on_line_month=on_line_month+double.parse(element["booking_price"].toString());
+          }
+          bookingController.total_sales.value=d.toInt();
+          bookingController.off_line_all.value=off_line_all.toInt();
+          bookingController.on_line_all.value=on_line_all.toInt();
+          bookingController.off_line_7.value=off_line_7.toInt();
+          bookingController.on_line_7.value=on_line_7.toInt();
+          bookingController.off_line_month.value=off_line_month.toInt();
+          bookingController.on_line_month.value=on_line_month.toInt();
+        }
+
+        );
 
         // setState(() {
         //   totalBooking = snapshot.docs.length.toString();
@@ -284,7 +319,11 @@ class AllTimeState extends State<AllTime> {
                                     Get.find<BookingController>().review_number.value=snapshot.data!.docs.length;
                                     return InkWell(
                                       onTap: (){
-                                        Get.to(()=>Review());
+                                        Get.to(()=>Review(),duration: Duration(
+                                          milliseconds: 500,
+                                        ),
+                                        // curve: Curve.flipped()
+                                        );
                                       },
                                       child: Container(
                                         decoration: BoxDecoration(

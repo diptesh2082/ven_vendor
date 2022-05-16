@@ -66,31 +66,6 @@ class _AllSalesState extends State<AllSales> {
                 SizedBox(
                   height: 10,
                 ),
-                StreamBuilder(
-                  stream: FirebaseFirestore.instance
-                      .collection('bookings')
-                      .where("vendorId",isEqualTo: gymId)
-                      .orderBy("booking_date",descending: true)
-                      .where("booking_status".toLowerCase(),isEqualTo: "upcoming")
-                      .snapshots(),
-                  builder: (BuildContext context,
-                      AsyncSnapshot snap) {
-                    if (snap.connectionState ==
-                        ConnectionState.waiting) {
-                      return const Center(
-                        child: CircularProgressIndicator(),
-                      );
-                    }
-                    if (snap.data == null) {
-                      return const Text("No Active Bookings");
-                    }
-                    var doc = snap.data.docs;
-                    // if (snap.hasData){
-                    //
-                    // }
-
-                    return doc.length==0?
-                    const Text("No Upcoming Bookings"):
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
@@ -123,7 +98,7 @@ class _AllSalesState extends State<AllSales> {
                                     SizedBox(
                                       height: 8,
                                     ),
-                                    Text("₹ 200",
+                                    Text("₹ ${Get.find<BookingController>().on_line_all}",
                                       style: GoogleFonts.poppins(
                                           fontSize: 24,
                                           fontWeight: FontWeight.w700
@@ -167,7 +142,7 @@ class _AllSalesState extends State<AllSales> {
                                     SizedBox(
                                       height: 8,
                                     ),
-                                    Text("₹ 500",
+                                    Text("₹ ${Get.find<BookingController>().off_line_all}",
                                       style: GoogleFonts.poppins(
                                           fontSize: 24,
                                           fontWeight: FontWeight.w700
@@ -182,9 +157,9 @@ class _AllSalesState extends State<AllSales> {
                           ),
                         ],
                       ),
-                    );
-                  },
-                )
+                    ),
+                //   },
+                // )
               ],
             ),
           ),
