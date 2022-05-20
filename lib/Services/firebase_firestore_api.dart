@@ -143,9 +143,14 @@ class FirebaseFirestoreAPi {
             bookingPrice: snap.get("booking_price"),
             bookingPlan: snap.get("booking_plan"),
             bookingID: snap.get("booking_id"),
-            bookingdate: DateFormat.yMMMd()
-                .add_jm()
-                .format(snap.get("booking_date").toDate()),
+            bookingdate: snap.get('booking_date')
+                .toDate(),
+            //   .format(
+            // doc[index]['booking_date']
+            //     .toDate(),
+            // ),
+            end_date: snap.get('plan_end_duration')
+                .toDate(),
           ));
         }
       }

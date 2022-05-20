@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:vyam_vandor/Screens/booking_summary_screen.dart';
 import 'package:vyam_vandor/Screens/order_details_screen.dart';
 
@@ -18,10 +19,11 @@ class ActiveBookingCard extends StatefulWidget {
     this.tempDay,
     this.tempMonth,
     this.id,
+    required this.end_date,
   }) : super(key: key);
   final String? userName;
   final String? bookingID;
-  final String? bookingdate;
+  final  bookingdate;
   final String? bookingPlan;
   final double? bookingPrice;
   final String? userID;
@@ -29,6 +31,7 @@ class ActiveBookingCard extends StatefulWidget {
   final dynamic tempDay;
   final dynamic tempMonth;
   final String? id;
+  final end_date;
 
   @override
   State<ActiveBookingCard> createState() => _ActiveBookingCardState();
@@ -121,7 +124,8 @@ class _ActiveBookingCardState extends State<ActiveBookingCard> {
                       fontWeight: FontWeight.w700, fontSize: 15),
                 ),
                 Text(
-                  widget.bookingdate!,
+                  DateFormat("dd, EE, yyyy").format( widget.bookingdate!),
+                  // widget.bookingdate!.toString(),
                   style: GoogleFonts.poppins(fontWeight: FontWeight.w500),
                 ),
                 Text(
@@ -144,10 +148,18 @@ class _ActiveBookingCardState extends State<ActiveBookingCard> {
                     ),
                   ),
                 ),
+                if(widget.end_date.difference(DateTime.now()).inDays>=0)
                 Text(
-                  '${DateTime.now().difference(DateTime(int.parse(widget.tempYear), int.parse(widget.tempMonth), int.parse(widget.tempDay))).inDays} days remaining',
+                  // "${widget.end_date.toDate()}",
+                  '${widget.end_date.difference(DateTime.now()).inDays} days remaining',
                   style:GoogleFonts.poppins(fontWeight: FontWeight.w500),
                 ),
+                if(widget.end_date.difference(DateTime.now()).inDays < 0)
+                  Text(
+                    // "${widget.end_date.toDate()}",
+                    'Booking Ended',
+                    style:GoogleFonts.poppins(fontWeight: FontWeight.w500),
+                  ),
                 Row(
                   children:  [
                     CircleAvatar(

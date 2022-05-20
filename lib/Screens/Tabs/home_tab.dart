@@ -287,12 +287,13 @@ class _HomeTabState extends State<HomeTab> {
                                                   bookingPrice: double.parse(
                                                       doc[index]['booking_price']
                                                           .toString()),
-                                                  bookingdate: DateFormat(
-                                                          DateFormat.YEAR_MONTH_DAY)
-                                                      .format(
-                                                    doc[index]['booking_date']
-                                                        .toDate(),
-                                                  ),
+                                                  bookingdate: doc[index]['booking_date']
+                                                      .toDate(),
+                                                    //   .format(
+                                                    // doc[index]['booking_date']
+                                                    //     .toDate(),
+                                                  // ),
+                                                  end_date: doc[index]['plan_end_duration'].toDate(),
                                                   tempYear:
                                                       DateFormat(DateFormat.YEAR)
                                                           .format(

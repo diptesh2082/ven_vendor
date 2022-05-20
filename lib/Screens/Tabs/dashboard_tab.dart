@@ -344,133 +344,137 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                               )),
                         ),
                       ),
-                      SizedBox(
-                          height:
-                              145, //MediaQuery.of(context).size.height / 4.7,
-                          child: InkWell(
-                            onTap: () {
-                              Get.to(() => Trainer(), arguments: {
-                                "gym_id": gym_details["gym_id"],
-                                "image": gym_details["display_picture"]
-                              });
-                            },
-                            child: Card(
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(12.0)),
-                                child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Row(
-                                          children: const [
-                                            Text('Trainers',
-                                                style: TextStyle(
-                                                  fontFamily: 'poppins',
-                                                  fontSize: 13,
-                                                  fontWeight: FontWeight.w600,
-                                                )),
-                                            Spacer(),
-                                            Icon(
-                                              Icons.arrow_forward_ios_outlined,
-                                              size: 18,
-                                            ),
-                                          ],
+                      Align(
+                        alignment: Alignment.center,
+                        child: SizedBox(
+                          width: MediaQuery.of(context).size.width * .95,
+                            height:
+                                145, //MediaQuery.of(context).size.height / 4.7,
+                            child: InkWell(
+                              onTap: () {
+                                Get.to(() => Trainer(), arguments: {
+                                  "gym_id": gym_details["gym_id"],
+                                  "image": gym_details["display_picture"]
+                                });
+                              },
+                              child: Card(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(12.0)),
+                                  child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Row(
+                                            children: const [
+                                              Text('Trainers',
+                                                  style: TextStyle(
+                                                    fontFamily: 'poppins',
+                                                    fontSize: 13,
+                                                    fontWeight: FontWeight.w600,
+                                                  )),
+                                              Spacer(),
+                                              Icon(
+                                                Icons.arrow_forward_ios_outlined,
+                                                size: 18,
+                                              ),
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(left: 8.0),
-                                        child: SizedBox(
-                                          height: 100,
-                                          //MediaQuery.of(context).size.height /
-                                          //  9,
-                                          child: StreamBuilder(
-                                              stream: FirebaseFirestore.instance
-                                                  .collection("product_details")
-                                                  .doc("${gymId}")
-                                                  .collection("trainers")
-                                                  .snapshots(),
-                                              builder: (context,
-                                                  AsyncSnapshot snapshot) {
-                                                if (snapshot.connectionState ==
-                                                    ConnectionState.waiting) {
-                                                  return const Center(
-                                                    child:
-                                                        CircularProgressIndicator(
-                                                      color: Colors.amberAccent,
-                                                    ),
-                                                  );
-                                                }
-                                                if (snapshot.hasError) {
-                                                  return const Center(
-                                                    child: Text(
-                                                        "Theres no trainers"),
-                                                  );
-                                                }
-                                                var trainerdoc =
-                                                    snapshot.data!.docs;
-                                                return ListView.builder(
-                                                    shrinkWrap: true,
-                                                    itemCount:
-                                                        trainerdoc.length,
-                                                    physics:
-                                                        const PageScrollPhysics(),
-                                                    scrollDirection:
-                                                        Axis.horizontal,
-                                                    itemBuilder:
-                                                        (context, index) {
-                                                      return Column(
-                                                        children: [
-                                                          Row(
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .spaceBetween,
-                                                            children: [
-                                                              Column(
-                                                                children: [
-                                                                  Container(
-                                                                    height: 65,
-                                                                    width: 65,
-                                                                    decoration: BoxDecoration(
-                                                                        shape: BoxShape.circle,
-                                                                        //border: Border.all(width: 1),
-                                                                        image: DecorationImage(image: CachedNetworkImageProvider(trainerdoc[index]['images']), fit: BoxFit.cover)),
-                                                                  ),
-                                                                  Text(
-                                                                    trainerdoc[
-                                                                            index]
-                                                                        [
-                                                                        'name'],
-                                                                    style:
-                                                                        const TextStyle(
-                                                                      fontFamily:
-                                                                          'Poppins',
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w500,
-                                                                      fontSize:
-                                                                          12,
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 8.0),
+                                          child: SizedBox(
+                                            height: 100,
+                                            //MediaQuery.of(context).size.height /
+                                            //  9,
+                                            child: StreamBuilder(
+                                                stream: FirebaseFirestore.instance
+                                                    .collection("product_details")
+                                                    .doc("${gymId}")
+                                                    .collection("trainers")
+                                                    .snapshots(),
+                                                builder: (context,
+                                                    AsyncSnapshot snapshot) {
+                                                  if (snapshot.connectionState ==
+                                                      ConnectionState.waiting) {
+                                                    return const Center(
+                                                      child:
+                                                          CircularProgressIndicator(
+                                                        color: Colors.amberAccent,
+                                                      ),
+                                                    );
+                                                  }
+                                                  if (snapshot.hasError) {
+                                                    return const Center(
+                                                      child: Text(
+                                                          "Theres no trainers"),
+                                                    );
+                                                  }
+                                                  var trainerdoc =
+                                                      snapshot.data!.docs;
+                                                  return ListView.builder(
+                                                      shrinkWrap: true,
+                                                      itemCount:
+                                                          trainerdoc.length,
+                                                      physics:
+                                                          const PageScrollPhysics(),
+                                                      scrollDirection:
+                                                          Axis.horizontal,
+                                                      itemBuilder:
+                                                          (context, index) {
+                                                        return Column(
+                                                          children: [
+                                                            Row(
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .spaceBetween,
+                                                              children: [
+                                                                Column(
+                                                                  children: [
+                                                                    Container(
+                                                                      height: 65,
+                                                                      width: 65,
+                                                                      decoration: BoxDecoration(
+                                                                          shape: BoxShape.circle,
+                                                                          //border: Border.all(width: 1),
+                                                                          image: DecorationImage(image: CachedNetworkImageProvider(trainerdoc[index]['images']), fit: BoxFit.cover)),
                                                                     ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                              const SizedBox(
-                                                                  width: 15),
-                                                            ],
-                                                          ),
-                                                        ],
-                                                      );
-                                                    });
-                                              }),
+                                                                    Text(
+                                                                      trainerdoc[
+                                                                              index]
+                                                                          [
+                                                                          'name'],
+                                                                      style:
+                                                                          const TextStyle(
+                                                                        fontFamily:
+                                                                            'Poppins',
+                                                                        fontWeight:
+                                                                            FontWeight
+                                                                                .w500,
+                                                                        fontSize:
+                                                                            12,
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                                const SizedBox(
+                                                                    width: 15),
+                                                              ],
+                                                            ),
+                                                          ],
+                                                        );
+                                                      });
+                                                }),
+                                          ),
                                         ),
-                                      ),
-                                    ])),
-                          )),
+                                      ])),
+                            )),
+                      ),
                       // Amenities//
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(16.0),
                         child: Text(
                           "Amenites",
                           style: GoogleFonts.poppins(
@@ -480,6 +484,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                         ),
                       ),
                       SizedBox(
+                        width: MediaQuery.of(context).size.width*.98,
                           child: Amenites(amenites: gymId,)
                       ),
                       //Address//
@@ -498,7 +503,8 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                         alignment: Alignment.center,
                         child: InkWell(
                             onTap: (){
-                              Get.to(()=>DashboardMap());
+                              if(gym_details["legit"]==false)
+                                Get.to(()=>DashboardMap());
                             },
                           child: FittedBox(
                             child: SizedBox(
