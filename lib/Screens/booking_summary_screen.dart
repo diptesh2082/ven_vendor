@@ -386,7 +386,7 @@ class _BookingScreenState extends State<BookingScreen> {
                                 height: 3.0,
                               ),
                               Text(
-                                '\$ ${snapshot.data.get('booking_price')}',
+                                '\₹ ${snapshot.data.get('booking_price')}',
                                 style: GoogleFonts.poppins(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w700,
@@ -410,7 +410,7 @@ class _BookingScreenState extends State<BookingScreen> {
                                 ),
                               ),
                               Text(
-                                '\$ ${snapshot.data.get('discount')}',
+                                '\₹ ${snapshot.data.get('discount')}',
                                 style: GoogleFonts.poppins(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w700,
@@ -422,13 +422,26 @@ class _BookingScreenState extends State<BookingScreen> {
                           const SizedBox(
                             height: 3.0,
                           ),
-                          Text(
-                            'Promo code',
-                            style: GoogleFonts.poppins(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.black,
-                            ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Taxes',
+                                style: GoogleFonts.poppins(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.black,
+                                ),
+                              ),
+                              Text(
+                                '\₹ ${snapshot.data.get('tax_pay')}',
+                                style: GoogleFonts.poppins(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w700,
+                                  color: Color(0xff3A3A3A),
+                                ),
+                              ),
+                            ],
                           ),
                           //Taxes and charges
                           // Row(
@@ -467,7 +480,7 @@ class _BookingScreenState extends State<BookingScreen> {
                                 height: 3.0,
                               ),
                               Text(
-                                '\$ ${snapshot.data.get('grand_total')}',
+                                '\₹ ${snapshot.data.get('grand_total')}',
                                 style: GoogleFonts.poppins(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w700,
