@@ -252,7 +252,7 @@ class _BookingScreenState extends State<BookingScreen> {
                                       height: 5.0,
                                     ),
                                     Text(
-                                      'Package',
+                                      'Pay Per Session',
                                       style: GoogleFonts.poppins(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w500,
@@ -287,7 +287,7 @@ class _BookingScreenState extends State<BookingScreen> {
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
                                     Text(
-                                      '${snapshot.data.get('booking_plan')}',
+                                      '${snapshot.data.get('package_type')}',
                                       style: GoogleFonts.poppins(
                                           fontSize: 16,
                                           fontWeight: FontWeight.w700,
@@ -297,10 +297,12 @@ class _BookingScreenState extends State<BookingScreen> {
                                       height: 5.0,
                                     ),
                                     Text(
-                                      DateFormat(DateFormat.YEAR_MONTH_DAY)
-                                          .format(snapshot.data
-                                              .get('booking_date')
-                                              .toDate()),
+                                      '${snapshot.data
+                                          .get('totalDays').toString()} days',
+                                      // DateFormat(DateFormat.YEAR_MONTH_DAY)
+                                      //     .format(snapshot.data
+                                      //         .get('booking_date')
+                                      //         .toDate()),
                                       style: GoogleFonts.poppins(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w500,
