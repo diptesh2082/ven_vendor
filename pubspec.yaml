@@ -59,7 +59,7 @@ dependencies:
   font_awesome_flutter: ^10.1.0
   auto_size_text: ^3.0.0
   location: ^4.2.0
-  syncfusion_flutter_datepicker: ^20.1.57
+  syncfusion_flutter_datepicker: ^20.1.47
 
 
 
