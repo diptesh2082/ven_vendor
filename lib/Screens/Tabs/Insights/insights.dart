@@ -22,6 +22,10 @@ class InsightsTab extends StatefulWidget {
 }
 
 class _InsightsTabState extends State<InsightsTab> {
+
+
+
+
   var _getIndex = 0;
 
   bool _allTime = true;
@@ -163,9 +167,9 @@ class _InsightsTabState extends State<InsightsTab> {
           backgroundColor: Colors.transparent,
           centerTitle: true,
           title: GestureDetector(
-            onTap: (){
+            onTap: () {
               FirebaseAuth.instance.signOut();
-              Get.to(()=>ResetPassScreen());
+              Get.to(() => ResetPassScreen());
             },
             child: Text(
               "Insights",
@@ -176,15 +180,19 @@ class _InsightsTabState extends State<InsightsTab> {
             ),
           ),
         ),
-        body:  TabBarView(
-            physics: NeverScrollableScrollPhysics(),
-            children: [AllTime(), InsitesFilter(days: 7,),InsitesFilter(days: 15),InsitesFilter(days: 30,),]),
+        body: TabBarView(physics: NeverScrollableScrollPhysics(), children: [
+          AllTime(),
+          InsitesFilter(
+            days: 7,
+          ),
+          InsitesFilter(days: 15),
+          InsitesFilter(
+            days: 30,
+          ),
+        ]),
       ),
     );
   }
 }
-
-
-
 
 // Days_7(), Days_15(), Days_30()
