@@ -356,7 +356,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                                           height: 10.0,
                                         ),
                                         Text(
-                                          'Package',
+                                          'Pay Per Session',
                                           style: GoogleFonts.poppins(
                                             fontSize: 16,
                                             fontWeight: FontWeight.w500,
@@ -391,7 +391,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                                       crossAxisAlignment: CrossAxisAlignment.end,
                                       children: [
                                         Text(
-                                          '${snapshot.data.get('booking_plan')}',
+                                          '${snapshot.data.get('package_type')}',
                                           style: GoogleFonts.poppins(
                                               fontSize: 16,
                                               fontWeight: FontWeight.w700,
@@ -401,7 +401,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                                           height: 10.0,
                                         ),
                                         Text(
-                                          '${snapshot.data.get('booking_plan')}',
+                                          '${snapshot.data.get('totalDays').toString()} days',
                                           style: GoogleFonts.poppins(
                                             fontSize: 16,
                                             fontWeight: FontWeight.w500,
