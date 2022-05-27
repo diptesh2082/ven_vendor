@@ -137,7 +137,7 @@ class _DashboardMapState extends State<DashboardMap> {
                           ? Column(
                               children: [
                                 Text(_locating!
-                                    ? "Khujchi.."
+                                    ? "Loading..."
                                     : "${_placeMark!.subLocality!} ${_placeMark!.locality!}${_placeMark!.street!} ${_placeMark!.administrativeArea!}  ${_placeMark!.name!} ${_placeMark!.postalCode!}"),
                                 SizedBox(
                                   height: 8,
@@ -165,7 +165,7 @@ class _DashboardMapState extends State<DashboardMap> {
                 .update({
               "legit":true,
               "address":"${_placeMark!.subLocality!} ${_placeMark!.locality!}${_placeMark!.street!} ${_placeMark!.administrativeArea!}  ${_placeMark!.name!} ${_placeMark!.postalCode!}",
-              "locality":"${_placeMark!.locality!}",
+              "locality":"${_placeMark!.locality!.toLowerCase()}",
               "location":GeoPoint(_latLong!.latitude,_latLong!.longitude)
             });
             Get.off(()=>HomeScreen());
