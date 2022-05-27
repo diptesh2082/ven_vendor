@@ -5,12 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:vyam_vandor/Screens/sales/activebooking.dart';
 import 'package:vyam_vandor/constants.dart';
 import 'package:vyam_vandor/sales/sales_7days.dart';
 import 'package:vyam_vandor/sales/sales_all_time.dart';
 import 'package:vyam_vandor/sales/sales_month.dart';
-import 'package:syncfusion_flutter_datepicker/datepicker.dart';
+
 
 import '../bookings/bookings_upcoming.dart';
 
@@ -33,7 +34,7 @@ class _TotalBookingsState extends State<TotalBookings> {
       setState(() {});
     });
   }
-
+  //
   void _selectedDataChange(DateRangePickerSelectionChangedArgs args)
   {
         print(args.value);
@@ -58,22 +59,27 @@ class _TotalBookingsState extends State<TotalBookings> {
           borderRadius: BorderRadius.circular(15),
         ),
         content: Card(
-          child: SfDateRangePicker(
-            view: DateRangePickerView.month,
-            selectionMode: DateRangePickerSelectionMode.range,
-            selectionTextStyle: const TextStyle(color: Colors.white),
-            selectionColor: Colors.blue,
-            startRangeSelectionColor: Colors.yellow,
-            endRangeSelectionColor: Colors.yellow,
-            rangeSelectionColor: Colors.yellowAccent,
-            showActionButtons: true,
+          child: SizedBox(
+            height: 500,
+            // width: MediaQuery.of(context).size.width*.99,
+            child: SfDateRangePicker(
+              view: DateRangePickerView.month,
+              selectionMode: DateRangePickerSelectionMode.range,
+              selectionTextStyle: const TextStyle(color: Colors.white),
+              selectionColor: Colors.blue,
+              startRangeSelectionColor: Colors.yellow,
+              endRangeSelectionColor: Colors.yellow,
+              rangeSelectionColor: Colors.yellowAccent,
+              showActionButtons: true,
 
               onSelectionChanged: _selectedDataChange,
+            ),
           ),
         ),
     ),
     );
   }
+
 
   @override
   Widget build(BuildContext context) {
