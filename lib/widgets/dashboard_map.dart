@@ -138,7 +138,7 @@ class _DashboardMapState extends State<DashboardMap> {
                               children: [
                                 Text(_locating!
                                     ? "Khujchi.."
-                                    : "${_placeMark!.administrativeArea!} ${_placeMark!.subLocality!} ${_placeMark!.locality!} ${_placeMark!.street!} ${_placeMark!.name!} ${_placeMark!.postalCode!}"),
+                                    : "${_placeMark!.subLocality!} ${_placeMark!.locality!}${_placeMark!.street!} ${_placeMark!.administrativeArea!}  ${_placeMark!.name!} ${_placeMark!.postalCode!}"),
                                 SizedBox(
                                   height: 8,
                                 ),
@@ -164,7 +164,7 @@ class _DashboardMapState extends State<DashboardMap> {
                 .doc(gymId.toString())
                 .update({
               "legit":true,
-              "address":"${_placeMark!.administrativeArea!} ${_placeMark!.subLocality!} ${_placeMark!.locality!} ${_placeMark!.street!} ${_placeMark!.name!} ${_placeMark!.postalCode!}",
+              "address":"${_placeMark!.subLocality!} ${_placeMark!.locality!}${_placeMark!.street!} ${_placeMark!.administrativeArea!}  ${_placeMark!.name!} ${_placeMark!.postalCode!}",
               "locality":"${_placeMark!.locality!}",
               "location":GeoPoint(_latLong!.latitude,_latLong!.longitude)
             });
