@@ -28,10 +28,21 @@ class _TotalBookingsState extends State<TotalBookings> {
   DateTime? startDate;
   DateTime? endDate;
 
+  void dropDownPackage(String? selecetValue){
+    // if(selecetValue is String){
+    setState(() {
+      // packageType=selecetValue;
+      // Select_Package_type=selecetValue;
+    });
+    // }
+  }
+
   void selectionChanged(DateRangePickerSelectionChangedArgs args) {
     _selectedDate = DateFormat('dd MMMM, yyyy').format(args.value);
     SchedulerBinding.instance!.addPostFrameCallback((duration) {
-      setState(() {});
+      setState(() {
+
+      });
     });
   }
   //
@@ -41,14 +52,14 @@ class _TotalBookingsState extends State<TotalBookings> {
         DateTime sDate = args.value.startDate;
         DateTime eDate = args.value.endDate;
 
-        setState((){
+        // setState((){
             startDate = sDate;
             endDate = eDate;
 
             print(startDate);
             print(endDate);
-        }
-        );
+        // }
+        // );
   }
 
   void _show() async {
@@ -71,7 +82,6 @@ class _TotalBookingsState extends State<TotalBookings> {
               endRangeSelectionColor: Colors.yellow,
               rangeSelectionColor: Colors.yellowAccent,
               showActionButtons: true,
-
               onSelectionChanged: _selectedDataChange,
             ),
           ),
@@ -86,6 +96,7 @@ class _TotalBookingsState extends State<TotalBookings> {
     return Scaffold(
       backgroundColor: kScaffoldBackgroundColor,
       appBar: AppBar(
+        toolbarHeight: 60,
         backgroundColor: kScaffoldBackgroundColor,
         centerTitle: true,
         leading: GestureDetector(
@@ -105,72 +116,145 @@ class _TotalBookingsState extends State<TotalBookings> {
           ),
         ),
         actions: <Widget>[
-          IconButton(
-            icon: Icon(
-              Icons.date_range,
-              color: Colors.black,
-            ),
-            onPressed: () {
-              _show();
 
-            },
-          ),
-        ],
-      ),
-      body: SafeArea(
-        child: DefaultTabController(
-          length: 3,
-          child: Column(
+          Column(
             children: [
-              Padding(
-                padding: EdgeInsets.fromLTRB(kDefaultPadding - 3, 10,
-                    kDefaultPadding - 3, kDefaultPadding),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: ButtonsTabBar(
-                    backgroundColor: Colors.black,
-                    unselectedBackgroundColor: Colors.white,
-                    labelStyle: GoogleFonts.poppins(
-                      color: Colors.white,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w700,
-                    ),
-                    contentPadding: EdgeInsets.symmetric(
-                        vertical: 11, horizontal: kDefaultPadding),
-                    unselectedLabelStyle: GoogleFonts.poppins(
-                      color: Colors.black,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w700,
-                    ),
-                    radius: 8,
-                    tabs: const [
-                      Tab(
-                        text: 'Upcoming',
-                      ),
-                      Tab(
-                        text: 'Active',
-                      ),
-                      Tab(
-                        text: 'Completed',
-                      ),
-                    ],
-                  ),
-                ),
+              SizedBox(
+                height: 9,
               ),
-              SingleChildScrollView(
-                child: SizedBox(
-                  width: double.maxFinite,
-                  height: MediaQuery.of(context).size.height - 160,
-                  child: TabBarView(
-                    children: [
-                      UpcomingBookings(),
-                      ActivBookings(),
-                      MonthSales(),
-                    ],
-                  ),
+              Container(
+                // color: Colors.white,
+                width: 100,
+                // height: 10,
+                child: Column(
+                  children: [
+                    DropdownButton(
+                        iconSize: 25,
+                        elevation: 8,
+                        iconDisabledColor: Colors.red,
+                        iconEnabledColor: Colors.red,
+                        // underline: SizedBox(),
+                        hint: Text("Filter",
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.poppins(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500
+                          ),),
+                        items:  [
+                          DropdownMenuItem(child: Text("pay per ses",style: GoogleFonts.poppins(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w400
+                          ),),value: "pay per session",),
+                          DropdownMenuItem(child: Text("package",style: GoogleFonts.poppins(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w400
+                          ),),value: "package",),
+                          DropdownMenuItem(child: Text("pay per ses",style: GoogleFonts.poppins(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w400
+                          ),),value: "pay per session",),
+                          DropdownMenuItem(child: Text("pay per ses",style: GoogleFonts.poppins(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w400
+                          ),),value: "pay per session",),
+                        ], onChanged: dropDownPackage),
+                  ],
                 ),
               ),
             ],
+          ),
+          SizedBox(
+            width: 3,
+          ),
+          // IconButton(
+          //   icon: Icon(
+          //     Icons.date_range,
+          //     color: Colors.black,
+          //   ),
+          //   onPressed: () {
+          //     _show();
+          //
+          //   },
+          // ),
+        ],
+      ),
+      body: SingleChildScrollView(
+        child: SafeArea(
+          child: DefaultTabController(
+            length: 3,
+            child: Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.fromLTRB(0,0,0,0),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: ButtonsTabBar(
+                      backgroundColor: Colors.black,
+                      unselectedBackgroundColor: Colors.white,
+                      labelStyle: GoogleFonts.poppins(
+                        color: Colors.white,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w700,
+                      ),
+                      contentPadding: EdgeInsets.symmetric(
+                          vertical: 11, horizontal: kDefaultPadding),
+                      unselectedLabelStyle: GoogleFonts.poppins(
+                        color: Colors.black,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w700,
+                      ),
+                      radius: 8,
+                      tabs: const [
+                        Tab(
+                          text: 'Upcoming',
+                        ),
+                        Tab(
+                          text: 'Active',
+                        ),
+                        Tab(
+                          text: 'Completed',
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+          // SizedBox(
+          //   width: 100,
+          //   child: DropdownButton(
+          //         iconSize: 15,
+          //         elevation: 8,
+          //           hint: Text("Filter",
+          //             textAlign: TextAlign.center,
+          //             style: GoogleFonts.poppins(
+          //             fontSize: 12,
+          //             fontWeight: FontWeight.w400
+          //           ),),
+          //           items:  [
+          //             DropdownMenuItem(child: Text("pay per ses",style: GoogleFonts.poppins(
+          //                 fontSize: 12,
+          //                 fontWeight: FontWeight.w400
+          //             ),),value: "pay per session",),
+          //             DropdownMenuItem(child: Text("package",style: GoogleFonts.poppins(
+          //                 fontSize: 12,
+          //                 fontWeight: FontWeight.w400
+          //             ),),value: "package",),
+          //           ], onChanged: dropDownPackage),
+          // ),
+                SingleChildScrollView(
+                  child: SizedBox(
+                    width: double.maxFinite,
+                    height: MediaQuery.of(context).size.height - 160,
+                    child: TabBarView(
+                      children: [
+                        UpcomingBookings(),
+                        ActivBookings(),
+                        MonthSales(),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
