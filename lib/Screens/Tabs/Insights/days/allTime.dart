@@ -184,7 +184,7 @@ class AllTimeState extends State<AllTime> {
                                                 width: 2,
                                               ),
                                                Text(
-                                                "₹ ${bookingController.booking.value}",
+                                                "${bookingController.booking.value}",
                                                 style: TextStyle(
                                                   color: Colors.white,
                                                 ),
@@ -207,7 +207,7 @@ class AllTimeState extends State<AllTime> {
                                             height: 42,
                                           ),
                                           Text(
-                                            "${bookingController.total_sales.value.toString()}", // DATABASE CALLLING FOR TOTAL SALES VALUE
+                                            "₹${bookingController.total_sales.value.toString()}", // DATABASE CALLLING FOR TOTAL SALES VALUE
                                             style: TextStyle(
                                               color: Colors.white,
                                               fontSize: 35,
