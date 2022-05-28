@@ -15,7 +15,8 @@ import '../Screens/login_screen.dart';
 import '../Screens/order_details_screen.dart';
 
 class MonthSales extends StatefulWidget {
-  const MonthSales({Key? key}) : super(key: key);
+  final filter;
+  const MonthSales({Key? key,required this.filter}) : super(key: key);
 
   @override
   State<MonthSales> createState() => _MonthSalesState();
@@ -96,6 +97,9 @@ class _MonthSalesState extends State<MonthSales> {
                         // // doc[index]["vendorId"] ==
                         // //     gymId.toString()
                         // )
+                        if((doc[index]['booking_date'].toDate().isAfter(widget.filter.start)   && doc[index]['booking_date'].toDate().isBefore(widget.filter.end))
+                            || doc[index]['booking_date'].toDate() == widget.filter.start
+                            || doc[index]['booking_date'].toDate() == widget.filter.end)
                         {
 
                           return GestureDetector(

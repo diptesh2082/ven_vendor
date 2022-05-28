@@ -147,6 +147,7 @@ class _BookingScreenState extends State<BookingScreen> {
                                                 height: 130,
                                                 imageUrl: snapshot.data!.get(
                                                     'gym_details')["image"],
+                                                width: MediaQuery.of(context).size.width*.55,
                                               ),
                                             ],
                                           ),

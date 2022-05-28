@@ -14,7 +14,8 @@ import 'package:vyam_vandor/widgets/card_details.dart';
 import '../order_details_screen.dart';
 
 class ActivBookings extends StatefulWidget {
-  const ActivBookings({Key? key}) : super(key: key);
+  final filter;
+  const ActivBookings({Key? key,required this.filter}) : super(key: key);
 
   @override
   State<ActivBookings> createState() => _ActivBookingsState();
@@ -95,6 +96,10 @@ class _ActivBookingsState extends State<ActivBookings> {
                         // // doc[index]["vendorId"] ==
                         // //     gymId.toString()
                         // )
+                        if((doc[index]['booking_date'].toDate().isAfter(widget.filter.start)   && doc[index]['booking_date'].toDate().isBefore(widget.filter.end))
+                            || doc[index]['booking_date'].toDate() == widget.filter.start
+                            || doc[index]['booking_date'].toDate() == widget.filter.end
+                        )
                         {
 
                           return GestureDetector(
