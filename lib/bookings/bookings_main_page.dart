@@ -85,7 +85,7 @@ class _BookingsState extends State<Bookings> {
                   height: MediaQuery.of(context).size.height - 160,
                   child: const TabBarView(
                     children: [
-                      UpcomingBookings(),
+                      UpcomingBookings(filter: null,),
                       ActiveBookings(),
                       CompletedBookings(),
                     ],

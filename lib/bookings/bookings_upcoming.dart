@@ -5,6 +5,7 @@ import 'package:vyam_vandor/Services/firebase_firestore_api.dart';
 import 'package:vyam_vandor/constants.dart';
 
 import '../Screens/order_details_screen.dart';
+import '../widgets/booking_card.dart';
 import '../widgets/card_details.dart';
 
 class UpcomingBookings extends StatefulWidget {
@@ -100,58 +101,27 @@ class _UpcomingBookingsState extends State<UpcomingBookings> {
                         if((doc[index]['booking_date'].toDate().isAfter(widget.filter.start)   && doc[index]['booking_date'].toDate().isBefore(widget.filter.end))
                             || doc[index]['booking_date'].toDate() == widget.filter.start
                             || doc[index]['booking_date'].toDate() == widget.filter.end){
-                          return GestureDetector(
-                            onTap: () async {
-                              // print("wewe");
-                              await OrderDetails(
-                                userID: doc[index]['userId'],
-                                bookingID: doc[index]
-                                ['booking_id'],
-                                imageUrl: doc[index]
-                                ["gym_details"]["images"],
-                              );
-                            },
-                            child: CardDetails(
-                              userID:
-                              doc[index]['userId'] ?? "",
-                              userName:
-                              doc[index]['user_name'] ?? "",
-                              bookingID: doc[index]
-                              ['booking_id'] ??
-                                  "",
-                              bookingPlan: doc[index]
-                              ['booking_plan'] ??
-                                  "",
-                              bookingPrice: double.parse(
-                                  doc[index]['booking_price']
-                                      .toString()),
-                              bookingdate: DateFormat(
-                                  DateFormat.YEAR_MONTH_DAY)
-                                  .format(
-                                doc[index]['booking_date']
-                                    .toDate(),
-                                // bookingsStatus: ,
-                              ),
-                              tempYear:
-                              DateFormat(DateFormat.YEAR)
-                                  .format(
-                                doc[index]['booking_date']
-                                    .toDate(),
-                              ),
-                              tempDay:
-                              DateFormat(DateFormat.DAY)
-                                  .format(
-                                doc[index]['booking_date']
-                                    .toDate(),
-                              ),
-                              tempMonth: DateFormat(
-                                  DateFormat.NUM_MONTH)
-                                  .format(
-                                doc[index]['booking_date']
-                                    .toDate(),
-                              ),
-                              booking_status: '${doc[index]['booking_status'].toString()}',
-                            ),
+                          return BookingCard(
+                            userID: doc[index]['userId'] ?? "",
+                            userName:
+                            doc[index]['user_name'] ?? "",
+                            bookingID:
+                            doc[index]['booking_id'] ?? "",
+                            bookingPlan: doc[index]
+                            ['booking_plan'] ??
+                                "",
+                            bookingPrice: doc[index]
+                            ['booking_price'] ??
+                                "",
+                            // docs: doc[index],
+                            bookingdate: DateFormat(
+                                DateFormat.YEAR_MONTH_DAY)
+                                .format(doc[index]
+                            ['booking_date']
+                                .toDate()),
+                            otp: int.parse(
+                                doc[index]['otp_pass']),
+                            id: doc[index]['id'] ?? "",
                           );
                         }
 
