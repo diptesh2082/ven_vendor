@@ -17,12 +17,12 @@ class _ContactUsState extends State<ContactUs> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          backgroundColor: Color(0xffE5E5E5),
+          backgroundColor: Colors.grey[100],
           appBar: AppBar(
             title: Text("Contact Us"),
             centerTitle: true,
             foregroundColor: Color(0xff3A3A3A),
-            backgroundColor: Color(0xffE5E5E5),
+            backgroundColor: Colors.grey[100],
             elevation: 0,
             automaticallyImplyLeading: true,
             leading: IconButton(

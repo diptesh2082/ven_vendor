@@ -213,7 +213,7 @@ class _HomeTabState extends State<HomeTab> {
                                                         .toDate()),
                                                 otp: int.parse(
                                                     doc[index]['otp_pass']),
-                                                id: doc[index]['id'] ?? "",
+                                                id: doc[index]['id'].toString() ,
                                               );
                                             }
                                             return Container();
@@ -312,7 +312,7 @@ class _HomeTabState extends State<HomeTab> {
                                                     doc[index]['booking_date']
                                                         .toDate(),
                                                   ),
-                                                  id: doc[index]['id'],
+                                                  id: doc[index]['id'].toString(),
                                                 ),
                                               );
                                             }
@@ -652,8 +652,13 @@ class _HomeTabState extends State<HomeTab> {
                 // },
               ),
               InkWell(
-                onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                    builder: ((context) => ResetPassScreen()))),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ContactUs(),
+                      ));
+                },
                 child: buildDrawerListItem(
                   title: 'Change Password',
                   iconData: 'lock',
@@ -704,7 +709,7 @@ class _HomeTabState extends State<HomeTab> {
               },
               child: const Text(
                 'Logout',
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),
               ),
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(

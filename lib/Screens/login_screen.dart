@@ -81,23 +81,23 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(
                   height: 5,
                 ),
-                TextButton(
-                  child: Padding(
-                    padding: const EdgeInsets.only(right: 15.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: const [
-                        Text("Forgot password?",
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.grey,
-                            )),
-                      ],
-                    ),
-                  ),
-                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(
-                      builder: ((context) => ResetPassScreen()))),
-                ),
+                // TextButton(
+                //   child: Padding(
+                //     padding: const EdgeInsets.only(right: 15.0),
+                //     child: Row(
+                //       mainAxisAlignment: MainAxisAlignment.end,
+                //       children: const [
+                //         Text("Forgot password?",
+                //             style: TextStyle(
+                //               fontSize: 16,
+                //               color: Colors.grey,
+                //             )),
+                //       ],
+                //     ),
+                //   ),
+                //   onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                //       builder: ((context) => ResetPassScreen()))),
+                // ),
                 const SizedBox(
                   height: 55,
                 ),

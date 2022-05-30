@@ -69,14 +69,14 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   // }
 
   final _auth = FirebaseAuth.instance;
-  var futurefiles;
+  // var futurefiles;
   @override
   void initState() {
     // getGymImages();
-    print("//////////!!!!!!!!!!!!!!!!!!!!!!!!");
-    print(gym_images);
+    // print("//////////!!!!!!!!!!!!!!!!!!!!!!!!");
+    // print(gym_images);
     super.initState();
-     futurefiles = StorageDatabase.listAll('TransformerGymImage/');
+     // futurefiles = StorageDatabase.listAll('TransformerGymImage/');
   }
   var gym_details;
 
