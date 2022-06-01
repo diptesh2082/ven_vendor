@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:vyam_vandor/Screens/Tabs/Insights/insights.dart';
 import 'package:vyam_vandor/Services/firebase_firestore_api.dart';
 import 'package:vyam_vandor/controllers/gym_controller.dart';
 import 'package:vyam_vandor/sales/sales_main_page.dart';
@@ -19,6 +20,8 @@ class AllTime extends StatefulWidget {
 
   @override
   AllTimeState createState() => AllTimeState();
+
+  static void getDocumentsLength() {}
 }
 
 class AllTimeState extends State<AllTime> {
@@ -27,81 +30,94 @@ class AllTimeState extends State<AllTime> {
   // String totalSales = '0';
   BookingController bookingController = Get.find<BookingController>();
   getDocumentsLength() async {
+    try{
+      await FirebaseFirestore.instance
+          .collection('bookings')
+          .where('vendorId', isEqualTo: gymId.toString())
+          .where('booking_status',
+          whereIn: ['upcoming', 'active', 'completed'])
+          .snapshots().listen((snapshot) {
+        if (snapshot.docs.isNotEmpty) {
+          bookingController.booking.value=snapshot.docs.length;
+          double d=0.0;
+          var off_line_all=0.0;
+          var on_line_all=0.0;
+          var off_line_7=0.0;
+          var on_line_7=0.0;
+          var off_line_month=0.0;
+          var on_line_month=0.0;
+          var booking_7=0.0;
+          var booking_15=0.0;
+          var booking_30=0.0;
+          snapshot.docs.forEach((element) {
 
-    await FirebaseFirestore.instance
-        .collection('bookings')
-         .where('vendorId', isEqualTo: gymId.toString())
-         .where('booking_status',
-        whereIn: ['upcoming', 'active', 'completed'])
-        .snapshots().listen((snapshot) {
-      if (snapshot.docs.isNotEmpty) {
-        bookingController.booking.value=snapshot.docs.length;
-        double d=0.0;
-        var off_line_all=0.0;
-        var on_line_all=0.0;
-        var off_line_7=0.0;
-        var on_line_7=0.0;
-        var off_line_month=0.0;
-        var on_line_month=0.0;
-        var booking_7=0.0;
-        var booking_15=0.0;
-        var booking_30=0.0;
-        snapshot.docs.forEach((element) {
+            d = d + double.parse(element["booking_price"].toString());
+            if (element["payment_method"]=="offline"){
+              off_line_all=off_line_all+double.parse(element["booking_price"].toString());
 
-          d = d + double.parse(element["booking_price"].toString());
-          if (element["payment_method"]=="offline"){
-            off_line_all=off_line_all+double.parse(element["booking_price"].toString());
+            }
+            if( DateTime.now().difference(element["booking_date"].toDate()).inDays<=7  && element["payment_method"]=="offline"){
+              off_line_7=off_line_7+double.parse(element["booking_price"].toString());
+            }
+            if( DateTime.now().difference(element["booking_date"].toDate()).inDays<=30  && element["payment_method"]=="offline"){
+              off_line_month=off_line_month+double.parse(element["booking_price"].toString());
+            }
+            if (element["payment_method"]=="online"){
+              on_line_all=on_line_all+double.parse(element["booking_price"].toString());
+            }
+            if (element["payment_method"]=="online" && DateTime.now().difference(element["booking_date"].toDate()).inDays<=7  ){
+              on_line_7=on_line_7+double.parse(element["booking_price"].toString());
+            }
+            if (element["payment_method"]=="online" && DateTime.now().difference(element["booking_date"].toDate()).inDays<=30  ){
+              on_line_month=on_line_month+double.parse(element["booking_price"].toString());
+            }
+            if( DateTime.now().difference(element["booking_date"].toDate()).inDays<=7 ){
+              booking_7=booking_7+1.0;
+            }
+            if( DateTime.now().difference(element["booking_date"].toDate()).inDays<=15 ){
+              booking_15=booking_15+1.0;
+            }
+            if( DateTime.now().difference(element["booking_date"].toDate()).inDays<=15 ){
+              booking_30=booking_30+1.0;
+            }
+            bookingController.total_sales.value=d.toInt();
+            bookingController.off_line_all.value=off_line_all.toInt();
+            bookingController.on_line_all.value=on_line_all.toInt();
+            bookingController.off_line_7.value=off_line_7.toInt();
+            bookingController.on_line_7.value=on_line_7.toInt();
+            bookingController.off_line_month.value=off_line_month.toInt();
+            bookingController.on_line_month.value=on_line_month.toInt();
+            bookingController.booking_7.value=booking_7.toInt();
+            bookingController.booking_15.value=booking_15.toInt();
+            bookingController.booking_30.value=booking_30.toInt();
+          }
 
-          }
-          if( DateTime.now().difference(element["booking_date"].toDate()).inDays<=7  && element["payment_method"]=="offline"){
-            off_line_7=off_line_7+double.parse(element["booking_price"].toString());
-          }
-          if( DateTime.now().difference(element["booking_date"].toDate()).inDays<=30  && element["payment_method"]=="offline"){
-            off_line_month=off_line_month+double.parse(element["booking_price"].toString());
-          }
-          if (element["payment_method"]=="online"){
-            on_line_all=on_line_all+double.parse(element["booking_price"].toString());
-          }
-          if (element["payment_method"]=="online" && DateTime.now().difference(element["booking_date"].toDate()).inDays<=7  ){
-            on_line_7=on_line_7+double.parse(element["booking_price"].toString());
-          }
-          if (element["payment_method"]=="online" && DateTime.now().difference(element["booking_date"].toDate()).inDays<=30  ){
-            on_line_month=on_line_month+double.parse(element["booking_price"].toString());
-          }
-          if( DateTime.now().difference(element["booking_date"].toDate()).inDays<=7 ){
-            booking_7=booking_7+1.0;
-          }
-          if( DateTime.now().difference(element["booking_date"].toDate()).inDays<=15 ){
-            booking_15=booking_15+1.0;
-          }
-          if( DateTime.now().difference(element["booking_date"].toDate()).inDays<=15 ){
-            booking_30=booking_30+1.0;
-          }
-          bookingController.total_sales.value=d.toInt();
-          bookingController.off_line_all.value=off_line_all.toInt();
-          bookingController.on_line_all.value=on_line_all.toInt();
-          bookingController.off_line_7.value=off_line_7.toInt();
-          bookingController.on_line_7.value=on_line_7.toInt();
-          bookingController.off_line_month.value=off_line_month.toInt();
-          bookingController.on_line_month.value=on_line_month.toInt();
-          bookingController.booking_7.value=booking_7.toInt();
-          bookingController.booking_15.value=booking_15.toInt();
-          bookingController.booking_30.value=booking_30.toInt();
+          );
+
+          // setState(() {
+          //   totalBooking = snapshot.docs.length.toString();
+          // });
         }
-
-        );
-
-        // setState(() {
-        //   totalBooking = snapshot.docs.length.toString();
-        // });
-      }
-      else if (snapshot.docs.isEmpty) {
-        // setState(() {
+        else if (snapshot.docs.isEmpty) {
+          // setState(() {
           totalBooking = 0.toString();
 
-        // });
-      }
-    });
+          // });
+        }
+      });
+    }catch(e){
+      bookingController.total_sales.value=0;
+      bookingController.off_line_all.value=0;
+      bookingController.on_line_all.value=0;
+      bookingController.off_line_7.value=0;
+      bookingController.on_line_7.value=0;
+      bookingController.off_line_month.value=0;
+      bookingController.on_line_month.value=0;
+      bookingController.booking_7.value=0;
+      bookingController.booking_15.value=0;
+      bookingController.booking_30.value=0;
+    }
+
    // await FirebaseFirestore.instance
    //      .collection('bookings')
    //      .where('vendorId', isEqualTo: gymId.toString())
@@ -128,11 +144,19 @@ class AllTimeState extends State<AllTime> {
     super.initState();
     getDocumentsLength();
   }
+  // @override
+  // void dispose() {
+  //   // TODO: implement dispose
+  //   bookingController.dispose();
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-
+    // getDocumentsLength();
+    // InsightsTab().createState();
+    // initState();
     return Scaffold(
       body:
           SingleChildScrollView(
