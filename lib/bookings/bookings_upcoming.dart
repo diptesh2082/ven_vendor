@@ -70,7 +70,7 @@ class _UpcomingBookingsState extends State<UpcomingBookings> {
                       .collection('bookings')
                       .where("vendorId",isEqualTo: gymId)
                       .orderBy("booking_date",descending: true)
-                      .where("booking_status".toLowerCase(),isEqualTo: "upcoming")
+                      .where("booking_status".toLowerCase(),whereIn: ["active","upcoming","completed","canceled"])
                       .snapshots(),
                   builder: (BuildContext context,
                       AsyncSnapshot snap) {
@@ -81,14 +81,15 @@ class _UpcomingBookingsState extends State<UpcomingBookings> {
                       );
                     }
                     if (snap.data == null) {
-                      return const Text("No Upcoming Bookings");
+                      return const Text("No Active Bookings");
                     }
                     var doc = snap.data.docs;
+                    // if (snap.hasData){
+                    //
+                    // }
 
-                    print(widget.filter);
-                    print("++++++++++++++++++++++++++++++++");
                     return doc.length==0?
-                    const Text("No Upcoming Bookings"):
+                    const Text("No Active Bookings"):
                     ListView.builder(
                       physics:
                       const BouncingScrollPhysics(),
@@ -96,94 +97,77 @@ class _UpcomingBookingsState extends State<UpcomingBookings> {
                       itemCount: doc.length,
                       itemBuilder: (context, index) {
 
-
-
+                        // if (doc[index]['booking_status'] ==
+                        //     'active' || doc[index]['booking_status'] =='completed'
+                        //     || doc[index]['booking_status'] =='upcoming'
+                        // // &&
+                        // // doc[index]['booking_accepted'] ==
+                        // //     true
+                        // // &&
+                        // // doc[index]["vendorId"] ==
+                        // //     gymId.toString()
+                        // )
                         if((doc[index]['booking_date'].toDate().isAfter(widget.filter.start)   && doc[index]['booking_date'].toDate().isBefore(widget.filter.end))
                             || doc[index]['booking_date'].toDate() == widget.filter.start
-                            || doc[index]['booking_date'].toDate() == widget.filter.end){
-                          return BookingCard(
-                            userID: doc[index]['userId'] ?? "",
-                            userName:
-                            doc[index]['user_name'] ?? "",
-                            bookingID:
-                            doc[index]['booking_id'] ?? "",
-                            bookingPlan: doc[index]
-                            ['booking_plan'] ??
-                                "",
-                            bookingPrice: doc[index]
-                            ['booking_price'] ??
-                                "",
-                            // docs: doc[index],
-                            bookingdate: DateFormat(
-                                DateFormat.YEAR_MONTH_DAY)
-                                .format(doc[index]
-                            ['booking_date']
-                                .toDate()),
-                            otp: int.parse(
-                                doc[index]['otp_pass']),
-                            id: doc[index]['id'] ?? "",
+                            || doc[index]['booking_date'].toDate() == widget.filter.end
+                        )
+                        {
+
+                          return GestureDetector(
+                            onTap: () async {
+                              // print("wewe");
+                              await OrderDetails(
+                                userID: doc[index]['userId'],
+                                bookingID: doc[index]
+                                ['booking_id'],
+                                imageUrl: doc[index]
+                                ["gym_details"]["images"],
+                              );
+                            },
+                            child: CardDetails(
+                              bookind_end: doc[index]['plan_end_duration'].toDate(),
+                              userID:
+                              doc[index]['userId'] ?? "",
+                              userName:
+                              doc[index]['user_name'] ?? "",
+                              bookingID: doc[index]
+                              ['booking_id'] ??
+                                  "",
+                              bookingPlan: doc[index]
+                              ['booking_plan'] ??
+                                  "",
+                              bookingPrice: double.parse(
+                                  doc[index]['booking_price']
+                                      .toString()),
+                              bookingdate: DateFormat(
+                                  DateFormat.YEAR_MONTH_DAY)
+                                  .format(
+                                doc[index]['booking_date']
+                                    .toDate(),
+                                // bookingsStatus: ,
+                              ),
+                              tempYear:
+                              DateFormat(DateFormat.YEAR)
+                                  .format(
+                                doc[index]['booking_date']
+                                    .toDate(),
+                              ),
+                              tempDay:
+                              DateFormat(DateFormat.DAY)
+                                  .format(
+                                doc[index]['booking_date']
+                                    .toDate(),
+                              ),
+                              tempMonth: DateFormat(
+                                  DateFormat.NUM_MONTH)
+                                  .format(
+                                doc[index]['booking_date']
+                                    .toDate(),
+                              ),
+                              booking_status: '${doc[index]['booking_status'].toString()}',
+                            ),
                           );
                         }
-
-
-                        // if(DateTime.now().difference( doc[index]['booking_date'].toDate()).inDays <= int.parse(widget.filter) && widget.filter!="all")
-                        // {
-                        //
-                        //   return GestureDetector(
-                        //     onTap: () async {
-                        //       // print("wewe");
-                        //       await OrderDetails(
-                        //         userID: doc[index]['userId'],
-                        //         bookingID: doc[index]
-                        //         ['booking_id'],
-                        //         imageUrl: doc[index]
-                        //         ["gym_details"]["images"],
-                        //       );
-                        //     },
-                        //     child: CardDetails(
-                        //       userID:
-                        //       doc[index]['userId'] ?? "",
-                        //       userName:
-                        //       doc[index]['user_name'] ?? "",
-                        //       bookingID: doc[index]
-                        //       ['booking_id'] ??
-                        //           "",
-                        //       bookingPlan: doc[index]
-                        //       ['booking_plan'] ??
-                        //           "",
-                        //       bookingPrice: double.parse(
-                        //           doc[index]['booking_price']
-                        //               .toString()),
-                        //       bookingdate: DateFormat(
-                        //           DateFormat.YEAR_MONTH_DAY)
-                        //           .format(
-                        //         doc[index]['booking_date']
-                        //             .toDate(),
-                        //         // bookingsStatus: ,
-                        //       ),
-                        //       tempYear:
-                        //       DateFormat(DateFormat.YEAR)
-                        //           .format(
-                        //         doc[index]['booking_date']
-                        //             .toDate(),
-                        //       ),
-                        //       tempDay:
-                        //       DateFormat(DateFormat.DAY)
-                        //           .format(
-                        //         doc[index]['booking_date']
-                        //             .toDate(),
-                        //       ),
-                        //       tempMonth: DateFormat(
-                        //           DateFormat.NUM_MONTH)
-                        //           .format(
-                        //         doc[index]['booking_date']
-                        //             .toDate(),
-                        //       ),
-                        //       booking_status: '${doc[index]['booking_status'].toString()}',
-                        //     ),
-                        //   );
-                        // }
-
 
                         return Container();
                       },

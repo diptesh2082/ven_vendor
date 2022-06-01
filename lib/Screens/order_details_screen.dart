@@ -174,7 +174,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                                                     ),
                                                   ),
                                                   const SizedBox(
-                                                    height: 8.0,
+                                                    height: 10.0,
                                                   ),
                                                   Text(
                                                     '${snapshot.data!.get('gym_details')["name"]}',
@@ -183,40 +183,40 @@ class _OrderDetailsState extends State<OrderDetails> {
                                                       fontWeight: FontWeight.w700,
                                                     ),
                                                   ),
-                                                  const SizedBox(
-                                                    height: 3.0,
-                                                  ),
-                                                  Row(
-                                                    children: [
-                                                      Text(
-                                                        "Branch - ",
-                                                        // snapshot3.data
-                                                        //     .get('gym_details')["branch"],
-                                                        style: GoogleFonts.poppins(
-                                                          fontSize: 14,
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                        ),
-                                                      ),
-                                                      // Image.asset(
-                                                      //     "Assets/Images/marker.png"),
-                                                      // const SizedBox(
-                                                      //   width: 1.0,
-                                                      // ),
-                                                      Text(
-                                                        snapshot.data!
-                                                                .get('gym_details')[
-                                                            "branch"],
-                                                        // snapshot3.data
-                                                        //     .get('gym_details')["branch"],
-                                                        style: GoogleFonts.poppins(
-                                                          fontSize: 14,
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
+                                                  // const SizedBox(
+                                                  //   height: 3.0,
+                                                  // ),
+                                                  // Row(
+                                                  //   children: [
+                                                  //     Text(
+                                                  //       "Branch - ",
+                                                  //       // snapshot3.data
+                                                  //       //     .get('gym_details')["branch"],
+                                                  //       style: GoogleFonts.poppins(
+                                                  //         fontSize: 14,
+                                                  //         fontWeight:
+                                                  //             FontWeight.w600,
+                                                  //       ),
+                                                  //     ),
+                                                  //     // Image.asset(
+                                                  //     //     "Assets/Images/marker.png"),
+                                                  //     // const SizedBox(
+                                                  //     //   width: 1.0,
+                                                  //     // ),
+                                                  //     // Text(
+                                                  //     //   snapshot.data!
+                                                  //     //           .get('gym_details')[
+                                                  //     //       "branch"],
+                                                  //     //   // snapshot3.data
+                                                  //     //   //     .get('gym_details')["branch"],
+                                                  //     //   style: GoogleFonts.poppins(
+                                                  //     //     fontSize: 14,
+                                                  //     //     fontWeight:
+                                                  //     //         FontWeight.w600,
+                                                  //     //   ),
+                                                  //     // ),
+                                                  //   ],
+                                                  // ),
                                                   // Text(
                                                   //   snapshot.data!
                                                   //       .get('booking_plan'),
@@ -244,7 +244,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                                                     ),
                                                   ),
                                                   SizedBox(
-                                                    height: 6,
+                                                    height: 8,
                                                   ),
                                                   SingleChildScrollView(
                                                     scrollDirection:
@@ -269,7 +269,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                                                     ),
                                                   ),
                                                   SizedBox(
-                                                    height: 6,
+                                                    height: 8,
                                                   ),
                                                   if(snapshot.data!.get('booking_status').toLowerCase()=="upcoming")
                                                   Row(
@@ -298,13 +298,13 @@ class _OrderDetailsState extends State<OrderDetails> {
                                                         CircleAvatar(
                                                           radius: 5,
                                                           backgroundColor:
-                                                          Colors.green,
+                                                          snapshot.data!.get('plan_end_duration').toDate().difference(DateTime.now()).inDays >= 0 ? Colors.green:Colors.amber,
                                                         ),
                                                         SizedBox(
                                                           width: 5,
                                                         ),
                                                         Text(
-                                                          ' ${snapshot.data!.get('booking_status')}',
+                                                          ' ${snapshot.data!.get('plan_end_duration').toDate().difference(DateTime.now()).inDays >= 0 ?snapshot.data!.get('booking_status'):"Completed"}',
                                                           style: GoogleFonts.poppins(
                                                             fontSize: 14,
                                                             fontWeight:

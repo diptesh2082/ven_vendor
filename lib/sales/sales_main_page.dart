@@ -290,7 +290,7 @@ class _TotalBookingsState extends State<TotalBookings> {
                       radius: 8,
                       tabs: const [
                         Tab(
-                          text: 'Upcoming',
+                          text: 'All',
                         ),
                         Tab(
                           text: 'Active',

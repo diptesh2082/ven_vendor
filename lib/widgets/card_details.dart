@@ -16,7 +16,8 @@ class CardDetails extends StatefulWidget {
         this.tempYear,
         this.tempDay,
         this.tempMonth,
-        required this.booking_status})
+        required this.booking_status,
+        required this.bookind_end})
       : super(key: key);
   final String? userName;
   final String? bookingID;
@@ -28,6 +29,7 @@ class CardDetails extends StatefulWidget {
   final dynamic tempDay;
   final dynamic tempMonth;
   final String booking_status;
+  final DateTime bookind_end;
 
   @override
   State<CardDetails> createState() => _CardDetailsState();
@@ -109,17 +111,29 @@ class _CardDetailsState extends State<CardDetails> {
                 //   '${DateTime.now().difference(DateTime(int.parse(widget.tempYear), int.parse(widget.tempMonth), int.parse(widget.tempDay))).inDays} days remaining',
                 //   style:GoogleFonts.poppins(fontWeight: FontWeight.w500,fontSize: 14),
                 // ),
+                if(widget.booking_status.toString()=="active" && widget.bookind_end.difference(DateTime.now()).inDays >= 0  )
+                  Text(
+                    // "${widget.end_date.toDate()}",
+                    '${widget.bookind_end.difference(DateTime.now()).inDays} days remaining',
+                    style:GoogleFonts.poppins(fontWeight: FontWeight.w500),
+                  ),
+                if(widget.bookind_end.difference(DateTime.now()).inDays < 0 && widget.booking_status.toString()=="active")
+                  Text(
+                    // "${widget.end_date.toDate()}",
+                    'Booking Ended',
+                    style:GoogleFonts.poppins(fontWeight: FontWeight.w500),
+                  ),
                 Row(
                   children:  [
                     CircleAvatar(
                       radius: 3,
-                      backgroundColor: widget.booking_status.toString()=="active" ?Colors.green:Colors.amber,
+                      backgroundColor: widget.booking_status.toString()=="active" && widget.bookind_end.difference(DateTime.now()).inDays >= 0 ?Colors.green:Colors.amber,
                     ),
                     SizedBox(
                       width: 3.5,
                     ),
                     Text(
-                      '${widget.booking_status}',
+                      '${widget.booking_status.toString()=="active" && widget.bookind_end.difference(DateTime.now()).inDays <= 0 ?"completed":widget.booking_status}',
                       style: GoogleFonts.poppins(fontWeight: FontWeight.w400,fontSize: 10,color: Colors.grey),
                     ),
                   ],

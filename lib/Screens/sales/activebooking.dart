@@ -114,6 +114,7 @@ class _ActivBookingsState extends State<ActivBookings> {
                               );
                             },
                             child: CardDetails(
+                              bookind_end: doc[index]['plan_end_duration'].toDate(),
                               userID:
                               doc[index]['userId'] ?? "",
                               userName:

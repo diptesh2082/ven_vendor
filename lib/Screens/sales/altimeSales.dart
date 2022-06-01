@@ -112,6 +112,7 @@ class _AllTimeSalesState extends State<AllTimeSales> {
                             onTap: () async {
                               // print("wewe");
                               await OrderDetails(
+
                                 userID: doc[index]['userId'],
                                 bookingID: doc[index]
                                 ['booking_id'],
@@ -120,6 +121,7 @@ class _AllTimeSalesState extends State<AllTimeSales> {
                               );
                             },
                             child: CardDetails(
+                              bookind_end: doc[index]['plan_end_duration'].toDate(),
                               userID:
                               doc[index]['userId'] ?? "",
                               userName:

@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:vyam_vandor/Services/firebase_firestore_api.dart';
 
 class Amenites extends StatefulWidget {
   const Amenites({Key? key,required this.amenites}) : super(key: key);
@@ -19,7 +20,7 @@ class _AmenitesState extends State<Amenites> {
       child: StreamBuilder(
         stream: FirebaseFirestore.instance
             .collection('amenities')
-            .where('gym_id', arrayContains: widget.amenites)
+            .where('gym_id', arrayContains: gymId)
             .snapshots(),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (!snapshot.hasData) {
