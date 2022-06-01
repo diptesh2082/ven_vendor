@@ -253,7 +253,7 @@ class _BookingScreenState extends State<BookingScreen> {
                                       height: 5.0,
                                     ),
                                     Text(
-                                      'Pay Per Session',
+                                      '${snapshot.data.get('booking_plan')}',
                                       style: GoogleFonts.poppins(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w500,

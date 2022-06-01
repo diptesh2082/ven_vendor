@@ -372,7 +372,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                                             height: 10.0,
                                           ),
                                           Text(
-                                            'Pay Per Session',
+                                            '${snapshot.data!.get('booking_plan')}',
                                             style: GoogleFonts.poppins(
                                               fontSize: 16,
                                               fontWeight: FontWeight.w500,
@@ -474,7 +474,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                                       ),
                                       Spacer(),
                                       Text(
-                                        '₹ ${snapshot.data.get('booking_price')}',
+                                        '₹ ${snapshot.data.get('total_price')}',
                                         style: GoogleFonts.poppins(
                                             fontSize: 16,
                                             fontWeight: FontWeight.w700,
