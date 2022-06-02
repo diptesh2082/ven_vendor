@@ -328,68 +328,68 @@ class _HomeTabState extends State<HomeTab> {
                                 ///
                                 ///
                                 ///Past Bookings Cards
-                                ExpansionTile(
-                                  title: const Text('Past Bookings'),
-                                  // subtitle:const Text('Past Bookings') ,
-                                  children: [
-                                    StreamBuilder(
-                                      stream: FirebaseFirestore.instance
-                                          .collection('bookings')
-                                          .where("vendorId", isEqualTo: gymId)
-                                          .where('booking_status',
-                                              isEqualTo: 'completed')
-                                          .orderBy("booking_date", descending: true)
-                                          .snapshots(),
-                                      builder: (BuildContext context,
-                                          AsyncSnapshot snap) {
-                                        if (snap.connectionState ==
-                                            ConnectionState.waiting) {
-                                          return const Center(
-                                            child: CircularProgressIndicator(),
-                                          );
-                                        }
-
-                                        if (snap.data == null) {
-                                          return const Text("No Past Bookings");
-                                        }
-
-                                        var doc = snap.data.docs;
-
-                                        return ListView.builder(
-                                          physics:
-                                              const NeverScrollableScrollPhysics(),
-                                          shrinkWrap: true,
-                                          itemCount: doc.length,
-                                          itemBuilder: (context, index) {
-                                            if (
-                                                // &&
-                                                doc[index]['booking_accepted'] ==
-                                                    true
-                                                // && doc[index]["vendorId"]==gymId.toString()
-                                                ) {
-                                              return PastBookingCard(
-                                                userID: doc[index]['userId'] ?? "",
-                                                userName:
-                                                    doc[index]['user_name'] ?? "",
-                                                bookingID:
-                                                    doc[index]['booking_id'] ?? "",
-                                                bookingPlan: doc[index]
-                                                        ['booking_plan'] ??
-                                                    "",
-                                                bookingPrice: doc[index]
-                                                        ['booking_price'] ??
-                                                    "",
-                                                bookingdate:DateFormat("dd,MMM,yyyy").format(doc[index]
-                                           ['booking_date'].toDate()),
-                                              );
-                                            }
-                                            return Container();
-                                          },
-                                        );
-                                      },
-                                    )
-                                  ],
-                                ),
+                                // ExpansionTile(
+                                //   title: const Text('Past Bookings'),
+                                //   // subtitle:const Text('Past Bookings') ,
+                                //   children: [
+                                //     StreamBuilder(
+                                //       stream: FirebaseFirestore.instance
+                                //           .collection('bookings')
+                                //           .where("vendorId", isEqualTo: gymId)
+                                //           .where('booking_status',
+                                //               isEqualTo: 'completed')
+                                //           .orderBy("booking_date", descending: true)
+                                //           .snapshots(),
+                                //       builder: (BuildContext context,
+                                //           AsyncSnapshot snap) {
+                                //         if (snap.connectionState ==
+                                //             ConnectionState.waiting) {
+                                //           return const Center(
+                                //             child: CircularProgressIndicator(),
+                                //           );
+                                //         }
+                                //
+                                //         if (snap.data == null) {
+                                //           return const Text("No Past Bookings");
+                                //         }
+                                //
+                                //         var doc = snap.data.docs;
+                                //
+                                //         return ListView.builder(
+                                //           physics:
+                                //               const NeverScrollableScrollPhysics(),
+                                //           shrinkWrap: true,
+                                //           itemCount: doc.length,
+                                //           itemBuilder: (context, index) {
+                                //             if (
+                                //                 // &&
+                                //                 doc[index]['booking_accepted'] ==
+                                //                     true
+                                //                 // && doc[index]["vendorId"]==gymId.toString()
+                                //                 ) {
+                                //               return PastBookingCard(
+                                //                 userID: doc[index]['userId'] ?? "",
+                                //                 userName:
+                                //                     doc[index]['user_name'] ?? "",
+                                //                 bookingID:
+                                //                     doc[index]['booking_id'] ?? "",
+                                //                 bookingPlan: doc[index]
+                                //                         ['booking_plan'] ??
+                                //                     "",
+                                //                 bookingPrice: doc[index]
+                                //                         ['booking_price'] ??
+                                //                     "",
+                                //                 bookingdate:DateFormat("dd,MMM,yyyy").format(doc[index]
+                                //            ['booking_date'].toDate()),
+                                //               );
+                                //             }
+                                //             return Container();
+                                //           },
+                                //         );
+                                //       },
+                                //     )
+                                //   ],
+                                // ),
                               ],
                             ),
                             Positioned(

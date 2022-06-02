@@ -516,13 +516,16 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                   child: SizedBox(
                                     width: MediaQuery.of(context).size.width*.75,
                                     child: Center(
-                                      child: Text(
-                                        '${gym_details["address"]}',
-                                        style: GoogleFonts.poppins(
-                                            color: Colors.black,
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(left: 8.0),
+                                        child: Text(
+                                          '${gym_details["address"]}',
+                                          style: GoogleFonts.poppins(
+                                              color: Colors.black,
 
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.w400),
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w400),
+                                        ),
                                       ),
                                     ),
                                   )),
