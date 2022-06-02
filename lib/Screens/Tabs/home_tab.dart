@@ -498,7 +498,7 @@ class _HomeTabState extends State<HomeTab> {
                                               gymId = id;
                                             });
 
-                                           Get.offAll(() => HomeScreen());
+                                           await Get.offAll(() => HomeScreen());
 
                                           // Navigator.pushReplacement(
                                           //     (context),
