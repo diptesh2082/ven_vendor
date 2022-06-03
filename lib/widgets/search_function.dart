@@ -8,7 +8,9 @@ import 'package:intl/intl.dart';
 import 'package:vyam_vandor/Services/profileicon_icons.dart';
 import 'package:vyam_vandor/widgets/booking_card.dart';
 
+import '../Screens/order_details_screen.dart';
 import '../Services/firebase_firestore_api.dart';
+import 'active_booking.dart';
 
 
 
@@ -125,7 +127,7 @@ class _SearchItState extends State<SearchIt> {
               .collection('bookings')
               .where("vendorId", isEqualTo: gymId)
               .where('booking_status',
-              isEqualTo: 'upcoming')
+              whereIn: ["upcoming","active"])
               .orderBy("order_date", descending: true)
               .snapshots(),
           builder: (BuildContext context,
@@ -208,6 +210,66 @@ class _SearchItState extends State<SearchIt> {
                     id: doc[index]['id'] ?? "",
                   );
                 }
+    if (doc[index]['booking_status'] ==
+    'active'
+    // && doc[index]["vendorId"]==gymId.toString()
+    )
+    // if(doc[index][])
+        {
+          return GestureDetector(
+            onTap: () async {
+              // print("wewe");
+              await OrderDetails(
+                userID: doc[index]['userId'],
+                bookingID: doc[index]
+                ['booking_id'],
+                imageUrl: doc[index]
+                ["gym_details"]["images"],
+              );
+            },
+            child: ActiveBookingCard(
+              userID:
+              doc[index]['userId'] ?? "",
+              userName:
+              doc[index]['user_name'] ?? "",
+              bookingID: doc[index]
+              ['booking_id'] ??
+                  "",
+              bookingPlan: doc[index]
+              ['booking_plan'] ??
+                  "",
+              bookingPrice: double.parse(
+                  doc[index]['booking_price']
+                      .toString()),
+              bookingdate: doc[index]['booking_date']
+                  .toDate(),
+              //   .format(
+              // doc[index]['booking_date']
+              //     .toDate(),
+              // ),
+              end_date: doc[index]['plan_end_duration'].toDate(),
+              tempYear:
+              DateFormat(DateFormat.YEAR)
+                  .format(
+                doc[index]['booking_date']
+                    .toDate(),
+              ),
+              tempDay:
+              DateFormat(DateFormat.DAY)
+                  .format(
+                doc[index]['booking_date']
+                    .toDate(),
+              ),
+              tempMonth: DateFormat(
+                  DateFormat.NUM_MONTH)
+                  .format(
+                doc[index]['booking_date']
+                    .toDate(),
+              ),
+              id: doc[index]['id'].toString(),
+            ),
+          );
+    }
                 return Container(
                   color: Colors.grey[100],
                 );
