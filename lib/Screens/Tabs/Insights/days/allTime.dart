@@ -192,27 +192,27 @@ class AllTimeState extends State<AllTime> {
                                         children: [
                                           Row(
                                             children: [
-                                              const Text(
-                                                "Sales",
-                                                style: TextStyle(
-                                                  color: Colors.white,
-                                                ),
-                                              ),
-                                              const Spacer(),
-                                              // const SizedBox(
-                                              //   width: 240,
+                                              // const Text(
+                                              //   "Sales",
+                                              //   style: TextStyle(
+                                              //     color: Colors.white,
+                                              //   ),
                                               // ),
-                                              // Image.asset(
-                                              //     "Assets/trend-down.png"),
-                                              const SizedBox(
-                                                width: 2,
-                                              ),
-                                               Text(
-                                                "${bookingController.booking.value}",
-                                                style: TextStyle(
-                                                  color: Colors.white,
-                                                ),
-                                              ),
+                                              // const Spacer(),
+                                              // // const SizedBox(
+                                              // //   width: 240,
+                                              // // ),
+                                              // // Image.asset(
+                                              // //     "Assets/trend-down.png"),
+                                              // const SizedBox(
+                                              //   width: 2,
+                                              // ),
+                                              //  Text(
+                                              //   "${bookingController.booking.value}",
+                                              //   style: TextStyle(
+                                              //     color: Colors.white,
+                                              //   ),
+                                              // ),
                                             ],
                                           ),
                                           const SizedBox(
@@ -228,7 +228,7 @@ class AllTimeState extends State<AllTime> {
                                             ),
                                           ),
                                           const SizedBox(
-                                            height: 42,
+                                            height: 50,
                                           ),
                                           Text(
                                             "₹${bookingController.total_sales.value.toString()}", // DATABASE CALLLING FOR TOTAL SALES VALUE
@@ -286,17 +286,17 @@ class AllTimeState extends State<AllTime> {
                                                 // const SizedBox(
                                                 //   width: 220,
                                                 // ),
-                                                Image.asset(
-                                                    "Assets/trend-up.png"),
-                                                const SizedBox(
-                                                  width: 2,
-                                                ),
-                                                const Text(
-                                                  "8",
-                                                  style: TextStyle(
-                                                    color: Colors.white,
-                                                  ),
-                                                ),
+                                                // Image.asset(
+                                                //     "Assets/trend-up.png"),
+                                                // const SizedBox(
+                                                //   width: 2,
+                                                // ),
+                                                // const Text(
+                                                //   "8",
+                                                //   style: TextStyle(
+                                                //     color: Colors.white,
+                                                //   ),
+                                                // ),
                                               ],
                                             ),
                                             const SizedBox(

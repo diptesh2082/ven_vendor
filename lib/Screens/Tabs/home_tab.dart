@@ -23,6 +23,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../widgets/past_booking.dart';
 import '../reset_password.dart';
+import 'Insights/insights.dart';
 import 'notifications.dart';
 
 class HomeTab extends StatefulWidget {
@@ -133,6 +134,8 @@ class _HomeTabState extends State<HomeTab> {
                                 ),
                                 //Upcoming Bookings Cards
                                 ExpansionTile(
+                                  textColor: Colors.purple,
+                                  iconColor:Colors.purple,
                                   initiallyExpanded: true,
                                   title: const Text('Upcoming Bookings'),
                                   children: [
@@ -227,6 +230,8 @@ class _HomeTabState extends State<HomeTab> {
 
                                 ///Active Booking Cards
                                 ExpansionTile(
+                                  textColor: Colors.purple,
+                                  iconColor:Colors.purple,
                                   title: const Text('Active Bookings'),
                                   children: [
                                     StreamBuilder(
@@ -497,6 +502,7 @@ class _HomeTabState extends State<HomeTab> {
                                             setState(() {
                                               gymId = id;
                                             });
+                                           InsightsTab().createState();
 
                                            await Get.offAll(() => HomeScreen());
 

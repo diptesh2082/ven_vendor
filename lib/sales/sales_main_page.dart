@@ -289,14 +289,15 @@ class _TotalBookingsState extends State<TotalBookings> {
                       ),
                       radius: 8,
                       tabs: const [
-                        Tab(
-                          text: 'All',
-                        ),
+
                         Tab(
                           text: 'Active',
                         ),
                         Tab(
                           text: 'Completed',
+                        ),
+                        Tab(
+                          text: 'All',
                         ),
                       ],
                     ),
@@ -330,9 +331,10 @@ class _TotalBookingsState extends State<TotalBookings> {
                     height: MediaQuery.of(context).size.height - 160,
                     child: TabBarView(
                       children: [
-                        UpcomingBookings(filter: selectDateTime,),
+
                         ActivBookings(filter: selectDateTime,),
                         MonthSales(filter: selectDateTime),
+                        UpcomingBookings(filter: selectDateTime,),
                       ],
                     ),
                   ),
