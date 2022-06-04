@@ -29,7 +29,7 @@ class AllTimeState extends State<AllTime> {
   String totalBooking = '0';
   // String totalSales = '0';
   BookingController bookingController = Get.find<BookingController>();
-  getDocumentsLength() async {
+  getDocumentsLength(String gymId) async {
     try{
       await FirebaseFirestore.instance
           .collection('bookings')
@@ -142,7 +142,7 @@ class AllTimeState extends State<AllTime> {
   void initState() {
     print(_auth.currentUser!.email.toString());
     super.initState();
-    getDocumentsLength();
+    getDocumentsLength(gymId);
   }
   // @override
   // void dispose() {
