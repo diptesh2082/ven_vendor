@@ -591,12 +591,20 @@ class _OrderDetailsState extends State<OrderDetails> {
                                               color: Colors.black,
                                             ),
                                           ),
-                                          Text(
-                                            ' ${snapshot.data.get('payment_method')}',
-                                            style: GoogleFonts.poppins(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w400,
-                                              color: Colors.black,
+                                          Material(
+                                            color: Colors.green,
+                                            elevation: 3,
+                                            borderRadius: BorderRadius.circular(7),
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(left: 3.0,right: 5),
+                                              child: Text(
+                                                ' ${snapshot.data.get('payment_method')}',
+                                                style: GoogleFonts.poppins(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w400,
+                                                  color: Colors.white,
+                                                ),
+                                              ),
                                             ),
                                           ),
                                         ],

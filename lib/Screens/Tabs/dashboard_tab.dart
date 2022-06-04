@@ -557,6 +557,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
       width: 127,
       imageUrl: file,
       fit: BoxFit.cover,
+      filterQuality: FilterQuality.low,
     ),
   );
 

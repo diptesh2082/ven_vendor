@@ -60,6 +60,7 @@ class _AmenitesState extends State<Amenites> {
           height: 40,
           width: 40,
           child: Image(
+            filterQuality: FilterQuality.low,
             image: CachedNetworkImageProvider(
               documents[index]['image'],
             ),
