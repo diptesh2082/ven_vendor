@@ -1,9 +1,12 @@
+import 'dart:math';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:intl/intl.dart';
 import 'package:vyam_vandor/Screens/home__screen.dart';
 import '../app_colors.dart';
@@ -26,8 +29,89 @@ class OrderDetails extends StatefulWidget {
 }
 
 class _OrderDetailsState extends State<OrderDetails> {
+
+  makeSure()async{
+    showDialog(context: context,
+      builder:(context)=> AlertDialog(
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(16))),
+        content: SizedBox(
+          height: 170,
+          width: 280,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                "Assets/Images/S.gif",
+                height: 70,
+                width: 70,
+              ),
+              // Text(
+              //   "Proceed payment in cash ?",
+              //   style: GoogleFonts.poppins(
+              //       fontSize: 15,
+              //       fontWeight: FontWeight.bold
+              //   ),
+              // ),
+              const SizedBox(
+                height:25,
+              ),
+              Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          left: 3, right: 3, top: 2, bottom: 2),
+                      child: Center(
+                        child: Text(
+                          "Booking activated !",
+                          style: GoogleFonts.poppins(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w500,
+                              color: HexColor("030202")),
+                        ),
+                      ),
+                    ),
+                    // Image.asset("assets/icons/icons8-approval.gif",
+                    //   height: 70,
+                    //   width: 70,
+                    // ),
+
+                    const SizedBox(width: 15),
+                    Container(
+                        height: 38,
+                        width: 90,
+                        decoration: BoxDecoration(
+                            color: HexColor("27AE60"),
+                            borderRadius: BorderRadius.circular(8)),
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              left: 3, right: 3, top: 2, bottom: 2),
+                          child: Center(
+                            child: Text(
+                              "Proceed",
+                              style: GoogleFonts.poppins(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w700,
+                                  color: HexColor("030105")),
+                            ),
+                          ),
+                        )),
+                  ]),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   void initState() {
+    if (widget.chinki==true){
+      makeSure();
+    }
+
     super.initState();
   }
 
@@ -183,50 +267,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                                                       fontWeight: FontWeight.w700,
                                                     ),
                                                   ),
-                                                  // const SizedBox(
-                                                  //   height: 3.0,
-                                                  // ),
-                                                  // Row(
-                                                  //   children: [
-                                                  //     Text(
-                                                  //       "Branch - ",
-                                                  //       // snapshot3.data
-                                                  //       //     .get('gym_details')["branch"],
-                                                  //       style: GoogleFonts.poppins(
-                                                  //         fontSize: 14,
-                                                  //         fontWeight:
-                                                  //             FontWeight.w600,
-                                                  //       ),
-                                                  //     ),
-                                                  //     // Image.asset(
-                                                  //     //     "Assets/Images/marker.png"),
-                                                  //     // const SizedBox(
-                                                  //     //   width: 1.0,
-                                                  //     // ),
-                                                  //     // Text(
-                                                  //     //   snapshot.data!
-                                                  //     //           .get('gym_details')[
-                                                  //     //       "branch"],
-                                                  //     //   // snapshot3.data
-                                                  //     //   //     .get('gym_details')["branch"],
-                                                  //     //   style: GoogleFonts.poppins(
-                                                  //     //     fontSize: 14,
-                                                  //     //     fontWeight:
-                                                  //     //         FontWeight.w600,
-                                                  //     //   ),
-                                                  //     // ),
-                                                  //   ],
-                                                  // ),
-                                                  // Text(
-                                                  //   snapshot.data!
-                                                  //       .get('booking_plan'),
-                                                  //   // snapshot3.data
-                                                  //   //     .get('gym_details')["branch"],
-                                                  //   style: GoogleFonts.poppins(
-                                                  //     fontSize: 14,
-                                                  //     fontWeight: FontWeight.w500,
-                                                  //   ),
-                                                  // ),
+
                                                   const SizedBox(
                                                     height: 6.0,
                                                   ),

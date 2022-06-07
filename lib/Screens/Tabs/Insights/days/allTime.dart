@@ -29,11 +29,11 @@ class AllTimeState extends State<AllTime> {
   String totalBooking = '0';
   // String totalSales = '0';
   BookingController bookingController = Get.find<BookingController>();
-  getDocumentsLength(String gymId) async {
+  getDocumentsLength(String gymd) async {
     try{
       await FirebaseFirestore.instance
           .collection('bookings')
-          .where('vendorId', isEqualTo: gymId.toString())
+          .where('vendorId', isEqualTo: gymd.toString())
           .where('booking_status',
           whereIn: ['upcoming', 'active', 'completed'])
           .snapshots().listen((snapshot) {
@@ -101,11 +101,22 @@ class AllTimeState extends State<AllTime> {
         else if (snapshot.docs.isEmpty) {
           // setState(() {
           totalBooking = 0.toString();
-
+          bookingController.total_sales.value=0;
+          bookingController.off_line_all.value=0;
+          bookingController.on_line_all.value=0;
+          bookingController.off_line_7.value=0;
+          bookingController.on_line_7.value=0;
+          bookingController.off_line_month.value=0;
+          bookingController.on_line_month.value=0;
+          bookingController.booking_7.value=0;
+          bookingController.booking_15.value=0;
+          bookingController.booking_30.value=0;
+          bookingController.booking.value=0;
           // });
         }
       });
     }catch(e){
+      bookingController.booking.value=0;
       bookingController.total_sales.value=0;
       bookingController.off_line_all.value=0;
       bookingController.on_line_all.value=0;
