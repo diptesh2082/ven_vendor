@@ -79,6 +79,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
      // futurefiles = StorageDatabase.listAll('TransformerGymImage/');
   }
   var gym_details;
+  var   amenites;
 
   @override
   Widget build(BuildContext context) {
@@ -100,6 +101,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
             }
             gym_images=snapshot.data["images"];
             gym_details=snapshot.data;
+            amenites=snapshot.data["amenities"];
             // print(gym_images);
             return SingleChildScrollView(
               child: Container(
@@ -488,7 +490,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                       ),
                       SizedBox(
                         width: MediaQuery.of(context).size.width*.98,
-                          child: Amenites(amenites: gymId,)
+                          child: Amenites(amenites: amenites,)
                       ),
                       //Address//
                       const Padding(

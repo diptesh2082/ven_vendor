@@ -20,7 +20,7 @@ class _AmenitesState extends State<Amenites> {
       child: StreamBuilder(
         stream: FirebaseFirestore.instance
             .collection('amenities')
-            .where('gym_id', arrayContains: gymId)
+            .where('amenity_id', whereIn: widget.amenites)
             .snapshots(),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (!snapshot.hasData) {

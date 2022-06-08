@@ -30,7 +30,8 @@ class OrderDetails extends StatefulWidget {
 
 class _OrderDetailsState extends State<OrderDetails> {
 
-  makeSure()async{
+  makeSure2()async{
+    if (widget.chinki==true)
     showDialog(context: context,
       builder:(context)=> AlertDialog(
         shape: const RoundedRectangleBorder(
@@ -53,9 +54,7 @@ class _OrderDetailsState extends State<OrderDetails> {
               //       fontWeight: FontWeight.bold
               //   ),
               // ),
-              const SizedBox(
-                height:25,
-              ),
+
               Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -108,9 +107,40 @@ class _OrderDetailsState extends State<OrderDetails> {
 
   @override
   void initState() {
-    if (widget.chinki==true){
-      makeSure();
-    }
+    Future.delayed(Duration.zero, () {
+      if (widget.chinki==true)
+      showDialog(context: context,
+        builder:(context)=> AlertDialog(
+          shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(16))),
+          content: SizedBox(
+            height: 220,
+            width: 280,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(100),
+                  child: Image.asset(
+                    "Assets/Images/S.gif",
+                    height: 155,
+                    width: 200,
+                  ),
+                ),
+                Text(
+                  "Booking activated !",
+                  style: GoogleFonts.poppins(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
+                      color: HexColor("030202")),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+    });
+
 
     super.initState();
   }
