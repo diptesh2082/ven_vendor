@@ -317,6 +317,26 @@ class _OrderDetailsState extends State<OrderDetails> {
                                                   SizedBox(
                                                     height: 8,
                                                   ),
+                                                  Row(
+                                                    children: [
+                                                      Image.asset(
+                                                          "Assets/Images/marker.png"),
+                                                      const SizedBox(
+                                                        width: 2.0,
+                                                      ),
+                                                      Text(
+                                                        snapshot3.data
+                                                            .get('landmark'),
+                                                        style: GoogleFonts.poppins(
+                                                          fontSize: 14,
+                                                          fontWeight: FontWeight.w500,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  const SizedBox(
+                                                    height: 5.0,
+                                                  ),
                                                   SingleChildScrollView(
                                                     scrollDirection:
                                                         Axis.horizontal,

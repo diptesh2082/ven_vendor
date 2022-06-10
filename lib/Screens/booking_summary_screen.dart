@@ -163,6 +163,27 @@ class _BookingScreenState extends State<BookingScreen> {
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
                                           children: [
+                                            Row(
+                                            children: [
+                                              Text(
+                                                'Booking ID:- ',
+                                                style: GoogleFonts.poppins(
+                                                  fontSize: 14,
+                                                  fontWeight:
+                                                  FontWeight.w500,
+                                                ),
+                                              ),
+                                              Text(
+                                                '${snapshot.data!.get('id')}',
+                                                style: GoogleFonts.poppins(
+                                                    fontSize: 14,
+                                                    fontWeight:
+                                                    FontWeight.w600,
+                                                    color: Colors.amberAccent
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                             Text(
                                               '${snapshot.data!.get('gym_details')["name"] ?? ""}',
                                               style: GoogleFonts.poppins(
@@ -170,9 +191,23 @@ class _BookingScreenState extends State<BookingScreen> {
                                                 fontWeight: FontWeight.w600,
                                               ),
                                             ),
-                                            const SizedBox(
-                                              height: 15.0,
+                                            Text(
+                                              DateFormat("dd,MMMM,yyyy")
+                                                  .format(snapshot.data!
+                                                  .get('order_date')
+                                                  .toDate()),
+                                              // snapshot.data!.get('booking_date').toString(),
+                                              // snapshot3.data
+                                              //     .get('gym_details')["branch"],
+                                              style: GoogleFonts.poppins(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w400,
+                                              ),
                                             ),
+                                            SizedBox(
+                                              height: 5.0,
+                                            ),
+
                                             Row(
                                               children: [
                                                 Image.asset(
@@ -191,7 +226,7 @@ class _BookingScreenState extends State<BookingScreen> {
                                               ],
                                             ),
                                             const SizedBox(
-                                              height: 15.0,
+                                              height: 5.0,
                                             ),
                                             SingleChildScrollView(
                                               scrollDirection: Axis.horizontal,
