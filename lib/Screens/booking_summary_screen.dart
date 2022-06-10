@@ -253,7 +253,7 @@ class _BookingScreenState extends State<BookingScreen> {
                                       height: 5.0,
                                     ),
                                     Text(
-                                      '${snapshot.data.get('booking_plan')}',
+                                      '${snapshot.data!.get('booking_plan')=="pay per session"?snapshot.data!.get('booking_plan'):"Package"}',
                                       style: GoogleFonts.poppins(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w500,
@@ -298,8 +298,7 @@ class _BookingScreenState extends State<BookingScreen> {
                                       height: 5.0,
                                     ),
                                     Text(
-                                      '${snapshot.data
-                                          .get('totalDays').toString()} days',
+                                      snapshot.data!.get('booking_plan')=="pay per session"?'${snapshot.data.get('totalDays').toString()} days':snapshot.data!.get('booking_plan'),
                                       // DateFormat(DateFormat.YEAR_MONTH_DAY)
                                       //     .format(snapshot.data
                                       //         .get('booking_date')

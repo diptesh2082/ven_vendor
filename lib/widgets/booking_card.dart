@@ -44,9 +44,10 @@ class _BookingCardState extends State<BookingCard> {
               bookingID: widget.bookingID,
               userID: widget.userID,
             ),
-            arguments: {
-              "booking_id": widget.bookingID,
-            });
+            // arguments: {
+            //   "booking_id": widget.bookingID,
+            // }
+            );
       },
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15),

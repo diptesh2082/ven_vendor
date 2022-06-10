@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:vyam_vandor/Services/firebase_firestore_api.dart';
 import 'package:vyam_vandor/constants.dart';
 
+import '../Screens/booking_summary_screen.dart';
 import '../Screens/order_details_screen.dart';
 import '../widgets/booking_card.dart';
 import '../widgets/card_details.dart';
@@ -116,13 +118,27 @@ class _UpcomingBookingsState extends State<UpcomingBookings> {
                           return GestureDetector(
                             onTap: () async {
                               // print("wewe");
-                              await OrderDetails(
-                                userID: doc[index]['userId'],
-                                bookingID: doc[index]
-                                ['booking_id'],
-                                imageUrl: doc[index]
-                                ["gym_details"]["images"],
-                              );
+                              // if(doc[index]['booking_status']=="upcoming"){
+                              //   Get.to(
+                              //         () => BookingScreen(
+                              //       otp: doc[index]['otp_pass'],
+                              //       bookingID: doc[index]['booking_id'],
+                              //       userID: doc[index]['userId'],
+                              //     ),
+                              //     // arguments: {
+                              //     //   "booking_id": widget.bookingID,
+                              //     // }
+                              //   );
+                              // }else{
+                              //   await OrderDetails(
+                              //     userID: doc[index]['userId'],
+                              //     bookingID: doc[index]
+                              //     ['booking_id'],
+                              //     imageUrl: doc[index]
+                              //     ["gym_details"]["images"],
+                              //   );
+                              // }
+
                             },
                             child: CardDetails(
                               bookind_end: doc[index]['plan_end_duration'].toDate(),
@@ -146,24 +162,8 @@ class _UpcomingBookingsState extends State<UpcomingBookings> {
                                     .toDate(),
                                 // bookingsStatus: ,
                               ),
-                              tempYear:
-                              DateFormat(DateFormat.YEAR)
-                                  .format(
-                                doc[index]['booking_date']
-                                    .toDate(),
-                              ),
-                              tempDay:
-                              DateFormat(DateFormat.DAY)
-                                  .format(
-                                doc[index]['booking_date']
-                                    .toDate(),
-                              ),
-                              tempMonth: DateFormat(
-                                  DateFormat.NUM_MONTH)
-                                  .format(
-                                doc[index]['booking_date']
-                                    .toDate(),
-                              ),
+                              otp:  int.parse(doc[index]['otp_pass']),
+
                               booking_status: '${doc[index]['booking_status'].toString()}',
                             ),
                           );

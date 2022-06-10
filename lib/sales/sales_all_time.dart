@@ -345,24 +345,7 @@ class _AllTimeSalesState extends State<AllTimeSales> {
                                               .toDate(),
                                          // bookingsStatus: ,
                                         ),
-                                        tempYear:
-                                        DateFormat(DateFormat.YEAR)
-                                            .format(
-                                          doc[index]['booking_date']
-                                              .toDate(),
-                                        ),
-                                        tempDay:
-                                        DateFormat(DateFormat.DAY)
-                                            .format(
-                                          doc[index]['booking_date']
-                                              .toDate(),
-                                        ),
-                                        tempMonth: DateFormat(
-                                            DateFormat.NUM_MONTH)
-                                            .format(
-                                          doc[index]['booking_date']
-                                              .toDate(),
-                                        ),
+
                                           booking_status: '${doc[index]['booking_status'].toString()}',
                                       ),
                                     );
