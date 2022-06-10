@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:vyam_vandor/Screens/sales/activebooking.dart';
@@ -161,8 +162,7 @@ class _TotalBookingsState extends State<TotalBookings> {
     }
   }
 
-
-
+  final Color _maleColor = HexColor("292F3D");
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -273,7 +273,7 @@ class _TotalBookingsState extends State<TotalBookings> {
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: ButtonsTabBar(
-                      backgroundColor: Colors.black,
+                      backgroundColor: _maleColor,
                       unselectedBackgroundColor: Colors.white,
                       labelStyle: GoogleFonts.poppins(
                         color: Colors.white,

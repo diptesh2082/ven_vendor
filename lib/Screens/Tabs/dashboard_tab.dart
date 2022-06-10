@@ -189,35 +189,35 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                       //   ),
                       // ),
 
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            top: 6.0, left: 8.0, right: 8.0),
-                        child: Card(
-                          elevation: 2,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12.0)),
-                          child: Obx(
-                            ()=> ListTile(
-                              title: const Text(
-                                'Total booking',
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontFamily: 'PoppinsSemiBold',
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w600),
-                              ),
-                              trailing: Text(
-                                "${Get.find<BookingController>().booking.value}",
-                                style: const TextStyle(
-                                    color: Colors.black,
-                                    fontFamily: 'PoppinsSemiBold',
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w600),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
+                      // Padding(
+                      //   padding: const EdgeInsets.only(
+                      //       top: 6.0, left: 8.0, right: 8.0),
+                      //   child: Card(
+                      //     elevation: 2,
+                      //     shape: RoundedRectangleBorder(
+                      //         borderRadius: BorderRadius.circular(12.0)),
+                      //     child: Obx(
+                      //       ()=> ListTile(
+                      //         title: const Text(
+                      //           'Total booking',
+                      //           style: TextStyle(
+                      //               color: Colors.black,
+                      //               fontFamily: 'PoppinsSemiBold',
+                      //               fontSize: 14,
+                      //               fontWeight: FontWeight.w600),
+                      //         ),
+                      //         trailing: Text(
+                      //           "${Get.find<BookingController>().booking.value}",
+                      //           style: const TextStyle(
+                      //               color: Colors.black,
+                      //               fontFamily: 'PoppinsSemiBold',
+                      //               fontSize: 14,
+                      //               fontWeight: FontWeight.w600),
+                      //         ),
+                      //       ),
+                      //     ),
+                      //   ),
+                      // ),
                       Padding(
                         padding: const EdgeInsets.only(
                             left: 12.0, top: 8.0, right: 14),
