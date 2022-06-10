@@ -15,9 +15,7 @@ class ActiveBookingCard extends StatefulWidget {
     required this.bookingPlan,
     required this.bookingPrice,
     required this.userID,
-    this.tempYear,
-    this.tempDay,
-    this.tempMonth,
+
     this.id,
     required this.end_date,
   }) : super(key: key);
@@ -27,9 +25,7 @@ class ActiveBookingCard extends StatefulWidget {
   final String? bookingPlan;
   final double? bookingPrice;
   final String? userID;
-  final dynamic tempYear;
-  final dynamic tempDay;
-  final dynamic tempMonth;
+
   final String? id;
   final end_date;
 
@@ -40,9 +36,7 @@ class ActiveBookingCard extends StatefulWidget {
 class _ActiveBookingCardState extends State<ActiveBookingCard> {
   @override
   void initState() {
-    print(widget.tempDay);
-    print(widget.tempYear);
-    print(widget.tempMonth);
+
     super.initState();
     print("//////////////////");
   }
@@ -124,7 +118,7 @@ class _ActiveBookingCardState extends State<ActiveBookingCard> {
                       fontWeight: FontWeight.w700, fontSize: 15),
                 ),
                 Text(
-                  DateFormat("dd, EE, yyyy").format( widget.bookingdate!),
+                  DateFormat("dd, MMM, yyyy").format( widget.bookingdate!),
                   // widget.bookingdate!.toString(),
                   style: GoogleFonts.poppins(fontWeight: FontWeight.w500),
                 ),

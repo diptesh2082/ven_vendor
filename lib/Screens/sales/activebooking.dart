@@ -128,31 +128,13 @@ class _ActivBookingsState extends State<ActivBookings> {
                               bookingPrice: double.parse(
                                   doc[index]['booking_price']
                                       .toString()),
-                              bookingdate: DateFormat(
-                                  DateFormat.YEAR_MONTH_DAY)
+                              bookingdate: DateFormat("dd, MMM, yyyy")
                                   .format(
                                 doc[index]['booking_date']
                                     .toDate(),
                                 // bookingsStatus: ,
                               ),
-                              tempYear:
-                              DateFormat(DateFormat.YEAR)
-                                  .format(
-                                doc[index]['booking_date']
-                                    .toDate(),
-                              ),
-                              tempDay:
-                              DateFormat(DateFormat.DAY)
-                                  .format(
-                                doc[index]['booking_date']
-                                    .toDate(),
-                              ),
-                              tempMonth: DateFormat(
-                                  DateFormat.NUM_MONTH)
-                                  .format(
-                                doc[index]['booking_date']
-                                    .toDate(),
-                              ),
+
                               booking_status: '${doc[index]['booking_status'].toString()}',
                             ),
                           );

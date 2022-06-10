@@ -79,7 +79,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
      // futurefiles = StorageDatabase.listAll('TransformerGymImage/');
   }
   var gym_details;
-  var   amenites;
+  List<dynamic>   amenites=[""];
 
   @override
   Widget build(BuildContext context) {
@@ -102,6 +102,9 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
             gym_images=snapshot.data["images"];
             gym_details=snapshot.data;
             amenites=snapshot.data["amenities"];
+            if (amenites.isEmpty){
+              amenites=[""];
+            }
             // print(gym_images);
             return SingleChildScrollView(
               child: Container(

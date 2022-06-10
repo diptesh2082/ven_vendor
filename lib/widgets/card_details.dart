@@ -13,11 +13,8 @@ class CardDetails extends StatefulWidget {
         required this.bookingPlan,
         required this.bookingPrice,
         required this.userID,
-        this.tempYear,
-        this.tempDay,
-        this.tempMonth,
         required this.booking_status,
-        required this.bookind_end})
+        required this.bookind_end, this.otp})
       : super(key: key);
   final String? userName;
   final String? bookingID;
@@ -25,11 +22,9 @@ class CardDetails extends StatefulWidget {
   final String? bookingPlan;
   final double? bookingPrice;
   final String? userID;
-  final dynamic tempYear;
-  final dynamic tempDay;
-  final dynamic tempMonth;
   final String booking_status;
   final DateTime bookind_end;
+  final otp;
 
   @override
   State<CardDetails> createState() => _CardDetailsState();
@@ -38,9 +33,6 @@ class CardDetails extends StatefulWidget {
 class _CardDetailsState extends State<CardDetails> {
   @override
   void initState() {
-    print(widget.tempDay);
-    print(widget.tempYear);
-    print(widget.tempMonth);
     super.initState();
     print("//////////////////");
   }
@@ -49,16 +41,30 @@ class _CardDetailsState extends State<CardDetails> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
+      if(widget.booking_status=="upcoming") {
         Get.to(
-                () => OrderDetails(
-              // otp: widget.otp,
-              bookingID: widget.bookingID,
-              userID: widget.userID,
-            ),
-            arguments: {
-              "booking_id":widget.bookingID,
-            }
+                    () => BookingScreen(
+                  otp: widget.otp,
+                  bookingID: widget.bookingID,
+                  userID: widget.userID,
+                ),
+                // arguments: {
+                //   "booking_id": widget.bookingID,
+                // }
+              );
+      }else{
+        Get.to(
+              () =>
+              OrderDetails(
+                // otp: widget.otp,
+                bookingID: widget.bookingID,
+                userID: widget.userID,
+              ),
+          // arguments: {
+          //   "booking_id":widget.bookingID,
+          // }
         );
+      }
       },
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15),

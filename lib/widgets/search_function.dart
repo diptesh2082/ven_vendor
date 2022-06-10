@@ -248,24 +248,7 @@ class _SearchItState extends State<SearchIt> {
               //     .toDate(),
               // ),
               end_date: doc[index]['plan_end_duration'].toDate(),
-              tempYear:
-              DateFormat(DateFormat.YEAR)
-                  .format(
-                doc[index]['booking_date']
-                    .toDate(),
-              ),
-              tempDay:
-              DateFormat(DateFormat.DAY)
-                  .format(
-                doc[index]['booking_date']
-                    .toDate(),
-              ),
-              tempMonth: DateFormat(
-                  DateFormat.NUM_MONTH)
-                  .format(
-                doc[index]['booking_date']
-                    .toDate(),
-              ),
+
               id: doc[index]['id'].toString(),
             ),
           );
