@@ -126,7 +126,7 @@ class _MonthSalesState extends State<MonthSales> {
                               ['booking_plan'] ??
                                   "",
                               bookingPrice: double.parse(
-                                  doc[index]['booking_price']
+                                  doc[index]['grand_total']
                                       .toString()),
                               bookingdate: DateFormat(
                                   DateFormat.YEAR_MONTH_DAY)

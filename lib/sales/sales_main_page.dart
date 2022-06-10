@@ -331,7 +331,6 @@ class _TotalBookingsState extends State<TotalBookings> {
                     height: MediaQuery.of(context).size.height - 160,
                     child: TabBarView(
                       children: [
-
                         ActivBookings(filter: selectDateTime,),
                         MonthSales(filter: selectDateTime),
                         UpcomingBookings(filter: selectDateTime,),

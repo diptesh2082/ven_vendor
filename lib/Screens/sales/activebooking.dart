@@ -126,7 +126,7 @@ class _ActivBookingsState extends State<ActivBookings> {
                               ['booking_plan'] ??
                                   "",
                               bookingPrice: double.parse(
-                                  doc[index]['booking_price']
+                                  doc[index]['grand_total']
                                       .toString()),
                               bookingdate: DateFormat("dd, MMM, yyyy")
                                   .format(

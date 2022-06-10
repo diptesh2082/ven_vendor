@@ -48,7 +48,7 @@ class _BookingScreenState extends State<BookingScreen> {
       backgroundColor: AppColors.backgroundColor,
       appBar: AppBar(
         title: const Text(
-          'Booking Summary',
+          'Booking Details',
           style: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.w600,

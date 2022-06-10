@@ -160,7 +160,7 @@ class _OrderDetailsState extends State<OrderDetails> {
         backgroundColor: AppColors.backgroundColor,
         appBar: AppBar(
           title: const Text(
-            'Order Details',
+            'Booking Details',
             style: TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.w600,
@@ -277,7 +277,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                                                      SizedBox(width: 8),
                                                     Row(
                                                       children: [
-                                                        Text("Order Date- ",
+                                                        Text("Booking Date- ",
                                                         style: GoogleFonts.poppins(
                                                           fontWeight: FontWeight.w500,
                                                           fontSize: 12
@@ -571,7 +571,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                                       ),
                                       Spacer(),
                                       Text(
-                                        '₹ ${snapshot.data.get('total_price')}',
+                                        '₹ ${snapshot.data.get('grand_total')}',
                                         style: GoogleFonts.poppins(
                                             fontSize: 16,
                                             fontWeight: FontWeight.w700,
