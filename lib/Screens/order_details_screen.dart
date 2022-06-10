@@ -268,8 +268,65 @@ class _OrderDetailsState extends State<OrderDetails> {
                                                                 ),
                                                               ),
 
-                                                            ],
-                                                          ),
+
+                                                  const SizedBox(
+                                                    height: 6.0,
+                                                  ),
+                                                  Text(
+                                                    DateFormat("dd,MMMM,yyyy")
+                                                        .format(snapshot.data!
+                                                            .get('order_date')
+                                                            .toDate()),
+                                                    // snapshot.data!.get('booking_date').toString(),
+                                                    // snapshot3.data
+                                                    //     .get('gym_details')["branch"],
+                                                    style: GoogleFonts.poppins(
+                                                      fontSize: 14,
+                                                      fontWeight: FontWeight.w400,
+                                                    ),
+                                                  ),
+                                                  SizedBox(
+                                                    height: 8,
+                                                  ),
+                                                  Row(
+                                                    children: [
+                                                      Image.asset(
+                                                          "Assets/Images/marker.png"),
+                                                      const SizedBox(
+                                                        width: 2.0,
+                                                      ),
+                                                      Text(
+                                                        snapshot3.data
+                                                            .get('landmark'),
+                                                        style: GoogleFonts.poppins(
+                                                          fontSize: 14,
+                                                          fontWeight: FontWeight.w500,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  const SizedBox(
+                                                    height: 5.0,
+                                                  ),
+                                                  SingleChildScrollView(
+                                                    scrollDirection:
+                                                        Axis.horizontal,
+                                                    child: SizedBox(
+                                                      width: MediaQuery.of(context)
+                                                              .size
+                                                              .width *
+                                                          0.5,
+                                                      child: Text(
+                                                        snapshot3.data
+                                                            .get('address'),
+                                                        overflow:
+                                                            TextOverflow.ellipsis,
+                                                        maxLines: 2,
+                                                        style: GoogleFonts.poppins(
+                                                          fontSize: 12,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+
                                                         ),
                                                       ),
                                                       width: 127,

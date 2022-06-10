@@ -4,6 +4,8 @@ import 'package:vyam_vandor/Services/firebase_auth_api.dart';
 import 'package:vyam_vandor/widgets/custom_text_field.dart';
 import 'package:vyam_vandor/widgets/primary_button.dart';
 
+import 'Tabs/support_page.dart';
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -106,6 +108,21 @@ class _LoginScreenState extends State<LoginScreen> {
                     _signIn();
                   },
                   'log in',
+                ),
+                const SizedBox(
+                  height: 150,
+                ),
+                buildPrimaryButton(
+                      () {
+
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ContactUs(),
+                              ));
+                        },
+
+                  'Support',
                 )
               ],
             ),

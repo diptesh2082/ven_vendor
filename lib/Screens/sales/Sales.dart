@@ -1,6 +1,7 @@
 import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:vyam_vandor/constants.dart';
 import 'package:vyam_vandor/sales/allSales.dart';
 import 'package:vyam_vandor/sales/sales_7days.dart';
@@ -16,7 +17,7 @@ class Sales extends StatefulWidget {
   @override
   _SalesState createState() => _SalesState();
 }
-
+final Color _maleColor = HexColor("292F3D");
 class _SalesState extends State<Sales> {
   @override
   Widget build(BuildContext context) {
@@ -52,7 +53,7 @@ class _SalesState extends State<Sales> {
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: ButtonsTabBar(
-                    backgroundColor: Colors.black,
+                    backgroundColor: _maleColor,
                     unselectedBackgroundColor: Colors.white,
                     labelStyle:GoogleFonts.poppins(
                       color: Colors.white,
