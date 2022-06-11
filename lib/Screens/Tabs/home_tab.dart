@@ -207,7 +207,7 @@ class _HomeTabState extends State<HomeTab> {
                                                         ['booking_plan'] ??
                                                     "",
                                                 bookingPrice: doc[index]
-                                                        ['booking_price'] ??
+                                                        ['grand_total'] ??
                                                     "",
                                                 // docs: doc[index],
                                                 bookingdate: DateFormat(
@@ -291,7 +291,7 @@ class _HomeTabState extends State<HomeTab> {
                                                           ['booking_plan'] ??
                                                       "",
                                                   bookingPrice: double.parse(
-                                                      doc[index]['booking_price']
+                                                      doc[index]['grand_total']
                                                           .toString()),
                                                   bookingdate: doc[index]['booking_date']
                                                       .toDate(),

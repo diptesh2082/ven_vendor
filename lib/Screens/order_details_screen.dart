@@ -695,7 +695,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                                             child: Padding(
                                               padding: const EdgeInsets.only(left: 3.0,right: 5),
                                               child: Text(
-                                                ' ${snapshot.data.get('payment_method')}',
+                                                ' ${snapshot.data.get('payment_method')=="offline"?"Cash":"Online"}',
                                                 style: GoogleFonts.poppins(
                                                   fontSize: 14,
                                                   fontWeight: FontWeight.w400,

@@ -239,7 +239,7 @@ class _SearchItState extends State<SearchIt> {
               ['booking_plan'] ??
                   "",
               bookingPrice: double.parse(
-                  doc[index]['booking_price']
+                  doc[index]['grand_total']
                       .toString()),
               bookingdate: doc[index]['booking_date']
                   .toDate(),

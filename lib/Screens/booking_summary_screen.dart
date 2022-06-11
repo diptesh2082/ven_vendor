@@ -423,7 +423,7 @@ class _BookingScreenState extends State<BookingScreen> {
                                 height: 3.0,
                               ),
                               Text(
-                                '\₹ ${snapshot.data.get('booking_price')}',
+                                '\₹ ${snapshot.data.get('total_price')}',
                                 style: GoogleFonts.poppins(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w700,

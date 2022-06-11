@@ -140,7 +140,7 @@ class FirebaseFirestoreAPi {
           list.add(ActiveBookingCard(
             userName: snap.get("user_name"),
             userID: snap.get("userId"),
-            bookingPrice: snap.get("booking_price"),
+            bookingPrice: snap.get("grand_total"),
             bookingPlan: snap.get("booking_plan"),
             bookingID: snap.get("booking_id"),
             bookingdate: snap.get('booking_date')
