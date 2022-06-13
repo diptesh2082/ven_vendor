@@ -93,6 +93,13 @@ class _HomeTabState extends State<HomeTab> {
                 child: CircularProgressIndicator(),
               );
             }
+            //   if (data.size == 0) {
+            //     return Center(
+            //       child: Image.asset(
+            //         "assets/Illustrations/notification empty.png",
+            //       ),
+            //     );
+            // }
             // print(snapshot.data);
             // print(snapshot.data.get("branch"));
             // print(snapshot.data.get("gym_status"));
@@ -218,6 +225,13 @@ class _HomeTabState extends State<HomeTab> {
                                                 otp: int.parse(
                                                     doc[index]['otp_pass']),
                                                 id: doc[index]['id'].toString() ,
+                                              );
+                                            }
+                                            if (doc.length == 0) {
+                                              return Center(
+                                                child: Image.asset(
+                                                  "assets/Illustrations/notification empty.png",
+                                                ),
                                               );
                                             }
                                             return Container();
