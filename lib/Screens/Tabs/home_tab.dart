@@ -164,7 +164,11 @@ class _HomeTabState extends State<HomeTab> {
                                         }
 
                                         if (snap.data == null) {
-                                          return const Text("No Upcoming Bookings");
+                                          return Center(
+                                            child: Image.asset(
+                                              "assets/Illustrations/notification empty.png",
+                                            ),
+                                          );
                                         }
 
                                         var doc = snap.data.docs;
@@ -198,6 +202,13 @@ class _HomeTabState extends State<HomeTab> {
                                             // print(
                                             //     "gfhfhgjfdkdyuuyuyuyuyuyuyuyuyuyuyuyuyuyuyuyuyuyuyuyuyuy ${gymId}");
                                             /// UPCOMING BOOKING CARD
+                                            if (doc.length == 0) {
+                                              return Center(
+                                                child: Image.asset(
+                                                  "assets/Illustrations/vill.jpeg",
+                                                ),
+                                              );
+                                            }
                                             if (doc[index]['booking_status'] ==
                                                     'upcoming'
                                                 // && doc[index]["vendorId"]==gymId.toString()
@@ -230,7 +241,7 @@ class _HomeTabState extends State<HomeTab> {
                                             if (doc.length == 0) {
                                               return Center(
                                                 child: Image.asset(
-                                                  "assets/Illustrations/notification empty.png",
+                                                  "assets/Illustrations/vill.jpeg",
                                                 ),
                                               );
                                             }
@@ -266,6 +277,7 @@ class _HomeTabState extends State<HomeTab> {
                                         }
                                         if (snap.data == null) {
                                           return const Text("No Active Bookings");
+
                                         }
                                         var doc = snap.data.docs;
 
