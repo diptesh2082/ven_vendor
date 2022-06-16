@@ -16,6 +16,8 @@ import 'package:vyam_vandor/widgets/amenites.dart';
 import 'package:vyam_vandor/widgets/dashboard_map.dart';
 import 'package:vyam_vandor/widgets/know_trainer.dart';
 
+import '../../widgets/workouts.dart';
+
 class DashBoardScreen extends StatefulWidget {
   const DashBoardScreen({Key? key}) : super(key: key);
 
@@ -31,7 +33,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
     // "Assets/Images/trainer2.png",
     // "Assets/Images/trainer3.png",
   ];
-
+  List<dynamic>workout=[""];
   List<IconData> icons = [
     Icons.ac_unit,
     Icons.lock_rounded,
@@ -484,7 +486,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                       Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Text(
-                          "Amenites",
+                          "Amenities",
                           style: GoogleFonts.poppins(
                             fontSize: 14,
                             fontWeight: FontWeight.w700
@@ -495,6 +497,26 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                         width: MediaQuery.of(context).size.width*.98,
                           child: Amenites(amenites: amenites,)
                       ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment:  CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Workouts',
+                              style: GoogleFonts.poppins(
+                                  color: Colors.black,
+
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w700),
+                            ),
+                            const SizedBox(height: 10),
+                            Workouts(workouts: workout,),
+                          ],
+                        ),
+                      ),
+
                       //Address//
                       const Padding(
                         padding: EdgeInsets.only(left: 12.0, top: 10.0),

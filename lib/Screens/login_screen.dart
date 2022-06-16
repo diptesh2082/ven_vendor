@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:vyam_vandor/Screens/reset_password.dart';
 import 'package:vyam_vandor/Services/firebase_auth_api.dart';
 import 'package:vyam_vandor/widgets/custom_text_field.dart';
@@ -112,18 +113,29 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(
                   height: 150,
                 ),
-                buildPrimaryButton(
-                      () {
-
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => ContactUs(),
-                              ));
-                        },
-
-                  'Support',
-                )
+                TextButton(onPressed: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ContactUs(),
+                    ));}, child: Text('Support',
+                style: GoogleFonts.poppins(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w700
+                ),
+                ),)
+                // buildPrimaryButton(
+                //       () {
+                //
+                //           Navigator.push(
+                //               context,
+                //               MaterialPageRoute(
+                //                 builder: (context) => ContactUs(),
+                //               ));
+                //         },
+                //
+                //   'Support',
+                // )
               ],
             ),
           ),

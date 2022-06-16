@@ -75,7 +75,7 @@ class _SearchItState extends State<SearchIt> {
             ),
 
             Container(
-              color: Colors.white,
+              color: Colors.grey[100],
                 child:   Column(
                   children: [
                     if (searchGymName.isNotEmpty)
@@ -197,8 +197,7 @@ class _SearchItState extends State<SearchIt> {
                     ['booking_plan'] ??
                         "",
                     bookingPrice: doc[index]
-                    ['booking_price'] ??
-                        "",
+                    ['booking_price'] .toString(),
                     // docs: doc[index],
                     bookingdate: DateFormat(
                         DateFormat.YEAR_MONTH_DAY)

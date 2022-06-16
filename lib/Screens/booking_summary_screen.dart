@@ -161,7 +161,7 @@ class _BookingScreenState extends State<BookingScreen> {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           mainAxisAlignment:
-                                              MainAxisAlignment.center,
+                                              MainAxisAlignment.spaceEvenly,
                                           children: [
                                             Row(
                                             children: [
@@ -191,22 +191,22 @@ class _BookingScreenState extends State<BookingScreen> {
                                                 fontWeight: FontWeight.w600,
                                               ),
                                             ),
-                                            Text(
-                                              DateFormat("dd,MMMM,yyyy")
-                                                  .format(snapshot.data!
-                                                  .get('order_date')
-                                                  .toDate()),
-                                              // snapshot.data!.get('booking_date').toString(),
-                                              // snapshot3.data
-                                              //     .get('gym_details')["branch"],
-                                              style: GoogleFonts.poppins(
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.w400,
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              height: 5.0,
-                                            ),
+                                            // Text(
+                                            //   DateFormat("dd,MMMM,yyyy")
+                                            //       .format(snapshot.data!
+                                            //       .get('order_date')
+                                            //       .toDate()),
+                                            //   // snapshot.data!.get('booking_date').toString(),
+                                            //   // snapshot3.data
+                                            //   //     .get('gym_details')["branch"],
+                                            //   style: GoogleFonts.poppins(
+                                            //     fontSize: 14,
+                                            //     fontWeight: FontWeight.w400,
+                                            //   ),
+                                            // ),
+                                            // SizedBox(
+                                            //   height: 3.0,
+                                            // ),
 
                                             Row(
                                               children: [
@@ -225,9 +225,9 @@ class _BookingScreenState extends State<BookingScreen> {
                                                 ),
                                               ],
                                             ),
-                                            const SizedBox(
-                                              height: 5.0,
-                                            ),
+                                            // const SizedBox(
+                                            //   height: 5.0,
+                                            // ),
                                             SingleChildScrollView(
                                               scrollDirection: Axis.horizontal,
                                               child: SizedBox(
@@ -457,29 +457,29 @@ class _BookingScreenState extends State<BookingScreen> {
                             ],
                           ),
                           const SizedBox(
-                            height: 3.0,
+                            height: 2.0,
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'Taxes',
-                                style: GoogleFonts.poppins(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.black,
-                                ),
-                              ),
-                              Text(
-                                '\₹ ${snapshot.data.get('tax_pay')}',
-                                style: GoogleFonts.poppins(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w700,
-                                  color: Color(0xff3A3A3A),
-                                ),
-                              ),
-                            ],
-                          ),
+                          // Row(
+                          //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          //   children: [
+                          //     Text(
+                          //       'Taxes',
+                          //       style: GoogleFonts.poppins(
+                          //         fontSize: 16,
+                          //         fontWeight: FontWeight.w500,
+                          //         color: Colors.black,
+                          //       ),
+                          //     ),
+                          //     Text(
+                          //       '\₹ ${snapshot.data.get('tax_pay')}',
+                          //       style: GoogleFonts.poppins(
+                          //         fontSize: 16,
+                          //         fontWeight: FontWeight.w700,
+                          //         color: Color(0xff3A3A3A),
+                          //       ),
+                          //     ),
+                          //   ],
+                          // ),
                           //Taxes and charges
                           // Row(
                           //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -502,6 +502,9 @@ class _BookingScreenState extends State<BookingScreen> {
                           //     ),
                           //   ],
                           // ),
+                          Divider(
+                            thickness: .5,
+                          ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -531,7 +534,7 @@ class _BookingScreenState extends State<BookingScreen> {
                     ),
                     //Container For Customer Details
                     const SizedBox(
-                      height: 10.0,
+                      height: 14.0,
                     ),
                     Container(
                       decoration: BoxDecoration(
