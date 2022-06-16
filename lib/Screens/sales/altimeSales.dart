@@ -122,6 +122,8 @@ class _AllTimeSalesState extends State<AllTimeSales> {
                             },
                             child: CardDetails(
                               bookind_end: doc[index]['plan_end_duration'].toDate(),
+                              id:
+                              doc[index]['id'] ?? "",
                               userID:
                               doc[index]['userId'] ?? "",
                               userName:

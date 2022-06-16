@@ -5,8 +5,11 @@ import 'package:vyam_vandor/Screens/booking_summary_screen.dart';
 import 'package:vyam_vandor/Screens/order_details_screen.dart';
 
 class CardDetails extends StatefulWidget {
+
+
   const CardDetails(
       {Key? key,
+        required this.id,
         required this.userName,
         required this.bookingID,
         required this.bookingdate,
@@ -19,6 +22,7 @@ class CardDetails extends StatefulWidget {
         required this.booking_status,
         required this.bookind_end})
       : super(key: key);
+  final String? id;
   final String? userName;
   final String? bookingID;
   final String? bookingdate;
@@ -61,9 +65,10 @@ class _CardDetailsState extends State<CardDetails> {
         );
       },
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15),
+        padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8),
         margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-        height:98,
+        height:108,
+
         decoration: BoxDecoration(
             color: Colors.white, borderRadius: BorderRadius.circular(15.0)),
         child: Row(
@@ -78,6 +83,29 @@ class _CardDetailsState extends State<CardDetails> {
                 //   style:
                 //   const TextStyle(fontWeight: FontWeight.w400, fontSize: 10),
                 // ),
+                RichText(
+                    text: TextSpan(
+                        style: GoogleFonts.poppins(
+                          // fontFamily: "Poppins",
+                            fontWeight: FontWeight.w500,
+                            fontSize: 12,
+                            color: Colors.grey),
+                        children:  <TextSpan>[
+                          TextSpan(
+                              text: 'Booking ID - '
+                          ),
+                          TextSpan(
+                              text: '${widget.id}',
+                              style:GoogleFonts.poppins(
+                                // fontFamily: "Poppins",
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 12,
+                                  color: Colors.amber
+                              )
+                          ),
+                        ]
+
+                    )),
                 Text(
                   widget.userName!,
                   style:

@@ -4,10 +4,12 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:intl/intl.dart';
+import 'package:vyam_vandor/Screens/Tabs/home_tab.dart';
 import 'package:vyam_vandor/Screens/home__screen.dart';
 import '../app_colors.dart';
 
@@ -42,6 +44,19 @@ class _OrderDetailsState extends State<OrderDetails> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              IconButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => HomeTab(),
+                      ));
+                },
+                icon: const Icon(
+                  Icons.close,
+                  color: Colors.black,
+                ),
+              ),
               Image.asset(
                 "Assets/Images/S.gif",
                 height: 70,
@@ -119,11 +134,25 @@ class _OrderDetailsState extends State<OrderDetails> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
+                IconButton(
+                  alignment: Alignment.topRight,
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => HomeTab(),
+                        ));
+                  },
+                  icon: const Icon(
+                    Icons.close,
+                    color: Colors.black,
+                  ),
+                ),
                 ClipRRect(
                   borderRadius: BorderRadius.circular(100),
                   child: Image.asset(
                     "Assets/Images/S.gif",
-                    height: 155,
+                    height: 145,
                     width: 200,
                   ),
                 ),
@@ -345,18 +374,18 @@ class _OrderDetailsState extends State<OrderDetails> {
                                                               .size
                                                               .width *
                                                           0.5,
-                                                      child: Text(
-                                                        snapshot3.data
-                                                            .get('address'),
-                                                        overflow:
-                                                            TextOverflow.ellipsis,
-                                                        maxLines: 2,
-                                                        style: GoogleFonts.poppins(
-                                                          fontSize: 12,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
-                                                      ),
+                                                      // child: Text(
+                                                      //   snapshot3.data
+                                                      //       .get('address'),
+                                                      //   overflow:
+                                                      //       TextOverflow.ellipsis,
+                                                      //   maxLines: 2,
+                                                      //   style: GoogleFonts.poppins(
+                                                      //     fontSize: 12,
+                                                      //     fontWeight:
+                                                      //         FontWeight.w500,
+                                                      //   ),
+                                                      // ),
                                                     ),
                                                   ),
                                                   SizedBox(

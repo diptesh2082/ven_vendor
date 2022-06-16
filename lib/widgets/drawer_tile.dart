@@ -14,7 +14,7 @@ class DrawerTitleWidget extends StatelessWidget {
         children: [
           IconButton(
             onPressed: () {
-              callback!();
+              Navigator.pop(context);
             },
             icon: const Icon(
               Icons.close,

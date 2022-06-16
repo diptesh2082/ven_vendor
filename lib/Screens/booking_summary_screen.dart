@@ -165,25 +165,69 @@ class _BookingScreenState extends State<BookingScreen> {
                                           children: [
                                             Row(
                                             children: [
-                                              Text(
-                                                'Booking ID:- ',
-                                                style: GoogleFonts.poppins(
-                                                  fontSize: 14,
-                                                  fontWeight:
-                                                  FontWeight.w500,
-                                                ),
+                                              Material(
+                                                color: Colors.white,
+                                                borderRadius: BorderRadius.circular(5),
+                                                elevation: 5,
+                                                // color: Colors.yellow,
+                                                // decoration: BoxDecoration(
+                                                //   color: Colors.yellowAccent,
+                                                //   borderRadius: BorderRadius.circular(5)
+                                                // ),
+                                                child:RichText(
+                                                    text: TextSpan(
+                                                        style: GoogleFonts.poppins(
+                                                          // fontFamily: "Poppins",
+                                                            fontWeight: FontWeight.w500,
+                                                            fontSize: 12,
+                                                            color: Colors.grey),
+                                                        children:  <TextSpan>[
+                                                          TextSpan(
+                                                              text: 'Booking ID - '
+                                                          ),
+                                                          TextSpan(
+                                                              text:'${snapshot.data!.get('id')}',
+                                                          style: GoogleFonts.poppins(
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                          FontWeight.w600,
+                                                          color: Colors.amberAccent
+                                                              )
+                                                          ),
+                                                        ]
+
+                                                    )),
+                                                // Padding(
+                                                //   padding: const EdgeInsets.all(2.0),
+                                                //   child: Text(
+                                                //     '${widget.id}',
+                                                //     style:
+                                                //     GoogleFonts.poppins(fontWeight: FontWeight.w500, fontSize: 10),
+                                                //   ),
+                                                // ),
                                               ),
-                                              Text(
-                                                '${snapshot.data!.get('id')}',
-                                                style: GoogleFonts.poppins(
-                                                    fontSize: 14,
-                                                    fontWeight:
-                                                    FontWeight.w600,
-                                                    color: Colors.amberAccent
-                                                ),
-                                              ),
+                                              // Text(
+                                              //   'Booking ID:- ',
+                                              //   style: GoogleFonts.poppins(
+                                              //     fontSize: 14,
+                                              //     fontWeight:
+                                              //     FontWeight.w500,
+                                              //   ),
+                                              // ),
+                                              // Text(
+                                              //   '${snapshot.data!.get('id')}',
+                                              //   style: GoogleFonts.poppins(
+                                              //       fontSize: 14,
+                                              //       fontWeight:
+                                              //       FontWeight.w600,
+                                              //       color: Colors.amberAccent
+                                              //   ),
+                                              // ),
                                             ],
                                           ),
+                                            const SizedBox(
+                                              height: 3.0,
+                                            ),
                                             Text(
                                               '${snapshot.data!.get('gym_details')["name"] ?? ""}',
                                               style: GoogleFonts.poppins(
@@ -235,16 +279,16 @@ class _BookingScreenState extends State<BookingScreen> {
                                                         .size
                                                         .width *
                                                     0.5,
-                                                child: Text(
-                                                  snapshot3.data.get('address'),
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  maxLines: 2,
-                                                  style: GoogleFonts.poppins(
-                                                    fontSize: 12,
-                                                    fontWeight: FontWeight.w400,
-                                                  ),
-                                                ),
+                                                // child: Text(
+                                                //   snapshot3.data.get('address'),
+                                                //   overflow:
+                                                //       TextOverflow.ellipsis,
+                                                //   maxLines: 2,
+                                                //   style: GoogleFonts.poppins(
+                                                //     fontSize: 12,
+                                                //     fontWeight: FontWeight.w400,
+                                                //   ),
+                                                // ),
                                               ),
                                             ),
                                           ],
@@ -460,27 +504,27 @@ class _BookingScreenState extends State<BookingScreen> {
                           const SizedBox(
                             height: 3.0,
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'Taxes',
-                                style: GoogleFonts.poppins(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.black,
-                                ),
-                              ),
-                              Text(
-                                '\₹ ${snapshot.data.get('tax_pay')}',
-                                style: GoogleFonts.poppins(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w700,
-                                  color: Color(0xff3A3A3A),
-                                ),
-                              ),
-                            ],
-                          ),
+                          // Row(
+                          //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          //   children: [
+                          //     Text(
+                          //       'Taxes',
+                          //       style: GoogleFonts.poppins(
+                          //         fontSize: 16,
+                          //         fontWeight: FontWeight.w500,
+                          //         color: Colors.black,
+                          //       ),
+                          //     ),
+                          //     Text(
+                          //       '\₹ ${snapshot.data.get('tax_pay')}',
+                          //       style: GoogleFonts.poppins(
+                          //         fontSize: 16,
+                          //         fontWeight: FontWeight.w700,
+                          //         color: Color(0xff3A3A3A),
+                          //       ),
+                          //     ),
+                          //   ],
+                          // ),
                           //Taxes and charges
                           // Row(
                           //   mainAxisAlignment: MainAxisAlignment.spaceBetween,

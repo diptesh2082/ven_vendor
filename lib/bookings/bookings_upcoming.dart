@@ -126,7 +126,8 @@ class _UpcomingBookingsState extends State<UpcomingBookings> {
                             },
                             child: CardDetails(
                               bookind_end: doc[index]['plan_end_duration'].toDate(),
-                              userID:
+                              id:
+                              doc[index]['id'] ?? "",userID:
                               doc[index]['userId'] ?? "",
                               userName:
                               doc[index]['user_name'] ?? "",
