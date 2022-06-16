@@ -83,7 +83,7 @@ class _UpcomingBookingsState extends State<UpcomingBookings> {
                       );
                     }
                     if (snap.data == null) {
-                      return const Text("No Active Bookings");
+                      return const Text("No  Bookings");
                     }
                     var doc = snap.data.docs;
                     // if (snap.hasData){
@@ -91,7 +91,7 @@ class _UpcomingBookingsState extends State<UpcomingBookings> {
                     // }
 
                     return doc.length==0?
-                    const Text("No Active Bookings"):
+                    const Text("No  Bookings"):
                     ListView.builder(
                       physics:
                       const BouncingScrollPhysics(),
@@ -114,6 +114,9 @@ class _UpcomingBookingsState extends State<UpcomingBookings> {
                             || doc[index]['booking_date'].toDate() == widget.filter.end
                         )
                         {
+                          print(doc[index]['booking_status'].toString());
+                          print(doc[index]['otp_pass'].toString());
+                          print(doc[index]['id'].toString());
 
                           return GestureDetector(
                             onTap: () async {
@@ -162,7 +165,7 @@ class _UpcomingBookingsState extends State<UpcomingBookings> {
                                     .toDate(),
                                 // bookingsStatus: ,
                               ),
-                              otp:  int.parse(doc[index]['otp_pass']),
+                              otp:  int.parse(doc[index]['otp_pass'].toString()),
 
                               booking_status: '${doc[index]['booking_status'].toString()}',
                             ),
