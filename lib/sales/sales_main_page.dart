@@ -1,5 +1,5 @@
 import 'dart:ffi';
-
+// import 'package:date_range_picker/date_range_picker.dart' as DateRagePicker;
 import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -25,6 +25,23 @@ class TotalBookings extends StatefulWidget {
 }
 
 class _TotalBookingsState extends State<TotalBookings> {
+  // DateTime _startDate = DateTime.now();
+  // DateTime _endDate = DateTime.now().add(Duration(days: 7));
+  //
+  // Future displayDateRangePicker(BuildContext context) async {
+  //   final List<DateTime> picked = await DateRagePicker.showDatePicker(
+  //       context: context,
+  //       initialFirstDate: _startDate,
+  //       initialLastDate: _endDate,
+  //       firstDate: new DateTime(DateTime.now().year - 50),
+  //       lastDate: new DateTime(DateTime.now().year + 50));
+  //   if (picked != null && picked.length == 2) {
+  //     setState(() {
+  //       _startDate = picked[0];
+  //       _endDate = picked[1];
+  //     });
+  //   }
+  //}
   DateTimeRange? selectDateTime=DateTimeRange(
   start: DateTime(2018),
   end:DateTime(2030),
