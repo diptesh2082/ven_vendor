@@ -682,23 +682,11 @@ class _HomeTabState extends State<HomeTab> {
           Column(
             children: [
               DrawerTitleWidget(
-                // callback: () {
-                //   Navigator.pop(context);
-                // },
+                callback: () {
+                  Navigator.pop(context);
+                },
               ),
-              // InkWell(
-              //   onTap: () {
-              //     Navigator.push(
-              //         context,
-              //         MaterialPageRoute(
-              //           builder: (context) => ContactUs(),
-              //         ));
-              //   },
-              //   child: buildDrawerListItem(
-              //     title: 'Change Password',
-              //     iconData: 'lock',
-              //   ),
-              // ),
+
               InkWell(
                   child: buildDrawerListItem(
                     title: 'Notifications',

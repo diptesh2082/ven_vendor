@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class DrawerTitleWidget extends StatelessWidget {
-  const DrawerTitleWidget({Key? key, this.callback}) : super(key: key);
+  const DrawerTitleWidget({Key? key,required this.callback}) : super(key: key);
 
   final Function? callback;
 

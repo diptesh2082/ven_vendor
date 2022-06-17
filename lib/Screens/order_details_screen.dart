@@ -390,13 +390,13 @@ class _OrderDetailsState extends State<OrderDetails> {
                                                               CircleAvatar(
                                                                 radius: 5,
                                                                 backgroundColor:
-                                                                snapshot.data!.get('plan_end_duration').toDate().difference(DateTime.now()).inDays >= 0 ? Colors.green:Colors.amber,
+                                                                 Colors.green,
                                                               ),
                                                               SizedBox(
                                                                 width: 5,
                                                               ),
                                                               Text(
-                                                                ' ${snapshot.data!.get('plan_end_duration').toDate().difference(DateTime.now()).inDays >= 0 ?snapshot.data!.get('booking_status'):"Completed"}',
+                                                                ' ${snapshot.data!.get('booking_status').toString()}',
                                                                 style: GoogleFonts.poppins(
                                                                   fontSize: 14,
                                                                   fontWeight:
