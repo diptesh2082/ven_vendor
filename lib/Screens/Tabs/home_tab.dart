@@ -166,7 +166,16 @@ class _HomeTabState extends State<HomeTab> {
                                         if (snap.data == null) {
                                           return Center(
                                             child: Image.asset(
-                                              "assets/Illustrations/notification empty.png",
+                                              "Assets/Images/BOOKING_EMPTY .png",
+                                            ),
+                                          );
+                                        }
+                                        if (snap.data.docs.isEmpty){
+                                          return Center(
+                                            child: Image.asset(
+                                              "Assets/Images/BOOKING_EMPTY .png",
+                                              height: MediaQuery.of(context).size.height*.45,
+
                                             ),
                                           );
                                         }
@@ -205,7 +214,7 @@ class _HomeTabState extends State<HomeTab> {
                                             if (doc.length == 0) {
                                               return Center(
                                                 child: Image.asset(
-                                                  "assets/Illustrations/vill.jpeg",
+                                                    "Assets/Images/BOOKING_EMPTY .png",
                                                 ),
                                               );
                                             }
@@ -278,6 +287,15 @@ class _HomeTabState extends State<HomeTab> {
                                         if (snap.data == null) {
                                           return const Text("No Active Bookings");
 
+                                        }
+                                        if (snap.data.docs.isEmpty){
+                                          return Center(
+                                            child: Image.asset(
+                                              "Assets/Images/BOOKING_EMPTY .png",
+                                              height: MediaQuery.of(context).size.height*.45,
+
+                                            ),
+                                          );
                                         }
                                         var doc = snap.data.docs;
 
