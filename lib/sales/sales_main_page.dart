@@ -50,7 +50,25 @@ class _TotalBookingsState extends State<TotalBookings> {
         );
   }
 
-  void _show() async {
+  void _show()async
+  {
+    final DateTimeRange? result = await showDateRangePicker(context: context, firstDate: DateTime(2022 , 1), lastDate: DateTime(2030 , 12 ,31),
+        currentDate: DateTime.now(),
+        saveText: 'Done'
+    );
+    if(result != null)
+    {
+      print(result.start.toString());
+      setState(() {
+        _selectDateTime = result;
+      });
+    }
+  }
+
+
+
+
+  void _show1() async {
     await showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -170,4 +188,6 @@ class _TotalBookingsState extends State<TotalBookings> {
       ),
     );
   }
+
 }
+
