@@ -74,9 +74,7 @@ class _HomeTabState extends State<HomeTab> {
       child: StreamBuilder<DocumentSnapshot>(
           stream: FirebaseFirestore.instance
               .collection("product_details")
-              // .where(field)
 
-              // .where(field)
               .doc(gymId.toString())
               .snapshots(),
           builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -95,17 +93,8 @@ class _HomeTabState extends State<HomeTab> {
                 child: CircularProgressIndicator(),
               );
             }
-            //   if (data.size == 0) {
-            //     return Center(
-            //       child: Image.asset(
-            //         "assets/Illustrations/notification empty.png",
-            //       ),
-            //     );
-            // }
-            // print(snapshot.data);
-            // print(snapshot.data.get("branch"));
-            // print(snapshot.data.get("gym_status"));
-            // print(gymId.toString());
+            print("${snapshot.data!.get("gym_status")} ${snapshot.data!.get("landmark")} ${snapshot.data!.get("name")}",);
+
             return Stack(
               children: [
                 Scaffold(
