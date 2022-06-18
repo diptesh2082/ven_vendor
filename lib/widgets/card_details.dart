@@ -134,6 +134,7 @@ class _CardDetailsState extends State<CardDetails> {
                     CircleAvatar(
                       radius: 3,
                       backgroundColor: widget.booking_status.toString()=="active" && widget.bookind_end.difference(DateTime.now()).inDays >= 0 ?Colors.green:Colors.amber,
+
                     ),
                     SizedBox(
                       width: 3.5,

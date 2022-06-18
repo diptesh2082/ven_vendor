@@ -116,6 +116,8 @@ class AllTimeState extends State<AllTime> {
         }
       });
     }catch(e){
+
+      totalBooking = 0.toString();
       bookingController.booking.value=0;
       bookingController.total_sales.value=0;
       bookingController.off_line_all.value=0;

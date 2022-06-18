@@ -682,23 +682,31 @@ class _HomeTabState extends State<HomeTab> {
           Column(
             children: [
               DrawerTitleWidget(
-                // callback: () {
-                //   Navigator.pop(context);
-                // },
+// <<<<<<< HEAD
+//                 // callback: () {
+//                 //   Navigator.pop(context);
+//                 // },
+//               ),
+//               // InkWell(
+//               //   onTap: () {
+//               //     Navigator.push(
+//               //         context,
+//               //         MaterialPageRoute(
+//               //           builder: (context) => ContactUs(),
+//               //         ));
+//               //   },
+//               //   child: buildDrawerListItem(
+//               //     title: 'Change Password',
+//               //     iconData: 'lock',
+//               //   ),
+//               // ),
+// =======
+                callback: () {
+                  Navigator.pop(context);
+                },
               ),
-              // InkWell(
-              //   onTap: () {
-              //     Navigator.push(
-              //         context,
-              //         MaterialPageRoute(
-              //           builder: (context) => ContactUs(),
-              //         ));
-              //   },
-              //   child: buildDrawerListItem(
-              //     title: 'Change Password',
-              //     iconData: 'lock',
-              //   ),
-              // ),
+//
+// >>>>>>> d3322954aca68f7c5c8f1d61b61d07542274f5a6
               InkWell(
                   child: buildDrawerListItem(
                     title: 'Notifications',
