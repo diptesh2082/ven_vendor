@@ -43,8 +43,8 @@ class _TotalBookingsState extends State<TotalBookings> {
   //   }
   //}
   DateTimeRange? selectDateTime=DateTimeRange(
-  start: DateTime(2018),
-  end:DateTime(2030),
+    start: DateTime(2018),
+    end:DateTime(2030),
   ) ;
   String? _selectedDate;
 
@@ -52,14 +52,15 @@ class _TotalBookingsState extends State<TotalBookings> {
   String? selectedType ="all";
   Future<void> dropDownPackage(String? selecetValue) async {
     if(selecetValue == "all"){
-    setState(() {
-      selectedType=selecetValue;
-      selectDateTime=DateTimeRange(
-        start: DateTime(2018),
-        end:DateTime(2030),
-      ) ;
 
-    });
+      setState(() {
+        selectedType=selecetValue;
+        selectDateTime=DateTimeRange(
+          start: DateTime(2018),
+          end:DateTime(2030),
+        ) ;
+
+      });
     }
     if(selecetValue == "7"){
       setState(() {
@@ -108,9 +109,9 @@ class _TotalBookingsState extends State<TotalBookings> {
   String? range="0";
   void _selectedDataChange(DateRangePickerSelectionChangedArgs args)
   {
-        print(args.value);
-        DateTime sDate = args.value.startDate;
-        DateTime eDate = args.value.endDate;
+    print(args.value);
+    DateTime sDate = args.value.startDate;
+    DateTime eDate = args.value.endDate;
 
         // setState((){
         //     startDate = sDate;
@@ -249,7 +250,6 @@ class _TotalBookingsState extends State<TotalBookings> {
                               fontWeight: FontWeight.w400
                           ),),value: "30",),
                           DropdownMenuItem(
-
                               child:
                           Row(
                             children: [
@@ -320,6 +320,7 @@ class _TotalBookingsState extends State<TotalBookings> {
                     ),
                   ),
                 ),
+
           // SizedBox(
           //   width: 100,
           //   child: DropdownButton(

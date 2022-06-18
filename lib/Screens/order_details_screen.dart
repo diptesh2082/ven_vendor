@@ -17,7 +17,7 @@ class OrderDetails extends StatefulWidget {
     Key? key,
     this.userID,
     this.bookingID,
-    this.chinki=false,
+    this.chinki = false,
     this.imageUrl = "Assets/Images/rect.png",
   }) : super(key: key);
   final bool chinki;
@@ -149,9 +149,9 @@ class _OrderDetailsState extends State<OrderDetails> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () async{
-        if(widget.chinki){
-          Get.offAll(()=>HomeScreen());
+      onWillPop: () async {
+        if (widget.chinki) {
+          Get.offAll(() => HomeScreen());
         }
 
         return true;
@@ -182,6 +182,7 @@ class _OrderDetailsState extends State<OrderDetails> {
           automaticallyImplyLeading: false,
         ),
         body: SingleChildScrollView(
+
           child: SafeArea(
             child: Padding(
               padding: const EdgeInsets.all(6.0),
@@ -198,6 +199,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return const Center(child: CircularProgressIndicator());
                     }
+
 
                     return Column(
                       children: [
@@ -227,7 +229,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                                           ConnectionState.waiting) {
                                         return const Center(
                                             child: CircularProgressIndicator());
-                                      } 
+                                      }
 
                                       return Container(
                                         padding: const EdgeInsets.symmetric(
@@ -300,6 +302,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                                                     ),
                                                   ],
                                                 ),
+
                                                 SizedBox(
                                                   height: 10,
                                                 ),
@@ -432,7 +435,6 @@ class _OrderDetailsState extends State<OrderDetails> {
                                                 ),
                                               ],
                                             ),
-
 
                                           ],
                                         ),

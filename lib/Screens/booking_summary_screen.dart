@@ -650,6 +650,8 @@ class _BookingScreenState extends State<BookingScreen> {
               Padding(
                 padding: const EdgeInsets.only(left: 8.0, right: 8),
                 child: TextFormField(
+                  maxLength: 4,
+                  keyboardType: TextInputType.number,
                   controller: _controller,
                   decoration: InputDecoration(
                     border: InputBorder.none,
@@ -682,14 +684,19 @@ class _BookingScreenState extends State<BookingScreen> {
                         FocusScope.of(context).unfocus();
                         if (int.parse(_controller!.text) == widget.otp) {
 //               print("The otp is Verified");
-                        print(widget.bookingID);
-                        Navigator.push(context, MaterialPageRoute(builder:(context)=>CollectCashPage(userID: widget.userID, bookingID: widget.bookingID, amount: amount, online: online,)));
-                          // Get.off(
-                          //   OrderDetails(
-                          //     userID: widget.userID,
-                          //     bookingID: widget.bookingID,
-                          //   ),
-                          // );
+                            print(widget.bookingID);
+                            Navigator.push(context, MaterialPageRoute(
+                                builder: (context) =>
+                                    CollectCashPage(userID: widget.userID,
+                                      bookingID: widget.bookingID,
+                                      amount: amount,
+                                      online: online,)));
+                            // Get.off(
+                            //   OrderDetails(
+                            //     userID: widget.userID,
+                            //     bookingID: widget.bookingID,
+                            //   ),
+                            // );
 
                         } else {
                           // print("Invalid OTP");
