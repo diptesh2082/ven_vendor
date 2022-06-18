@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher_string.dart';
+import 'package:vyam_vandor/Screens/Tabs/Insights/days/allTime.dart';
 import 'package:vyam_vandor/Screens/Tabs/support_page.dart';
 import 'package:vyam_vandor/Screens/home__screen.dart';
 import 'package:vyam_vandor/Screens/login_screen.dart';
@@ -22,6 +23,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../widgets/past_booking.dart';
 import '../reset_password.dart';
+import 'Insights/insights.dart';
 import 'notifications.dart';
 
 class HomeTab extends StatefulWidget {
@@ -91,6 +93,13 @@ class _HomeTabState extends State<HomeTab> {
                 child: CircularProgressIndicator(),
               );
             }
+            //   if (data.size == 0) {
+            //     return Center(
+            //       child: Image.asset(
+            //         "assets/Illustrations/notification empty.png",
+            //       ),
+            //     );
+            // }
             // print(snapshot.data);
             // print(snapshot.data.get("branch"));
             // print(snapshot.data.get("gym_status"));
@@ -132,6 +141,8 @@ class _HomeTabState extends State<HomeTab> {
                                 ),
                                 //Upcoming Bookings Cards
                                 ExpansionTile(
+                                  textColor: Colors.purple,
+                                  iconColor:Colors.purple,
                                   initiallyExpanded: true,
                                   title: const Text('Upcoming Bookings'),
                                   children: [
@@ -153,7 +164,20 @@ class _HomeTabState extends State<HomeTab> {
                                         }
 
                                         if (snap.data == null) {
-                                          return const Text("No Upcoming Bookings");
+                                          return Center(
+                                            child: Image.asset(
+                                              "Assets/Images/BOOKING_EMPTY .png",
+                                            ),
+                                          );
+                                        }
+                                        if (snap.data.docs.isEmpty){
+                                          return Center(
+                                            child: Image.asset(
+                                              "Assets/Images/BOOKING_EMPTY .png",
+                                              height: MediaQuery.of(context).size.height*.45,
+
+                                            ),
+                                          );
                                         }
 
                                         var doc = snap.data.docs;
@@ -187,6 +211,13 @@ class _HomeTabState extends State<HomeTab> {
                                             // print(
                                             //     "gfhfhgjfdkdyuuyuyuyuyuyuyuyuyuyuyuyuyuyuyuyuyuyuyuyuyuy ${gymId}");
                                             /// UPCOMING BOOKING CARD
+                                            if (doc.length == 0) {
+                                              return Center(
+                                                child: Image.asset(
+                                                    "Assets/Images/BOOKING_EMPTY .png",
+                                                ),
+                                              );
+                                            }
                                             if (doc[index]['booking_status'] ==
                                                     'upcoming'
                                                 // && doc[index]["vendorId"]==gymId.toString()
@@ -203,7 +234,7 @@ class _HomeTabState extends State<HomeTab> {
                                                         ['booking_plan'] ??
                                                     "",
                                                 bookingPrice: doc[index]
-                                                        ['booking_price'] ??
+                                                        ['grand_total'] ??
                                                     "",
                                                 // docs: doc[index],
                                                 bookingdate: DateFormat(
@@ -213,7 +244,14 @@ class _HomeTabState extends State<HomeTab> {
                                                         .toDate()),
                                                 otp: int.parse(
                                                     doc[index]['otp_pass']),
-                                                id: doc[index]['id'] ?? "",
+                                                id: doc[index]['id'].toString() ,
+                                              );
+                                            }
+                                            if (doc.length == 0) {
+                                              return Center(
+                                                child: Image.asset(
+                                                  "assets/Illustrations/vill.jpeg",
+                                                ),
                                               );
                                             }
                                             return Container();
@@ -226,6 +264,8 @@ class _HomeTabState extends State<HomeTab> {
 
                                 ///Active Booking Cards
                                 ExpansionTile(
+                                  textColor: Colors.purple,
+                                  iconColor:Colors.purple,
                                   title: const Text('Active Bookings'),
                                   children: [
                                     StreamBuilder(
@@ -246,6 +286,16 @@ class _HomeTabState extends State<HomeTab> {
                                         }
                                         if (snap.data == null) {
                                           return const Text("No Active Bookings");
+
+                                        }
+                                        if (snap.data.docs.isEmpty){
+                                          return Center(
+                                            child: Image.asset(
+                                              "Assets/Images/BOOKING_EMPTY .png",
+                                              height: MediaQuery.of(context).size.height*.45,
+
+                                            ),
+                                          );
                                         }
                                         var doc = snap.data.docs;
 
@@ -285,7 +335,7 @@ class _HomeTabState extends State<HomeTab> {
                                                           ['booking_plan'] ??
                                                       "",
                                                   bookingPrice: double.parse(
-                                                      doc[index]['booking_price']
+                                                      doc[index]['grand_total']
                                                           .toString()),
                                                   bookingdate: doc[index]['booking_date']
                                                       .toDate(),
@@ -294,25 +344,8 @@ class _HomeTabState extends State<HomeTab> {
                                                     //     .toDate(),
                                                   // ),
                                                   end_date: doc[index]['plan_end_duration'].toDate(),
-                                                  tempYear:
-                                                      DateFormat(DateFormat.YEAR)
-                                                          .format(
-                                                    doc[index]['booking_date']
-                                                        .toDate(),
-                                                  ),
-                                                  tempDay:
-                                                      DateFormat(DateFormat.DAY)
-                                                          .format(
-                                                    doc[index]['booking_date']
-                                                        .toDate(),
-                                                  ),
-                                                  tempMonth: DateFormat(
-                                                          DateFormat.NUM_MONTH)
-                                                      .format(
-                                                    doc[index]['booking_date']
-                                                        .toDate(),
-                                                  ),
-                                                  id: doc[index]['id'],
+
+                                                  id: doc[index]['id'].toString(),
                                                 ),
                                               );
                                             }
@@ -327,68 +360,68 @@ class _HomeTabState extends State<HomeTab> {
                                 ///
                                 ///
                                 ///Past Bookings Cards
-                                ExpansionTile(
-                                  title: const Text('Past Bookings'),
-                                  // subtitle:const Text('Past Bookings') ,
-                                  children: [
-                                    StreamBuilder(
-                                      stream: FirebaseFirestore.instance
-                                          .collection('bookings')
-                                          .where("vendorId", isEqualTo: gymId)
-                                          .where('booking_status',
-                                              isEqualTo: 'completed')
-                                          .orderBy("booking_date", descending: true)
-                                          .snapshots(),
-                                      builder: (BuildContext context,
-                                          AsyncSnapshot snap) {
-                                        if (snap.connectionState ==
-                                            ConnectionState.waiting) {
-                                          return const Center(
-                                            child: CircularProgressIndicator(),
-                                          );
-                                        }
-
-                                        if (snap.data == null) {
-                                          return const Text("No Past Bookings");
-                                        }
-
-                                        var doc = snap.data.docs;
-
-                                        return ListView.builder(
-                                          physics:
-                                              const NeverScrollableScrollPhysics(),
-                                          shrinkWrap: true,
-                                          itemCount: doc.length,
-                                          itemBuilder: (context, index) {
-                                            if (
-                                                // &&
-                                                doc[index]['booking_accepted'] ==
-                                                    true
-                                                // && doc[index]["vendorId"]==gymId.toString()
-                                                ) {
-                                              return PastBookingCard(
-                                                userID: doc[index]['userId'] ?? "",
-                                                userName:
-                                                    doc[index]['user_name'] ?? "",
-                                                bookingID:
-                                                    doc[index]['booking_id'] ?? "",
-                                                bookingPlan: doc[index]
-                                                        ['booking_plan'] ??
-                                                    "",
-                                                bookingPrice: doc[index]
-                                                        ['booking_price'] ??
-                                                    "",
-                                                bookingdate:DateFormat("dd,MMM,yyyy").format(doc[index]
-                                           ['booking_date'].toDate()),
-                                              );
-                                            }
-                                            return Container();
-                                          },
-                                        );
-                                      },
-                                    )
-                                  ],
-                                ),
+                                // ExpansionTile(
+                                //   title: const Text('Past Bookings'),
+                                //   // subtitle:const Text('Past Bookings') ,
+                                //   children: [
+                                //     StreamBuilder(
+                                //       stream: FirebaseFirestore.instance
+                                //           .collection('bookings')
+                                //           .where("vendorId", isEqualTo: gymId)
+                                //           .where('booking_status',
+                                //               isEqualTo: 'completed')
+                                //           .orderBy("booking_date", descending: true)
+                                //           .snapshots(),
+                                //       builder: (BuildContext context,
+                                //           AsyncSnapshot snap) {
+                                //         if (snap.connectionState ==
+                                //             ConnectionState.waiting) {
+                                //           return const Center(
+                                //             child: CircularProgressIndicator(),
+                                //           );
+                                //         }
+                                //
+                                //         if (snap.data == null) {
+                                //           return const Text("No Past Bookings");
+                                //         }
+                                //
+                                //         var doc = snap.data.docs;
+                                //
+                                //         return ListView.builder(
+                                //           physics:
+                                //               const NeverScrollableScrollPhysics(),
+                                //           shrinkWrap: true,
+                                //           itemCount: doc.length,
+                                //           itemBuilder: (context, index) {
+                                //             if (
+                                //                 // &&
+                                //                 doc[index]['booking_accepted'] ==
+                                //                     true
+                                //                 // && doc[index]["vendorId"]==gymId.toString()
+                                //                 ) {
+                                //               return PastBookingCard(
+                                //                 userID: doc[index]['userId'] ?? "",
+                                //                 userName:
+                                //                     doc[index]['user_name'] ?? "",
+                                //                 bookingID:
+                                //                     doc[index]['booking_id'] ?? "",
+                                //                 bookingPlan: doc[index]
+                                //                         ['booking_plan'] ??
+                                //                     "",
+                                //                 bookingPrice: doc[index]
+                                //                         ['booking_price'] ??
+                                //                     "",
+                                //                 bookingdate:DateFormat("dd,MMM,yyyy").format(doc[index]
+                                //            ['booking_date'].toDate()),
+                                //               );
+                                //             }
+                                //             return Container();
+                                //           },
+                                //         );
+                                //       },
+                                //     )
+                                //   ],
+                                // ),
                               ],
                             ),
                             Positioned(
@@ -496,7 +529,9 @@ class _HomeTabState extends State<HomeTab> {
                                             setState(() {
                                               gymId = id;
                                             });
-                                          await Get.offAll(() => HomeScreen());
+                                           InsightsTab().createState();
+
+                                           await Get.offAll(() => HomeScreen());
 
                                           // Navigator.pushReplacement(
                                           //     (context),
@@ -651,14 +686,19 @@ class _HomeTabState extends State<HomeTab> {
                 //   Navigator.pop(context);
                 // },
               ),
-              InkWell(
-                onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                    builder: ((context) => ResetPassScreen()))),
-                child: buildDrawerListItem(
-                  title: 'Change Password',
-                  iconData: 'lock',
-                ),
-              ),
+              // InkWell(
+              //   onTap: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //           builder: (context) => ContactUs(),
+              //         ));
+              //   },
+              //   child: buildDrawerListItem(
+              //     title: 'Change Password',
+              //     iconData: 'lock',
+              //   ),
+              // ),
               InkWell(
                   child: buildDrawerListItem(
                     title: 'Notifications',
@@ -704,7 +744,7 @@ class _HomeTabState extends State<HomeTab> {
               },
               child: const Text(
                 'Logout',
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),
               ),
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(

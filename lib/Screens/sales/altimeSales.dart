@@ -112,6 +112,7 @@ class _AllTimeSalesState extends State<AllTimeSales> {
                             onTap: () async {
                               // print("wewe");
                               await OrderDetails(
+
                                 userID: doc[index]['userId'],
                                 bookingID: doc[index]
                                 ['booking_id'],
@@ -120,6 +121,7 @@ class _AllTimeSalesState extends State<AllTimeSales> {
                               );
                             },
                             child: CardDetails(
+                              bookind_end: doc[index]['plan_end_duration'].toDate(),
                               userID:
                               doc[index]['userId'] ?? "",
                               userName:
@@ -131,7 +133,7 @@ class _AllTimeSalesState extends State<AllTimeSales> {
                               ['booking_plan'] ??
                                   "",
                               bookingPrice: double.parse(
-                                  doc[index]['booking_price']
+                                  doc[index]['grand_total']
                                       .toString()),
                               bookingdate: DateFormat(
                                   DateFormat.YEAR_MONTH_DAY)
@@ -140,24 +142,8 @@ class _AllTimeSalesState extends State<AllTimeSales> {
                                     .toDate(),
                                 // bookingsStatus: ,
                               ),
-                              tempYear:
-                              DateFormat(DateFormat.YEAR)
-                                  .format(
-                                doc[index]['booking_date']
-                                    .toDate(),
-                              ),
-                              tempDay:
-                              DateFormat(DateFormat.DAY)
-                                  .format(
-                                doc[index]['booking_date']
-                                    .toDate(),
-                              ),
-                              tempMonth: DateFormat(
-                                  DateFormat.NUM_MONTH)
-                                  .format(
-                                doc[index]['booking_date']
-                                    .toDate(),
-                              ),
+
+
                               booking_status: '${doc[index]['booking_status'].toString()}',
                             ),
                           );

@@ -115,7 +115,7 @@ class CollectCashPage extends StatelessWidget {
                   "booking_accepted": true,
                   "booking_status":"active"
                 });
-                Get.off(
+                Get.to(
                   OrderDetails(
                     chinki: true,
                     userID: userID,

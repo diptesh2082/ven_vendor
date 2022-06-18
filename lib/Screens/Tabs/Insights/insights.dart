@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:vyam_vandor/Screens/login_screen.dart';
 import 'package:vyam_vandor/sales/sales_7days.dart';
 import 'package:vyam_vandor/sales/sales_all_time.dart';
 
@@ -169,7 +170,7 @@ class _InsightsTabState extends State<InsightsTab> {
           title: GestureDetector(
             onTap: () {
               FirebaseAuth.instance.signOut();
-              Get.to(() => ResetPassScreen());
+              Get.to(() => LoginScreen());
             },
             child: Text(
               "Insights",

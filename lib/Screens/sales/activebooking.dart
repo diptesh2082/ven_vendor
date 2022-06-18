@@ -14,7 +14,8 @@ import 'package:vyam_vandor/widgets/card_details.dart';
 import '../order_details_screen.dart';
 
 class ActivBookings extends StatefulWidget {
-  const ActivBookings({Key? key}) : super(key: key);
+  final filter;
+  const ActivBookings({Key? key,required this.filter}) : super(key: key);
 
   @override
   State<ActivBookings> createState() => _ActivBookingsState();
@@ -95,6 +96,10 @@ class _ActivBookingsState extends State<ActivBookings> {
                         // // doc[index]["vendorId"] ==
                         // //     gymId.toString()
                         // )
+                        if((doc[index]['booking_date'].toDate().isAfter(widget.filter.start)   && doc[index]['booking_date'].toDate().isBefore(widget.filter.end))
+                            || doc[index]['booking_date'].toDate() == widget.filter.start
+                            || doc[index]['booking_date'].toDate() == widget.filter.end
+                        )
                         {
 
                           return GestureDetector(
@@ -109,6 +114,7 @@ class _ActivBookingsState extends State<ActivBookings> {
                               );
                             },
                             child: CardDetails(
+                              bookind_end: doc[index]['plan_end_duration'].toDate(),
                               userID:
                               doc[index]['userId'] ?? "",
                               userName:
@@ -120,33 +126,15 @@ class _ActivBookingsState extends State<ActivBookings> {
                               ['booking_plan'] ??
                                   "",
                               bookingPrice: double.parse(
-                                  doc[index]['booking_price']
+                                  doc[index]['grand_total']
                                       .toString()),
-                              bookingdate: DateFormat(
-                                  DateFormat.YEAR_MONTH_DAY)
+                              bookingdate: DateFormat("dd, MMM, yyyy")
                                   .format(
                                 doc[index]['booking_date']
                                     .toDate(),
                                 // bookingsStatus: ,
                               ),
-                              tempYear:
-                              DateFormat(DateFormat.YEAR)
-                                  .format(
-                                doc[index]['booking_date']
-                                    .toDate(),
-                              ),
-                              tempDay:
-                              DateFormat(DateFormat.DAY)
-                                  .format(
-                                doc[index]['booking_date']
-                                    .toDate(),
-                              ),
-                              tempMonth: DateFormat(
-                                  DateFormat.NUM_MONTH)
-                                  .format(
-                                doc[index]['booking_date']
-                                    .toDate(),
-                              ),
+
                               booking_status: '${doc[index]['booking_status'].toString()}',
                             ),
                           );

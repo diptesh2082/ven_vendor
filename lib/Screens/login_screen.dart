@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:vyam_vandor/Screens/reset_password.dart';
 import 'package:vyam_vandor/Services/firebase_auth_api.dart';
 import 'package:vyam_vandor/widgets/custom_text_field.dart';
 import 'package:vyam_vandor/widgets/primary_button.dart';
+
+import 'Tabs/support_page.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -81,23 +84,23 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(
                   height: 5,
                 ),
-                TextButton(
-                  child: Padding(
-                    padding: const EdgeInsets.only(right: 15.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: const [
-                        Text("Forgot password?",
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.grey,
-                            )),
-                      ],
-                    ),
-                  ),
-                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(
-                      builder: ((context) => ResetPassScreen()))),
-                ),
+                // TextButton(
+                //   child: Padding(
+                //     padding: const EdgeInsets.only(right: 15.0),
+                //     child: Row(
+                //       mainAxisAlignment: MainAxisAlignment.end,
+                //       children: const [
+                //         Text("Forgot password?",
+                //             style: TextStyle(
+                //               fontSize: 16,
+                //               color: Colors.grey,
+                //             )),
+                //       ],
+                //     ),
+                //   ),
+                //   onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                //       builder: ((context) => ResetPassScreen()))),
+                // ),
                 const SizedBox(
                   height: 55,
                 ),
@@ -106,7 +109,33 @@ class _LoginScreenState extends State<LoginScreen> {
                     _signIn();
                   },
                   'log in',
-                )
+                ),
+                const SizedBox(
+                  height: 150,
+                ),
+                TextButton(onPressed: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ContactUs(),
+                    ));}, child: Text('Support',
+                style: GoogleFonts.poppins(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w700
+                ),
+                ),)
+                // buildPrimaryButton(
+                //       () {
+                //
+                //           Navigator.push(
+                //               context,
+                //               MaterialPageRoute(
+                //                 builder: (context) => ContactUs(),
+                //               ));
+                //         },
+                //
+                //   'Support',
+                // )
               ],
             ),
           ),

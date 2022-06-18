@@ -10,7 +10,7 @@ class BookingCard extends StatefulWidget {
       this.bookingID = "",
       this.bookingdate = "",
       this.bookingPlan = "",
-      this.bookingPrice = 0.0,
+      this.bookingPrice = "0.0",
       this.userID = "",
       this.bookings,
       this.docs,
@@ -22,7 +22,7 @@ class BookingCard extends StatefulWidget {
   final String? bookingID;
   final String? bookingdate;
   final String? bookingPlan;
-  final double? bookingPrice;
+  final String? bookingPrice;
   final String? userID;
   final int? otp;
   final Map? bookings;
@@ -44,9 +44,10 @@ class _BookingCardState extends State<BookingCard> {
               bookingID: widget.bookingID,
               userID: widget.userID,
             ),
-            arguments: {
-              "booking_id": widget.bookingID,
-            });
+            // arguments: {
+            //   "booking_id": widget.bookingID,
+            // }
+            );
       },
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15),

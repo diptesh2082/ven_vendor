@@ -315,6 +315,7 @@ class _DaysSalesState extends State<DaysSales> {
                                     );
                                   },
                                   child: CardDetails(
+                                    bookind_end: doc[index]['plan_end_duration'].toDate(),
                                     userID:
                                     doc[index]['userId'] ?? "",
                                     userName:
@@ -326,7 +327,7 @@ class _DaysSalesState extends State<DaysSales> {
                                     ['booking_plan'] ??
                                         "",
                                     bookingPrice: double.parse(
-                                        doc[index]['booking_price']
+                                        doc[index]['grand_total']
                                             .toString()),
                                     bookingdate: DateFormat(
                                         DateFormat.YEAR_MONTH_DAY)
@@ -335,24 +336,7 @@ class _DaysSalesState extends State<DaysSales> {
                                           .toDate(),
                                       // bookingsStatus: ,
                                     ),
-                                    tempYear:
-                                    DateFormat(DateFormat.YEAR)
-                                        .format(
-                                      doc[index]['booking_date']
-                                          .toDate(),
-                                    ),
-                                    tempDay:
-                                    DateFormat(DateFormat.DAY)
-                                        .format(
-                                      doc[index]['booking_date']
-                                          .toDate(),
-                                    ),
-                                    tempMonth: DateFormat(
-                                        DateFormat.NUM_MONTH)
-                                        .format(
-                                      doc[index]['booking_date']
-                                          .toDate(),
-                                    ),
+
                                     booking_status: '${doc[index]['booking_status'].toString()}',
                                   ),
                                 );

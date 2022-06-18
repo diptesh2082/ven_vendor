@@ -235,7 +235,7 @@ class _ReviewState extends State<Review> {
                                         color: Colors.amber,
                                       );
                                     }),
-                                    rating: snapshot.data.get("rating"),
+                                    rating: double.parse(snapshot.data.get("rating").toString()),
                                     itemCount: 5,
                                     itemSize: 20.0,
                                     direction: Axis.horizontal,

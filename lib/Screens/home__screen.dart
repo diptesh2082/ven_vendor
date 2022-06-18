@@ -76,6 +76,10 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     // gymId=widget.email;
+    setState(() {
+      InsightsTab();
+    });
+    InsightsTab().createState();
     FirebaseMessagingApi().getDevicetoken();
     FirebaseMessagingApi().initialize(context);
     FirebaseMessagingApi().onbackgroundMessageClick(context);

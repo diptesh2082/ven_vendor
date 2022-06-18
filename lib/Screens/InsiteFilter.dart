@@ -32,8 +32,7 @@ class InsitesFilter extends StatelessWidget {
                   Column(
                     children: [
                       if (days == 7)
-                        Obx(
-                          () => GestureDetector(
+                        GestureDetector(
                             onTap: () {
                               Get.to(() => const Sales());
                             },
@@ -52,12 +51,12 @@ class InsitesFilter extends StatelessWidget {
                                     children: [
                                       Row(
                                         children: [
-                                          const Text(
-                                            "Sales",
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                            ),
-                                          ),
+                                          // const Text(
+                                          //   "Sales",
+                                          //   style: TextStyle(
+                                          //     color: Colors.white,
+                                          //   ),
+                                          // ),
                                           const Spacer(),
                                           // const SizedBox(
                                           //   width: 240,
@@ -67,12 +66,12 @@ class InsitesFilter extends StatelessWidget {
                                           const SizedBox(
                                             width: 2,
                                           ),
-                                          Text(
-                                            "${Get.find<BookingController>().booking.value}", //last ₹
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                            ),
-                                          ),
+                                          // Text(
+                                          //   "${Get.find<BookingController>().booking.value}", //last ₹
+                                          //   style: TextStyle(
+                                          //     color: Colors.white,
+                                          //   ),
+                                          // ),
                                         ],
                                       ),
                                       const SizedBox(
@@ -113,10 +112,9 @@ class InsitesFilter extends StatelessWidget {
                               ),
                             ),
                           ),
-                        ),
+
                       if (days == 30)
-                        Obx(
-                          () => GestureDetector(
+                         GestureDetector(
                             onTap: () {
                               Get.to(() => const Sales());
                             },
@@ -135,27 +133,27 @@ class InsitesFilter extends StatelessWidget {
                                     children: [
                                       Row(
                                         children: [
-                                          const Text(
-                                            "Sales",
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                            ),
-                                          ),
-                                          const Spacer(),
-                                          // const SizedBox(
-                                          //   width: 240,
+                                          // const Text(
+                                          //   "Sales",
+                                          //   style: TextStyle(
+                                          //     color: Colors.white,
+                                          //   ),
                                           // ),
-                                          // Image.asset(
-                                          //     "Assets/trend-down.png"),
-                                          const SizedBox(
-                                            width: 2,
-                                          ),
-                                          Text(
-                                            "${Get.find<BookingController>().booking.value}", //Last ₹
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                            ),
-                                          ),
+                                          // const Spacer(),
+                                          // // const SizedBox(
+                                          // //   width: 240,
+                                          // // ),
+                                          // // Image.asset(
+                                          // //     "Assets/trend-down.png"),
+                                          // const SizedBox(
+                                          //   width: 2,
+                                          // ),
+                                          // Text(
+                                          //   "${Get.find<BookingController>().booking.value}", //Last ₹
+                                          //   style: TextStyle(
+                                          //     color: Colors.white,
+                                          //   ),
+                                          // ),
                                         ],
                                       ),
                                       const SizedBox(
@@ -196,10 +194,9 @@ class InsitesFilter extends StatelessWidget {
                               ),
                             ),
                           ),
-                        ),
+
                       if (days == 15)
-                        Obx(
-                          () => GestureDetector(
+                        GestureDetector(
                             onTap: () {
                               Get.to(() => const Sales());
                             },
@@ -218,12 +215,12 @@ class InsitesFilter extends StatelessWidget {
                                     children: [
                                       Row(
                                         children: [
-                                          const Text(
-                                            "Sales",
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                            ),
-                                          ),
+                                          // const Text(
+                                          //   "Sales",
+                                          //   style: TextStyle(
+                                          //     color: Colors.white,
+                                          //   ),
+                                          // ),
                                           const Spacer(),
                                           // const SizedBox(
                                           //   width: 240,
@@ -233,12 +230,12 @@ class InsitesFilter extends StatelessWidget {
                                           const SizedBox(
                                             width: 2,
                                           ),
-                                          Text(
-                                            "${Get.find<BookingController>().booking.value}", //Last ₹
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                            ),
-                                          ),
+                                          // Text(
+                                          //   "${Get.find<BookingController>().booking.value}", //Last ₹
+                                          //   style: TextStyle(
+                                          //     color: Colors.white,
+                                          //   ),
+                                          // ),
                                         ],
                                       ),
                                       const SizedBox(
@@ -279,7 +276,7 @@ class InsitesFilter extends StatelessWidget {
                               ),
                             ),
                           ),
-                        ),
+
                     ],
                   ),
                   const Spacer(),
@@ -313,20 +310,20 @@ class InsitesFilter extends StatelessWidget {
                                             color: Colors.white,
                                           ),
                                         ),
-                                        const Spacer(),
-                                        // const SizedBox(
-                                        //   width: 220,
-                                        // ),
-                                        Image.asset("Assets/trend-up.png"),
+                                        // const Spacer(),
+                                        // // const SizedBox(
+                                        // //   width: 220,
+                                        // // ),
+                                        // Image.asset("Assets/trend-up.png"),
                                         const SizedBox(
                                           width: 2,
                                         ),
-                                        const Text(
-                                          "8",
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                          ),
-                                        ),
+                                        // const Text(
+                                        //   "8",
+                                        //   style: TextStyle(
+                                        //     color: Colors.white,
+                                        //   ),
+                                        // ),
                                       ],
                                     ),
                                     const SizedBox(
@@ -375,20 +372,20 @@ class InsitesFilter extends StatelessWidget {
                                             color: Colors.white,
                                           ),
                                         ),
-                                        const Spacer(),
+                                        // const Spacer(),
+                                        // // const SizedBox(
+                                        // //   width: 220,
+                                        // // ),
+                                        // Image.asset("Assets/trend-up.png"),
                                         // const SizedBox(
-                                        //   width: 220,
+                                        //   width: 2,
                                         // ),
-                                        Image.asset("Assets/trend-up.png"),
-                                        const SizedBox(
-                                          width: 2,
-                                        ),
-                                        const Text(
-                                          "8",
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                          ),
-                                        ),
+                                        // const Text(
+                                        //   "8",
+                                        //   style: TextStyle(
+                                        //     color: Colors.white,
+                                        //   ),
+                                        // ),
                                       ],
                                     ),
                                     const SizedBox(
@@ -437,20 +434,20 @@ class InsitesFilter extends StatelessWidget {
                                             color: Colors.white,
                                           ),
                                         ),
-                                        const Spacer(),
+                                        // const Spacer(),
+                                        // // const SizedBox(
+                                        // //   width: 220,
+                                        // // ),
+                                        // Image.asset("Assets/trend-up.png"),
                                         // const SizedBox(
-                                        //   width: 220,
+                                        //   width: 2,
                                         // ),
-                                        Image.asset("Assets/trend-up.png"),
-                                        const SizedBox(
-                                          width: 2,
-                                        ),
-                                        const Text(
-                                          "8",
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                          ),
-                                        ),
+                                        // const Text(
+                                        //   "8",
+                                        //   style: TextStyle(
+                                        //     color: Colors.white,
+                                        //   ),
+                                        // ),
                                       ],
                                     ),
                                     const SizedBox(

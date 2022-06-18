@@ -48,7 +48,7 @@ class _BookingScreenState extends State<BookingScreen> {
       backgroundColor: AppColors.backgroundColor,
       appBar: AppBar(
         title: const Text(
-          'Booking Summary',
+          'Booking Details',
           style: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.w600,
@@ -147,6 +147,7 @@ class _BookingScreenState extends State<BookingScreen> {
                                                 height: 130,
                                                 imageUrl: snapshot.data!.get(
                                                     'gym_details')["image"],
+                                                width: MediaQuery.of(context).size.width*.55,
                                               ),
                                             ],
                                           ),
@@ -160,8 +161,29 @@ class _BookingScreenState extends State<BookingScreen> {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           mainAxisAlignment:
-                                              MainAxisAlignment.center,
+                                              MainAxisAlignment.spaceEvenly,
                                           children: [
+                                            Row(
+                                            children: [
+                                              Text(
+                                                'Booking ID:- ',
+                                                style: GoogleFonts.poppins(
+                                                  fontSize: 14,
+                                                  fontWeight:
+                                                  FontWeight.w500,
+                                                ),
+                                              ),
+                                              Text(
+                                                '${snapshot.data!.get('id')}',
+                                                style: GoogleFonts.poppins(
+                                                    fontSize: 14,
+                                                    fontWeight:
+                                                    FontWeight.w600,
+                                                    color: Colors.amberAccent
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                             Text(
                                               '${snapshot.data!.get('gym_details')["name"] ?? ""}',
                                               style: GoogleFonts.poppins(
@@ -169,9 +191,23 @@ class _BookingScreenState extends State<BookingScreen> {
                                                 fontWeight: FontWeight.w600,
                                               ),
                                             ),
-                                            const SizedBox(
-                                              height: 15.0,
-                                            ),
+                                            // Text(
+                                            //   DateFormat("dd,MMMM,yyyy")
+                                            //       .format(snapshot.data!
+                                            //       .get('order_date')
+                                            //       .toDate()),
+                                            //   // snapshot.data!.get('booking_date').toString(),
+                                            //   // snapshot3.data
+                                            //   //     .get('gym_details')["branch"],
+                                            //   style: GoogleFonts.poppins(
+                                            //     fontSize: 14,
+                                            //     fontWeight: FontWeight.w400,
+                                            //   ),
+                                            // ),
+                                            // SizedBox(
+                                            //   height: 3.0,
+                                            // ),
+
                                             Row(
                                               children: [
                                                 Image.asset(
@@ -189,9 +225,9 @@ class _BookingScreenState extends State<BookingScreen> {
                                                 ),
                                               ],
                                             ),
-                                            const SizedBox(
-                                              height: 15.0,
-                                            ),
+                                            // const SizedBox(
+                                            //   height: 5.0,
+                                            // ),
                                             SingleChildScrollView(
                                               scrollDirection: Axis.horizontal,
                                               child: SizedBox(
@@ -252,7 +288,7 @@ class _BookingScreenState extends State<BookingScreen> {
                                       height: 5.0,
                                     ),
                                     Text(
-                                      'Pay Per Session',
+                                      '${snapshot.data!.get('booking_plan')=="pay per session"?snapshot.data!.get('booking_plan'):"Package"}',
                                       style: GoogleFonts.poppins(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w500,
@@ -297,8 +333,7 @@ class _BookingScreenState extends State<BookingScreen> {
                                       height: 5.0,
                                     ),
                                     Text(
-                                      '${snapshot.data
-                                          .get('totalDays').toString()} days',
+                                      snapshot.data!.get('booking_plan')=="pay per session"?'${snapshot.data.get('totalDays').toString()} days':snapshot.data!.get('booking_plan'),
                                       // DateFormat(DateFormat.YEAR_MONTH_DAY)
                                       //     .format(snapshot.data
                                       //         .get('booking_date')
@@ -388,7 +423,7 @@ class _BookingScreenState extends State<BookingScreen> {
                                 height: 3.0,
                               ),
                               Text(
-                                '\₹ ${snapshot.data.get('booking_price')}',
+                                '\₹ ${snapshot.data.get('total_price')}',
                                 style: GoogleFonts.poppins(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w700,
@@ -422,29 +457,29 @@ class _BookingScreenState extends State<BookingScreen> {
                             ],
                           ),
                           const SizedBox(
-                            height: 3.0,
+                            height: 2.0,
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'Taxes',
-                                style: GoogleFonts.poppins(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.black,
-                                ),
-                              ),
-                              Text(
-                                '\₹ ${snapshot.data.get('tax_pay')}',
-                                style: GoogleFonts.poppins(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w700,
-                                  color: Color(0xff3A3A3A),
-                                ),
-                              ),
-                            ],
-                          ),
+                          // Row(
+                          //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          //   children: [
+                          //     Text(
+                          //       'Taxes',
+                          //       style: GoogleFonts.poppins(
+                          //         fontSize: 16,
+                          //         fontWeight: FontWeight.w500,
+                          //         color: Colors.black,
+                          //       ),
+                          //     ),
+                          //     Text(
+                          //       '\₹ ${snapshot.data.get('tax_pay')}',
+                          //       style: GoogleFonts.poppins(
+                          //         fontSize: 16,
+                          //         fontWeight: FontWeight.w700,
+                          //         color: Color(0xff3A3A3A),
+                          //       ),
+                          //     ),
+                          //   ],
+                          // ),
                           //Taxes and charges
                           // Row(
                           //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -467,6 +502,9 @@ class _BookingScreenState extends State<BookingScreen> {
                           //     ),
                           //   ],
                           // ),
+                          Divider(
+                            thickness: .5,
+                          ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -496,7 +534,7 @@ class _BookingScreenState extends State<BookingScreen> {
                     ),
                     //Container For Customer Details
                     const SizedBox(
-                      height: 10.0,
+                      height: 14.0,
                     ),
                     Container(
                       decoration: BoxDecoration(
@@ -612,6 +650,8 @@ class _BookingScreenState extends State<BookingScreen> {
               Padding(
                 padding: const EdgeInsets.only(left: 8.0, right: 8),
                 child: TextFormField(
+                  maxLength: 4,
+                  keyboardType: TextInputType.number,
                   controller: _controller,
                   decoration: InputDecoration(
                     border: InputBorder.none,
@@ -644,14 +684,19 @@ class _BookingScreenState extends State<BookingScreen> {
                         FocusScope.of(context).unfocus();
                         if (int.parse(_controller!.text) == widget.otp) {
 //               print("The otp is Verified");
-                        print(widget.bookingID);
-                        Navigator.push(context, MaterialPageRoute(builder:(context)=>CollectCashPage(userID: widget.userID, bookingID: widget.bookingID, amount: amount, online: online,)));
-                          // Get.off(
-                          //   OrderDetails(
-                          //     userID: widget.userID,
-                          //     bookingID: widget.bookingID,
-                          //   ),
-                          // );
+                            print(widget.bookingID);
+                            Navigator.push(context, MaterialPageRoute(
+                                builder: (context) =>
+                                    CollectCashPage(userID: widget.userID,
+                                      bookingID: widget.bookingID,
+                                      amount: amount,
+                                      online: online,)));
+                            // Get.off(
+                            //   OrderDetails(
+                            //     userID: widget.userID,
+                            //     bookingID: widget.bookingID,
+                            //   ),
+                            // );
 
                         } else {
                           // print("Invalid OTP");

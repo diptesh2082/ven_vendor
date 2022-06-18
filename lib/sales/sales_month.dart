@@ -15,7 +15,8 @@ import '../Screens/login_screen.dart';
 import '../Screens/order_details_screen.dart';
 
 class MonthSales extends StatefulWidget {
-  const MonthSales({Key? key}) : super(key: key);
+  final filter;
+  const MonthSales({Key? key,required this.filter}) : super(key: key);
 
   @override
   State<MonthSales> createState() => _MonthSalesState();
@@ -96,6 +97,9 @@ class _MonthSalesState extends State<MonthSales> {
                         // // doc[index]["vendorId"] ==
                         // //     gymId.toString()
                         // )
+                        if((doc[index]['booking_date'].toDate().isAfter(widget.filter.start)   && doc[index]['booking_date'].toDate().isBefore(widget.filter.end))
+                            || doc[index]['booking_date'].toDate() == widget.filter.start
+                            || doc[index]['booking_date'].toDate() == widget.filter.end)
                         {
 
                           return GestureDetector(
@@ -110,6 +114,7 @@ class _MonthSalesState extends State<MonthSales> {
                               );
                             },
                             child: CardDetails(
+                              bookind_end: doc[index]['plan_end_duration'].toDate(),
                               userID:
                               doc[index]['userId'] ?? "",
                               userName:
@@ -121,7 +126,7 @@ class _MonthSalesState extends State<MonthSales> {
                               ['booking_plan'] ??
                                   "",
                               bookingPrice: double.parse(
-                                  doc[index]['booking_price']
+                                  doc[index]['grand_total']
                                       .toString()),
                               bookingdate: DateFormat(
                                   DateFormat.YEAR_MONTH_DAY)
@@ -130,24 +135,7 @@ class _MonthSalesState extends State<MonthSales> {
                                     .toDate(),
                                 // bookingsStatus: ,
                               ),
-                              tempYear:
-                              DateFormat(DateFormat.YEAR)
-                                  .format(
-                                doc[index]['booking_date']
-                                    .toDate(),
-                              ),
-                              tempDay:
-                              DateFormat(DateFormat.DAY)
-                                  .format(
-                                doc[index]['booking_date']
-                                    .toDate(),
-                              ),
-                              tempMonth: DateFormat(
-                                  DateFormat.NUM_MONTH)
-                                  .format(
-                                doc[index]['booking_date']
-                                    .toDate(),
-                              ),
+
                               booking_status: '${doc[index]['booking_status'].toString()}',
                             ),
                           );
