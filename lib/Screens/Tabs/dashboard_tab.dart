@@ -451,7 +451,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                                                             image: DecorationImage(
                                                                                 filterQuality: FilterQuality.medium,
                                                                                 image:
-                                                                                CachedNetworkImageProvider(trainerdoc[index]['images']),
+                                                                                CachedNetworkImageProvider(trainerdoc[index]['images'],maxHeight: 400,maxWidth: 400),
                                                                                 fit: BoxFit.cover)),
                                                                       ),
                                                                       SizedBox(

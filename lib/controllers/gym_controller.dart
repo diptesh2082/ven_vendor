@@ -34,3 +34,6 @@ class BookingController extends GetxController{
   // var sales
 
 }
+class SearchCon extends GetxController{
+  var search="".obs;
+}
