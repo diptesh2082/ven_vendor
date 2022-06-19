@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher_string.dart';
-import 'package:vyam_vandor/Screens/Tabs/Insights/days/allTime.dart';
 import 'package:vyam_vandor/Screens/Tabs/support_page.dart';
 import 'package:vyam_vandor/Screens/home__screen.dart';
 import 'package:vyam_vandor/Screens/login_screen.dart';
@@ -59,8 +58,6 @@ class _HomeTabState extends State<HomeTab> {
   void initState() {
     print("device gym id ${gymId}");
     getDevicetoken();
-
-    // print("device token ${device_token}");
     super.initState();
   }
 

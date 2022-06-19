@@ -120,8 +120,7 @@ class _ActivBookingsState extends State<ActivBookings> {
                               userName:
                               doc[index]['user_name'] ?? "",
                               bookingID: doc[index]
-                              ['booking_id'] ??
-                                  "",
+                              ['id'].toString() ,
                               bookingPlan: doc[index]
                               ['booking_plan'] ??
                                   "",

@@ -140,12 +140,12 @@ class _SearchItState extends State<SearchIt> {
                       .get('user_name')
                       .toString()
                       .toLowerCase()
-                      .contains(searchGymName.toString()) ||
+                      .contains(searchGymName.toString().toLowerCase()) ||
                   element
                       .get('id')
                       .toString()
                       .toLowerCase()
-                      .contains(searchGymName.toString());
+                      .contains(searchGymName.toString().toLowerCase());
             }).toList();
           }
           // if (searchGymName.length > 0) {

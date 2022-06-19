@@ -69,79 +69,120 @@ class _CardDetailsState extends State<CardDetails> {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15),
         margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-        height:98,
+        height:110,
         decoration: BoxDecoration(
             color: Colors.white, borderRadius: BorderRadius.circular(15.0)),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                // Text(
-                //   'Booking ID - ${widget.bookingID!}',
-                //   style:
-                //   const TextStyle(fontWeight: FontWeight.w400, fontSize: 10),
-                // ),
-                Text(
-                  widget.userName!,
-                  style:
-                  GoogleFonts.poppins(fontWeight: FontWeight.w600, fontSize: 14),
-                ),
-                Text(
-                  widget.bookingdate!,
-                  style:GoogleFonts.poppins(fontWeight: FontWeight.w500,fontSize: 12),
-                ),
-                Text(
-                  widget.bookingPlan!,
-                  style: GoogleFonts.poppins(fontWeight: FontWeight.w400,fontSize: 10,
-                  color: Colors.grey
-                  ),
-                ),
-              ],
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 0),
-                  child: Text(
-                    '\₹ ${widget.bookingPrice}',
-                    style: GoogleFonts.poppins(
-                        fontWeight: FontWeight.w600, fontSize: 14),
-                  ),
-                ),
-                // Text(
-                //   '${DateTime.now().difference(DateTime(int.parse(widget.tempYear), int.parse(widget.tempMonth), int.parse(widget.tempDay))).inDays} days remaining',
-                //   style:GoogleFonts.poppins(fontWeight: FontWeight.w500,fontSize: 14),
-                // ),
-                if(widget.booking_status.toString()=="active" && widget.bookind_end.difference(DateTime.now()).inDays >= 0  )
-                  Text(
-                    // "${widget.end_date.toDate()}",
-                    '${widget.bookind_end.difference(DateTime.now()).inDays} days remaining',
-                    style:GoogleFonts.poppins(fontWeight: FontWeight.w500),
-                  ),
-                if(widget.bookind_end.difference(DateTime.now()).inDays < 0 && widget.booking_status.toString()=="active")
-                  Text(
-                    // "${widget.end_date.toDate()}",
-                    'Booking Ended',
-                    style:GoogleFonts.poppins(fontWeight: FontWeight.w500),
-                  ),
-                Row(
-                  children:  [
-                    CircleAvatar(
-                      radius: 3,
-                      backgroundColor: widget.booking_status.toString()=="active" && widget.bookind_end.difference(DateTime.now()).inDays >= 0 ?Colors.green:Colors.amber,
+            SizedBox(
+              width: 120,
+              child: Material(
+                elevation: 3,
+                borderRadius: BorderRadius.circular(5),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 8.0,right: 0),
+                  child: Row(
+                    children: [
+                      Text(
+                        'Booking ID:- ',
+                        style: GoogleFonts.poppins(
+                          fontSize: 12,
+                          fontWeight:
+                          FontWeight.w500,
+                        ),
+                      ),
+                      Text(
+                        '${widget.bookingID}',
+                        style: GoogleFonts.poppins(
+                            fontSize: 12,
+                            fontWeight:
+                            FontWeight.w700,
+                            color: Colors.amberAccent
+                        ),
+                      ),
 
-                    ),
-                    SizedBox(
-                      width: 3.5,
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 2,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    // Text(
+                    //   'Booking ID - ${widget.bookingID!}',
+                    //   style:
+                    //   const TextStyle(fontWeight: FontWeight.w400, fontSize: 10),
+                    // ),
+                    Text(
+                      widget.userName!,
+                      style:
+                      GoogleFonts.poppins(fontWeight: FontWeight.w600, fontSize: 14),
                     ),
                     Text(
-                      '${widget.booking_status.toString()=="active" && widget.bookind_end.difference(DateTime.now()).inDays <= 0 ?"completed":widget.booking_status}',
-                      style: GoogleFonts.poppins(fontWeight: FontWeight.w400,fontSize: 10,color: Colors.grey),
+                      widget.bookingdate!,
+                      style:GoogleFonts.poppins(fontWeight: FontWeight.w500,fontSize: 12),
+                    ),
+                    Text(
+                      widget.bookingPlan!,
+                      style: GoogleFonts.poppins(fontWeight: FontWeight.w400,fontSize: 10,
+                      color: Colors.grey
+                      ),
+                    ),
+                  ],
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 0),
+                      child: Text(
+                        '\₹ ${widget.bookingPrice}',
+                        style: GoogleFonts.poppins(
+                            fontWeight: FontWeight.w600, fontSize: 14),
+                      ),
+                    ),
+                    // Text(
+                    //   '${DateTime.now().difference(DateTime(int.parse(widget.tempYear), int.parse(widget.tempMonth), int.parse(widget.tempDay))).inDays} days remaining',
+                    //   style:GoogleFonts.poppins(fontWeight: FontWeight.w500,fontSize: 14),
+                    // ),
+                    if(widget.booking_status.toString()=="active" && widget.bookind_end.difference(DateTime.now()).inDays >= 0  )
+                      Text(
+                        // "${widget.end_date.toDate()}",
+                        '${widget.bookind_end.difference(DateTime.now()).inDays} days remaining',
+                        style:GoogleFonts.poppins(fontWeight: FontWeight.w500),
+                      ),
+                    if(widget.bookind_end.difference(DateTime.now()).inDays < 0 && widget.booking_status.toString()=="active")
+                      Text(
+                        // "${widget.end_date.toDate()}",
+                        'Booking Ended',
+                        style:GoogleFonts.poppins(fontWeight: FontWeight.w500),
+                      ),
+                    Row(
+                      children:  [
+                        CircleAvatar(
+                          radius: 3,
+                          backgroundColor: widget.booking_status.toString()=="active" && widget.bookind_end.difference(DateTime.now()).inDays >= 0 ?Colors.green:Colors.amber,
+
+                        ),
+                        SizedBox(
+                          width: 3.5,
+                        ),
+                        Text(
+                          '${widget.booking_status.toString()=="active" && widget.bookind_end.difference(DateTime.now()).inDays <= 0 ?"completed":widget.booking_status}',
+                          style: GoogleFonts.poppins(fontWeight: FontWeight.w400,fontSize: 10,color: Colors.grey),
+                        ),
+                      ],
                     ),
                   ],
                 ),

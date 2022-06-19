@@ -12,7 +12,7 @@ class Amenites extends StatefulWidget {
 }
 
 class _AmenitesState extends State<Amenites> {
-  var documents;
+  var documents=[];
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -20,7 +20,7 @@ class _AmenitesState extends State<Amenites> {
       child: StreamBuilder(
         stream: FirebaseFirestore.instance
             .collection('amenities')
-            .where('amenity_id', whereIn: widget.amenites)
+            // .where('amenity_id', whereIn: widget.amenites)
             .snapshots(),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (!snapshot.hasData) {
@@ -30,7 +30,12 @@ class _AmenitesState extends State<Amenites> {
               ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
           }
-          documents = snapshot.data.docs;
+         var document = snapshot.data.docs;
+          document.forEach((event) {
+            if (widget.amenites.contains(event["amenity_id"])) {
+              documents.add(event);
+            }
+          });
           return documents.isNotEmpty
               ? ListView.separated(
               scrollDirection: Axis.horizontal,

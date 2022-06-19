@@ -51,25 +51,25 @@ class AllTimeState extends State<AllTime> {
           var booking_30=0.0;
           snapshot.docs.forEach((element) {
 
-            d = d + double.parse(element["booking_price"].toString());
+            d = d + double.parse(element["grand_total"].toString());
             if (element["payment_method"]=="offline"){
-              off_line_all=off_line_all+double.parse(element["booking_price"].toString());
+              off_line_all=off_line_all+double.parse(element["grand_total"].toString());
 
             }
             if( DateTime.now().difference(element["booking_date"].toDate()).inDays<=7  && element["payment_method"]=="offline"){
-              off_line_7=off_line_7+double.parse(element["booking_price"].toString());
+              off_line_7=off_line_7+double.parse(element["grand_total"].toString());
             }
             if( DateTime.now().difference(element["booking_date"].toDate()).inDays<=30  && element["payment_method"]=="offline"){
-              off_line_month=off_line_month+double.parse(element["booking_price"].toString());
+              off_line_month=off_line_month+double.parse(element["grand_total"].toString());
             }
             if (element["payment_method"]=="online"){
-              on_line_all=on_line_all+double.parse(element["booking_price"].toString());
+              on_line_all=on_line_all+double.parse(element["grand_total"].toString());
             }
             if (element["payment_method"]=="online" && DateTime.now().difference(element["booking_date"].toDate()).inDays<=7  ){
-              on_line_7=on_line_7+double.parse(element["booking_price"].toString());
+              on_line_7=on_line_7+double.parse(element["grand_total"].toString());
             }
             if (element["payment_method"]=="online" && DateTime.now().difference(element["booking_date"].toDate()).inDays<=30  ){
-              on_line_month=on_line_month+double.parse(element["booking_price"].toString());
+              on_line_month=on_line_month+double.parse(element["grand_total"].toString());
             }
             if( DateTime.now().difference(element["booking_date"].toDate()).inDays<=7 ){
               booking_7=booking_7+1.0;
@@ -296,20 +296,7 @@ class AllTimeState extends State<AllTime> {
                                                   ),
                                                 ),
                                                 const Spacer(),
-                                                // const SizedBox(
-                                                //   width: 220,
-                                                // ),
-                                                // Image.asset(
-                                                //     "Assets/trend-up.png"),
-                                                // const SizedBox(
-                                                //   width: 2,
-                                                // ),
-                                                // const Text(
-                                                //   "8",
-                                                //   style: TextStyle(
-                                                //     color: Colors.white,
-                                                //   ),
-                                                // ),
+
                                               ],
                                             ),
                                             const SizedBox(
