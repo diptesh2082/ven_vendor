@@ -148,6 +148,18 @@ class _SearchItState extends State<SearchIt> {
                       .contains(searchGymName.toString().toLowerCase());
             }).toList();
           }
+          if (doc.length ==0){
+            return Container(
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 26,
+                  ),
+                  Image.asset("Assets/Images/search_empty.png"),
+                ],
+              ),
+            );
+          }
           // if (searchGymName.length > 0) {
           //   doc = doc.where((element) {
           //     return element
