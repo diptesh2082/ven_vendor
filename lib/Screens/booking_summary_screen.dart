@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:vyam_vandor/Screens/collect_cash.dart';
 import 'package:vyam_vandor/Screens/order_details_screen.dart';
@@ -650,10 +651,12 @@ class _BookingScreenState extends State<BookingScreen> {
               Padding(
                 padding: const EdgeInsets.only(left: 8.0, right: 8),
                 child: TextFormField(
+
                   maxLength: 4,
                   keyboardType: TextInputType.number,
                   controller: _controller,
                   decoration: InputDecoration(
+                    counter: Offstage(),
                     border: InputBorder.none,
                     contentPadding: const EdgeInsets.symmetric(horizontal: 10),
                     hintText: 'Enter OTP',
