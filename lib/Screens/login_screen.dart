@@ -120,8 +120,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       builder: (context) => ContactUs(),
                     ));}, child: Text('Support',
                 style: GoogleFonts.poppins(
+                  color: Colors.black,
                   fontSize: 12,
                   fontWeight: FontWeight.w700
+
                 ),
                 ),)
                 // buildPrimaryButton(

@@ -189,76 +189,79 @@ class AllTimeState extends State<AllTime> {
                                 onTap: () {
                                   Get.to(() => const Sales());
                                 },
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(12),
-                                    color: HexColor("292F3D"),
-                                  ),
-                                  width: size.width * 0.45,
-                                  height: 290,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: ClipRRect(
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: [
-                                          Row(
-                                            children: [
-                                              // const Text(
-                                              //   "Sales",
-                                              //   style: TextStyle(
-                                              //     color: Colors.white,
-                                              //   ),
-                                              // ),
-                                              // const Spacer(),
-                                              // // const SizedBox(
-                                              // //   width: 240,
-                                              // // ),
-                                              // // Image.asset(
-                                              // //     "Assets/trend-down.png"),
-                                              // const SizedBox(
-                                              //   width: 2,
-                                              // ),
-                                              //  Text(
-                                              //   "${bookingController.booking.value}",
-                                              //   style: TextStyle(
-                                              //     color: Colors.white,
-                                              //   ),
-                                              // ),
-                                            ],
-                                          ),
-                                          const SizedBox(
-                                            height: 5,
-                                          ),
-                                          const Align(
-                                            alignment: Alignment.topLeft,
-                                            child: Text(
-                                              "Total sales",
-                                              style: TextStyle(
-                                                color: Colors.white,
+                                child: SingleChildScrollView(
+                                  scrollDirection: Axis.horizontal,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(12),
+                                      color: HexColor("292F3D"),
+                                    ),
+                                    width: size.width * 0.45,
+                                    height: 290,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: ClipRRect(
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Row(
+                                              children: [
+                                                // const Text(
+                                                //   "Sales",
+                                                //   style: TextStyle(
+                                                //     color: Colors.white,
+                                                //   ),
+                                                // ),
+                                                // const Spacer(),
+                                                // // const SizedBox(
+                                                // //   width: 240,
+                                                // // ),
+                                                // // Image.asset(
+                                                // //     "Assets/trend-down.png"),
+                                                // const SizedBox(
+                                                //   width: 2,
+                                                // ),
+                                                //  Text(
+                                                //   "${bookingController.booking.value}",
+                                                //   style: TextStyle(
+                                                //     color: Colors.white,
+                                                //   ),
+                                                // ),
+                                              ],
+                                            ),
+                                            const SizedBox(
+                                              height: 5,
+                                            ),
+                                            const Align(
+                                              alignment: Alignment.topLeft,
+                                              child: Text(
+                                                "Total sales",
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                ),
                                               ),
                                             ),
-                                          ),
-                                          const SizedBox(
-                                            height: 50,
-                                          ),
-                                          Text(
-                                            "₹${bookingController.total_sales.value.toString()}", // DATABASE CALLLING FOR TOTAL SALES VALUE
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 35,
+                                            const SizedBox(
+                                              height: 50,
                                             ),
-                                          ),
-                                          const SizedBox(
-                                            height: 54,
-                                          ),
-                                          Image.asset(
-                                            "Assets/Vector 7.png",
-                                            width: size.width * 0.4,
-                                            fit: BoxFit.fitWidth,
-                                          )
-                                        ],
+                                            Text(
+                                              "₹${bookingController.total_sales.value.toString()}", // DATABASE CALLLING FOR TOTAL SALES VALUE
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 30,
+                                              ),
+                                            ),
+                                            const SizedBox(
+                                              height: 54,
+                                            ),
+                                            Image.asset(
+                                              "Assets/Vector 7.png",
+                                              width: size.width * 0.4,
+                                              fit: BoxFit.fitWidth,
+                                            )
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),

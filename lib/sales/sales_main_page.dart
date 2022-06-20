@@ -87,6 +87,8 @@ class _TotalBookingsState extends State<TotalBookings> {
           currentDate: DateTime.now(),
           saveText: 'Done'
       );
+    if(x == null) return ;
+
       setState(()  {
         selectedType=selecetValue;
         selectDateTime=x;
