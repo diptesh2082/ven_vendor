@@ -114,6 +114,9 @@ class _MonthSalesState extends State<MonthSales> {
                               );
                             },
                             child: CardDetails(
+                              id: doc[index]
+                              ['id'] ??
+                                  "",
                               bookind_end: doc[index]['plan_end_duration'].toDate(),
                               userID:
                               doc[index]['userId'] ?? "",
