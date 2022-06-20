@@ -30,119 +30,138 @@ class OrderDetails extends StatefulWidget {
 }
 
 class _OrderDetailsState extends State<OrderDetails> {
-
-  makeSure2()async{
-    if (widget.chinki==true)
-    showDialog(context: context,
-      builder:(context)=> AlertDialog(
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(16))),
-        content: SizedBox(
-          height: 170,
-          width: 280,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                "Assets/Images/S.gif",
-                height: 70,
-                width: 70,
-              ),
-              // Text(
-              //   "Proceed payment in cash ?",
-              //   style: GoogleFonts.poppins(
-              //       fontSize: 15,
-              //       fontWeight: FontWeight.bold
-              //   ),
-              // ),
-
-              Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          left: 3, right: 3, top: 2, bottom: 2),
-                      child: Center(
-                        child: Text(
-                          "Booking activated !",
-                          style: GoogleFonts.poppins(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w500,
-                              color: HexColor("030202")),
-                        ),
-                      ),
-                    ),
-                    // Image.asset("assets/icons/icons8-approval.gif",
-                    //   height: 70,
-                    //   width: 70,
-                    // ),
-
-                    const SizedBox(width: 15),
-                    Container(
-                        height: 38,
-                        width: 90,
-                        decoration: BoxDecoration(
-                            color: HexColor("27AE60"),
-                            borderRadius: BorderRadius.circular(8)),
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                              left: 3, right: 3, top: 2, bottom: 2),
-                          child: Center(
-                            child: Text(
-                              "Proceed",
-                              style: GoogleFonts.poppins(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w700,
-                                  color: HexColor("030105")),
-                            ),
-                          ),
-                        )),
-                  ]),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  @override
-  void initState() {
-    Future.delayed(Duration.zero, () {
-      if (widget.chinki==true)
-      showDialog(context: context,
-        builder:(context)=> AlertDialog(
+  makeSure2() async {
+    if (widget.chinki == true)
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
           shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(16))),
           content: SizedBox(
-            height: 210,
-            width: 260,
+            height: 170,
+            width: 280,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(100),
-                  child: Image.asset(
-                    "Assets/Images/S.gif",
-                    height: 155,
-                    width: 200,
-                  ),
+                Image.asset(
+                  "Assets/Images/S.gif",
+                  height: 70,
+                  width: 70,
                 ),
-                Text(
-                  "Booking activated !",
-                  style: GoogleFonts.poppins(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w500,
-                      color: HexColor("030202")),
-                ),
+                // Text(
+                //   "Proceed payment in cash ?",
+                //   style: GoogleFonts.poppins(
+                //       fontSize: 15,
+                //       fontWeight: FontWeight.bold
+                //   ),
+                // ),
+
+                Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            left: 3, right: 3, top: 2, bottom: 2),
+                        child: Center(
+                          child: Text(
+                            "Booking activated !",
+                            style: GoogleFonts.poppins(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w500,
+                                color: HexColor("030202")),
+                          ),
+                        ),
+                      ),
+                      // Image.asset("assets/icons/icons8-approval.gif",
+                      //   height: 70,
+                      //   width: 70,
+                      // ),
+
+                      const SizedBox(width: 15),
+                      Container(
+                          height: 38,
+                          width: 90,
+                          decoration: BoxDecoration(
+                              color: HexColor("27AE60"),
+                              borderRadius: BorderRadius.circular(8)),
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                                left: 3, right: 3, top: 2, bottom: 2),
+                            child: Center(
+                              child: Text(
+                                "Proceed",
+                                style: GoogleFonts.poppins(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w700,
+                                    color: HexColor("030105")),
+                              ),
+                            ),
+                          )),
+                    ]),
               ],
             ),
           ),
         ),
       );
+  }
+
+  @override
+  void initState() {
+    Future.delayed(Duration.zero, () {
+      if (widget.chinki == true)
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(16))),
+            content: Stack(
+              children:[
+                SizedBox(
+                height: 250,
+                width: 260,
+                child: Column(
+                  // mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                        IconButton(
+                        onPressed: () {
+                          Get.back();
+                        },
+                        icon: Icon(
+                          Icons.clear,
+                          color: Colors.black,
+                        ),
+                          alignment: Alignment.topRight ,
+                      ),
+
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(100),
+                      child: Image.asset(
+                        "Assets/Images/S.gif",
+                        height: 145,
+                        width: 200,
+                      ),
+                    ),
+                    Text(
+                      "Booking activated !",
+                      style: GoogleFonts.poppins(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                          color: HexColor("030202")),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+            ),
+          ),
+        );
     });
 
+// <<<<<<< HEAD
 print(widget.bookingID);
+// =======
+// >>>>>>> 55f9a58534a618f2738861e94329785ab82bb49e
     super.initState();
   }
 
@@ -182,7 +201,6 @@ print(widget.bookingID);
           automaticallyImplyLeading: false,
         ),
         body: SingleChildScrollView(
-
           child: SafeArea(
             child: Padding(
               padding: const EdgeInsets.all(6.0),
@@ -199,7 +217,6 @@ print(widget.bookingID);
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return const Center(child: CircularProgressIndicator());
                     }
-
 
                     return Column(
                       children: [
@@ -235,196 +252,254 @@ print(widget.bookingID);
                                         padding: const EdgeInsets.symmetric(
                                             horizontal: 5.0),
                                         child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
                                           children: [
                                             Column(
-                                              mainAxisAlignment: MainAxisAlignment.start,
-                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
                                               children: [
                                                 Row(
                                                   children: [
-                                                    SizedBox(width: 2,),
+                                                    SizedBox(
+                                                      width: 2,
+                                                    ),
                                                     SizedBox(
                                                       child: Material(
                                                         elevation: 3,
-                                                        borderRadius: BorderRadius.circular(5),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5),
                                                         child: Padding(
-                                                          padding: const EdgeInsets.only(left: 8.0,right: 0),
+                                                          padding:
+                                                              const EdgeInsets
+                                                                      .only(
+                                                                  left: 8.0,
+                                                                  right: 0),
                                                           child: Row(
                                                             children: [
                                                               Text(
                                                                 'Booking ID:- ',
-                                                                style: GoogleFonts.poppins(
+                                                                style:
+                                                                    GoogleFonts
+                                                                        .poppins(
                                                                   fontSize: 14,
                                                                   fontWeight:
-                                                                  FontWeight.w500,
+                                                                      FontWeight
+                                                                          .w500,
                                                                 ),
                                                               ),
                                                               Text(
                                                                 '${snapshot.data!.get('id')}',
                                                                 style: GoogleFonts.poppins(
-                                                                    fontSize: 14,
+                                                                    fontSize:
+                                                                        14,
                                                                     fontWeight:
-                                                                    FontWeight.w600,
-                                                                    color: Colors.amberAccent
-                                                                ),
+                                                                        FontWeight
+                                                                            .w600,
+                                                                    color: Colors
+                                                                        .amberAccent),
                                                               ),
-
                                                             ],
                                                           ),
                                                         ),
                                                       ),
                                                       width: 127,
                                                     ),
-                                                     SizedBox(width: 8),
+                                                    SizedBox(width: 8),
                                                     Row(
                                                       children: [
-                                                        Text("Booking Date- ",
-                                                        style: GoogleFonts.poppins(
-                                                          fontWeight: FontWeight.w500,
-                                                          fontSize: 12
-                                                        ),
+                                                        Text(
+                                                          "Booking Date- ",
+                                                          style: GoogleFonts
+                                                              .poppins(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500,
+                                                                  fontSize: 12),
                                                         ),
                                                         Text(
-                                                          DateFormat("dd,MMMM,yyyy")
-                                                              .format(snapshot.data!
-                                                              .get('order_date')
-                                                              .toDate()),
+                                                          DateFormat(
+                                                                  "dd,MMMM,yyyy")
+                                                              .format(snapshot
+                                                                  .data!
+                                                                  .get(
+                                                                      'order_date')
+                                                                  .toDate()),
                                                           // snapshot.data!.get('booking_date').toString(),
                                                           // snapshot3.data
                                                           //     .get('gym_details')["branch"],
-                                                          style: GoogleFonts.poppins(
+                                                          style: GoogleFonts
+                                                              .poppins(
                                                             fontSize: 12,
-                                                            fontWeight: FontWeight.w500,
+                                                            fontWeight:
+                                                                FontWeight.w500,
                                                           ),
                                                         ),
                                                       ],
                                                     ),
                                                   ],
                                                 ),
-
                                                 SizedBox(
                                                   height: 10,
                                                 ),
                                                 Row(
-                                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                                  mainAxisAlignment:MainAxisAlignment.start,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.start,
                                                   children: [
                                                     ClipRRect(
                                                       borderRadius:
-                                                          BorderRadius.circular(15),
+                                                          BorderRadius.circular(
+                                                              15),
                                                       child: CachedNetworkImage(
-                                                        imageUrl: snapshot.data!.get(
-                                                            'gym_details')["image"],
+                                                        imageUrl: snapshot.data!
+                                                                .get(
+                                                                    'gym_details')[
+                                                            "image"],
                                                         fit: BoxFit.cover,
                                                         height: 140,
-                                                        width: MediaQuery.of(context).size.width*.46,
+                                                        width: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .width *
+                                                            .46,
                                                       ),
                                                     ),
                                                     SizedBox(width: 8),
                                                     Column(
                                                       crossAxisAlignment:
-                                                          CrossAxisAlignment.start,
+                                                          CrossAxisAlignment
+                                                              .start,
                                                       // mainAxisAlignment:
                                                       //     MainAxisAlignment.spaceAround,
                                                       children: [
-
                                                         const SizedBox(
                                                           height: 10.0,
                                                         ),
                                                         Text(
                                                           '${snapshot.data!.get('gym_details')["name"]}',
-                                                          style: GoogleFonts.poppins(
+                                                          style: GoogleFonts
+                                                              .poppins(
                                                             fontSize: 14,
-                                                            fontWeight: FontWeight.w700,
+                                                            fontWeight:
+                                                                FontWeight.w700,
                                                           ),
                                                         ),
-
                                                         const SizedBox(
                                                           height: 8.0,
                                                         ),
-
-
                                                         SizedBox(
-                                                          width: MediaQuery.of(context)
-                                                              .size
-                                                              .width *
+                                                          width: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .width *
                                                               0.44,
                                                           child: Text(
                                                             snapshot3.data
                                                                 .get('address'),
                                                             overflow:
-                                                            TextOverflow.ellipsis,
+                                                                TextOverflow
+                                                                    .ellipsis,
                                                             maxLines: 2,
-                                                            style: GoogleFonts.poppins(
+                                                            style: GoogleFonts
+                                                                .poppins(
                                                               fontSize: 12,
                                                               fontWeight:
-                                                              FontWeight.w500,
+                                                                  FontWeight
+                                                                      .w500,
                                                             ),
                                                           ),
                                                         ),
                                                         SizedBox(
                                                           height: 8,
                                                         ),
-                                                        if(snapshot.data!.get('booking_status').toLowerCase()=="upcoming")
+                                                        if (snapshot.data!
+                                                                .get(
+                                                                    'booking_status')
+                                                                .toLowerCase() ==
+                                                            "upcoming")
                                                           Row(
                                                             children: [
                                                               CircleAvatar(
                                                                 radius: 5,
                                                                 backgroundColor:
-                                                                Colors.amber,
+                                                                    Colors
+                                                                        .amber,
                                                               ),
                                                               SizedBox(
                                                                 width: 5,
                                                               ),
                                                               Text(
                                                                 ' ${snapshot.data!.get('booking_status')}',
-                                                                style: GoogleFonts.poppins(
+                                                                style:
+                                                                    GoogleFonts
+                                                                        .poppins(
                                                                   fontSize: 14,
                                                                   fontWeight:
-                                                                  FontWeight.w600,
+                                                                      FontWeight
+                                                                          .w600,
                                                                 ),
                                                               ),
                                                             ],
                                                           ),
-                                                        if(snapshot.data!.get('booking_status').toLowerCase()=="active")
+                                                        if (snapshot.data!
+                                                                .get(
+                                                                    'booking_status')
+                                                                .toLowerCase() ==
+                                                            "active")
                                                           Row(
                                                             children: [
                                                               CircleAvatar(
                                                                 radius: 5,
                                                                 backgroundColor:
-                                                                 Colors.green,
+                                                                    Colors
+                                                                        .green,
                                                               ),
                                                               SizedBox(
                                                                 width: 5,
                                                               ),
                                                               Text(
                                                                 ' ${snapshot.data!.get('booking_status').toString()}',
-                                                                style: GoogleFonts.poppins(
+                                                                style:
+                                                                    GoogleFonts
+                                                                        .poppins(
                                                                   fontSize: 14,
                                                                   fontWeight:
-                                                                  FontWeight.w600,
+                                                                      FontWeight
+                                                                          .w600,
                                                                 ),
                                                               ),
                                                             ],
                                                           ),
-                                                        if(snapshot.data!.get('booking_status').toLowerCase()=="completed")
+                                                        if (snapshot.data!
+                                                                .get(
+                                                                    'booking_status')
+                                                                .toLowerCase() ==
+                                                            "completed")
                                                           Row(
                                                             children: [
                                                               CircleAvatar(
                                                                 radius: 5,
                                                                 backgroundColor:
-                                                                Colors.amberAccent,
+                                                                    Colors
+                                                                        .amberAccent,
                                                               ),
                                                               SizedBox(
                                                                 width: 5,
                                                               ),
                                                               Text(
                                                                 ' ${snapshot.data!.get('booking_status')}',
-                                                                style: GoogleFonts.poppins(
+                                                                style:
+                                                                    GoogleFonts
+                                                                        .poppins(
                                                                   fontSize: 14,
                                                                   fontWeight:
-                                                                  FontWeight.w600,
+                                                                      FontWeight
+                                                                          .w600,
                                                                 ),
                                                               ),
                                                             ],
@@ -435,7 +510,6 @@ print(widget.bookingID);
                                                 ),
                                               ],
                                             ),
-
                                           ],
                                         ),
                                       );
@@ -471,7 +545,7 @@ print(widget.bookingID);
                                             height: 10.0,
                                           ),
                                           Text(
-                                            '${snapshot.data!.get('booking_plan')=="pay per session"?snapshot.data!.get('booking_plan'):"Package"}',
+                                            '${snapshot.data!.get('booking_plan') == "pay per session" ? snapshot.data!.get('booking_plan') : "Package"}',
                                             style: GoogleFonts.poppins(
                                               fontSize: 16,
                                               fontWeight: FontWeight.w500,
@@ -503,7 +577,8 @@ print(widget.bookingID);
                                         ],
                                       ),
                                       Column(
-                                        crossAxisAlignment: CrossAxisAlignment.end,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.end,
                                         children: [
                                           Text(
                                             '${snapshot.data.get('package_type')}',
@@ -516,7 +591,12 @@ print(widget.bookingID);
                                             height: 10.0,
                                           ),
                                           Text(
-                                            snapshot.data!.get('booking_plan')=="pay per session"?'${snapshot.data.get('totalDays').toString()} days':snapshot.data!.get('booking_plan'),
+                                            snapshot.data!
+                                                        .get('booking_plan') ==
+                                                    "pay per session"
+                                                ? '${snapshot.data.get('totalDays').toString()} days'
+                                                : snapshot.data!
+                                                    .get('booking_plan'),
                                             style: GoogleFonts.poppins(
                                               fontSize: 16,
                                               fontWeight: FontWeight.w500,
@@ -527,7 +607,8 @@ print(widget.bookingID);
                                             height: 7.0,
                                           ),
                                           Text(
-                                            DateFormat(DateFormat.YEAR_MONTH_DAY)
+                                            DateFormat(
+                                                    DateFormat.YEAR_MONTH_DAY)
                                                 .format(snapshot.data
                                                     .get('booking_date')
                                                     .toDate()),
@@ -541,7 +622,8 @@ print(widget.bookingID);
                                             height: 7.0,
                                           ),
                                           Text(
-                                            DateFormat(DateFormat.YEAR_MONTH_DAY)
+                                            DateFormat(
+                                                    DateFormat.YEAR_MONTH_DAY)
                                                 .format(snapshot.data
                                                     .get('plan_end_duration')
                                                     .toDate()),
@@ -618,11 +700,12 @@ print(widget.bookingID);
                                   return const Center(
                                       child: CircularProgressIndicator());
                                 }
-                                    print(widget.userID);
+                                print(widget.userID);
                                 return Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         'Customers Details',
@@ -693,11 +776,13 @@ print(widget.bookingID);
                                           Material(
                                             color: Colors.green,
                                             elevation: 3,
-                                            borderRadius: BorderRadius.circular(7),
+                                            borderRadius:
+                                                BorderRadius.circular(7),
                                             child: Padding(
-                                              padding: const EdgeInsets.only(left: 3.0,right: 5),
+                                              padding: const EdgeInsets.only(
+                                                  left: 3.0, right: 5),
                                               child: Text(
-                                                ' ${snapshot.data.get('payment_method')=="offline"?"Cash":"Online"}',
+                                                ' ${snapshot.data.get('payment_method') == "offline" ? "Cash" : "Online"}',
                                                 style: GoogleFonts.poppins(
                                                   fontSize: 14,
                                                   fontWeight: FontWeight.w400,
