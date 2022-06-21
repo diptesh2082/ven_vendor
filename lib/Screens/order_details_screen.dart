@@ -34,75 +34,101 @@ class _OrderDetailsState extends State<OrderDetails> {
     if (widget.chinki == true)
       showDialog(
         context: context,
-        builder: (context) => AlertDialog(
-          shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(16))),
-          content: SizedBox(
-            height: 170,
-            width: 280,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(
-                  "Assets/Images/S.gif",
-                  height: 70,
-                  width: 70,
-                ),
-                // Text(
-                //   "Proceed payment in cash ?",
-                //   style: GoogleFonts.poppins(
-                //       fontSize: 15,
-                //       fontWeight: FontWeight.bold
-                //   ),
-                // ),
-
-                Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            left: 3, right: 3, top: 2, bottom: 2),
-                        child: Center(
-                          child: Text(
-                            "Booking activated !",
-                            style: GoogleFonts.poppins(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w500,
-                                color: HexColor("030202")),
+        builder: (context) =>
+            AlertDialog(
+              shape: const RoundedRectangleBorder(
+                  borderRadius:
+                  BorderRadius.all(
+                      Radius.circular(
+                          16))),
+              content: SizedBox(
+                height: 200,
+                width: 100,
+                child: Stack(
+                  children: [
+                    Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            "Assets/Images/S.gif",
+                            height: 70,
+                            width: 70,
                           ),
-                        ),
-                      ),
-                      // Image.asset("assets/icons/icons8-approval.gif",
-                      //   height: 70,
-                      //   width: 70,
-                      // ),
+                          // Text(
+                          //   "Proceed payment in cash ?",
+                          //   style: GoogleFonts.poppins(
+                          //       fontSize: 15,
+                          //       fontWeight: FontWeight.bold
+                          //   ),
+                          // ),
 
-                      const SizedBox(width: 15),
-                      Container(
-                          height: 38,
-                          width: 90,
-                          decoration: BoxDecoration(
-                              color: HexColor("27AE60"),
-                              borderRadius: BorderRadius.circular(8)),
-                          child: Padding(
-                            padding: const EdgeInsets.only(
-                                left: 3, right: 3, top: 2, bottom: 2),
-                            child: Center(
-                              child: Text(
-                                "Proceed",
-                                style: GoogleFonts.poppins(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w700,
-                                    color: HexColor("030105")),
-                              ),
-                            ),
-                          )),
-                    ]),
-              ],
+                          Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 3, right: 3, top: 2, bottom: 2),
+                                  child: Center(
+                                    child: Text(
+                                      "Booking activated !",
+                                      style: GoogleFonts.poppins(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w500,
+                                          color: HexColor("030202")),
+                                    ),
+                                  ),
+                                ),
+                                // Image.asset("assets/icons/icons8-approval.gif",
+                                //   height: 70,
+                                //   width: 70,
+                                // ),
+
+                                const SizedBox(width: 15),
+                                Container(
+                                    height: 38,
+                                    width: 90,
+                                    decoration: BoxDecoration(
+                                        color: HexColor("27AE60"),
+                                        borderRadius: BorderRadius.circular(8)),
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 3, right: 3, top: 2, bottom: 2),
+                                      child: Center(
+                                        child: Text(
+                                          "Proceed",
+                                          style: GoogleFonts.poppins(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.w700,
+                                              color: HexColor("030105")),
+                                        ),
+                                      ),
+                                    )),
+                              ]),
+                        ],
+                      ),
+                    ),
+                    Positioned(
+                        top: 0,
+                        right: 0,
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.pop(
+                                context);
+                          },
+                          child: Icon(
+                            Icons
+                                .cancel_outlined,
+                            color: Colors
+                                .black87,
+                            size: 20,
+                          ),
+                        )),
+                  ],
+                ),
+              ),
             ),
-          ),
-        ),
       );
   }
 
@@ -118,21 +144,12 @@ class _OrderDetailsState extends State<OrderDetails> {
             content: Stack(
               children:[
                 SizedBox(
-                height: 250,
-                width: 260,
+                height: 210,
+                width: 240,
                 child: Column(
                   // mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                        IconButton(
-                        onPressed: () {
-                          Get.back();
-                        },
-                        icon: Icon(
-                          Icons.clear,
-                          color: Colors.black,
-                        ),
-                          alignment: Alignment.topRight ,
-                      ),
+
 
                     ClipRRect(
                       borderRadius: BorderRadius.circular(100),
@@ -152,12 +169,32 @@ class _OrderDetailsState extends State<OrderDetails> {
                   ],
                 ),
               ),
+                Positioned(
+                    top: 0,
+                    right: 0,
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.pop(
+                            context);
+                      },
+                      child: Icon(
+                        Icons
+                            .cancel_outlined,
+                        color: Colors
+                            .black87,
+                        size: 25,
+                      ),
+                    )),
             ],
             ),
           ),
         );
     });
 
+// <<<<<<< HEAD
+print(widget.bookingID);
+// =======
+// >>>>>>> 55f9a58534a618f2738861e94329785ab82bb49e
     super.initState();
   }
 

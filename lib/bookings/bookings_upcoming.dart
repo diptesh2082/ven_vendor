@@ -144,13 +144,16 @@ class _UpcomingBookingsState extends State<UpcomingBookings> {
 
                             },
                             child: CardDetails(
+                              id: doc[index]
+                              ['id'] ??
+                                  "",
                               bookind_end: doc[index]['plan_end_duration'].toDate(),
                               userID:
                               doc[index]['userId'] ?? "",
                               userName:
                               doc[index]['user_name'] ?? "",
                               bookingID: doc[index]
-                              ['id'].toString() ,
+                              ['booking_id'].toString() ,
                               bookingPlan: doc[index]
                               ['booking_plan'] ??
                                   "",

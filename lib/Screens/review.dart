@@ -668,7 +668,7 @@ class _ReviewState extends State<Review> {
                                               shape: BoxShape.circle,
 //border: Border.all(width: 1),
                                               image: DecorationImage(
-                                                  image: CachedNetworkImageProvider(document[index]["user"]["user_pic"]),
+                                                  image: CachedNetworkImageProvider(document[index]["user"]["user_pic"],maxHeight: 70,maxWidth: 70),
                                                   fit: BoxFit.cover)),
                                         ),
                                         title: Text(

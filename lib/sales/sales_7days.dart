@@ -337,7 +337,11 @@ class _DaysSalesState extends State<DaysSales> {
                                       // bookingsStatus: ,
                                     ),
 
+
                                     booking_status: '${doc[index]['booking_status'].toString()}',
+                                    id: doc[index]
+                                  ['id'] ??
+                                      "",
                                   ),
                                 );
                               }

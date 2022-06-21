@@ -14,7 +14,7 @@ class CardDetails extends StatefulWidget {
         required this.bookingPrice,
         required this.userID,
         required this.booking_status,
-        required this.bookind_end, this.otp})
+        required this.bookind_end, this.otp, required this.id})
       : super(key: key);
   final String? userName;
   final String? bookingID;
@@ -25,6 +25,7 @@ class CardDetails extends StatefulWidget {
   final String booking_status;
   final DateTime bookind_end;
   final otp;
+  final id;
 
   @override
   State<CardDetails> createState() => _CardDetailsState();
@@ -94,7 +95,7 @@ class _CardDetailsState extends State<CardDetails> {
                         ),
                       ),
                       Text(
-                        '${widget.bookingID}',
+                        '${widget.id}',
                         style: GoogleFonts.poppins(
                             fontSize: 12,
                             fontWeight:
