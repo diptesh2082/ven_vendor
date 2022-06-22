@@ -104,6 +104,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
             gym_images=snapshot.data["images"];
             gym_details=snapshot.data;
             amenites=snapshot.data["amenities"];
+            workout=snapshot.data["workouts"];
             if (amenites.isEmpty){
               amenites=[""];
             }

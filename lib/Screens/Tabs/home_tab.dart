@@ -131,7 +131,7 @@ class _HomeTabState extends State<HomeTab> {
                                     height: 80,
                                   ),
                                   //Upcoming Bookings Cards
-                                  if(Get.find<SearchCon>().search.value.isEmpty)
+                                  // if(Get.find<SearchCon>().search.value.isEmpty)
                                   ExpansionTile(
                                     textColor: Colors.purple,
                                     iconColor:Colors.purple,
@@ -255,7 +255,7 @@ class _HomeTabState extends State<HomeTab> {
                                   ),
 
                                   ///Active Booking Cards
-                                  // if(Get.find<SearchCon>().search.value.isEmpty)
+                                  if(Get.find<SearchCon>().search.value.isEmpty)
                                   ExpansionTile(
                                     textColor: Colors.purple,
                                     iconColor:Colors.purple,
