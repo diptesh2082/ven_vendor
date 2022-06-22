@@ -36,4 +36,5 @@ class BookingController extends GetxController{
 }
 class SearchCon extends GetxController{
   var search="".obs;
+  RxBool dot=false.obs;
 }
