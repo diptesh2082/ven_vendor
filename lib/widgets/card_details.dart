@@ -127,7 +127,7 @@ class _CardDetailsState extends State<CardDetails> {
                     Text(
                       widget.userName!,
                       style:
-                      GoogleFonts.poppins(fontWeight: FontWeight.w600, fontSize: 4),
+                      GoogleFonts.poppins(fontWeight: FontWeight.w600, fontSize: 14),
                     ),
                     Text(
                       widget.bookingdate!,
