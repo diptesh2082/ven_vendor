@@ -553,50 +553,50 @@ class _HomeTabState extends State<HomeTab> {
             showBranches = !showBranches;
           });
         },
-        child: Badge(
-          position: BadgePosition.bottomEnd(bottom: 8,end: 130),
-          badgeColor: showBranches==false && dot ==true ?Colors.red:Colors.white38,
-          elevation: (showBranches==false && dot ==true) ?2:0,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              SizedBox(
-                height: 15,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            SizedBox(
+              height: 15,
+            ),
+            Text(
+              gymname!,
+              style: const TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.w600,
+                fontSize: 16,
+                letterSpacing: 1,
               ),
-              Text(
-                gymname!,
-                style: const TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 16,
-                  letterSpacing: 1,
-                ),
-              ),
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left:0),
-                    child: Text(
-                      gymLocation!,
-                      style: GoogleFonts.poppins(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                        color: Color(0xffBDBDBD),
-                      ),
+            ),
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left:0),
+                  child: Text(
+                    gymLocation!,
+                    style: GoogleFonts.poppins(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xffBDBDBD),
                     ),
                   ),
-                  Icon(
+                ),
+                Badge(
+                  position: BadgePosition.topEnd(top: .5),
+                  badgeColor: showBranches==false && dot ==true ?Colors.red:Colors.white38,
+                  elevation: (showBranches==false && dot ==true) ?2:0,
+                  child: Icon(
                     !showBranches
                         ? Icons.keyboard_arrow_down
                         : Icons.keyboard_arrow_up,
                     color: const Color(0xff130F26),
                     size: 20,
-                  )
-                ],
-              ),
-            ],
-          ),
+                  ),
+                )
+              ],
+            ),
+          ],
         ),
       ),
       // bottom: PreferredSize(
