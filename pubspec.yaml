@@ -60,6 +60,7 @@ dependencies:
   auto_size_text: ^3.0.0
   location: ^4.2.0
   syncfusion_flutter_datepicker: ^20.1.47
+  badges: ^2.0.2
 
 
 

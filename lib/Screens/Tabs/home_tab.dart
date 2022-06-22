@@ -1,3 +1,4 @@
+import 'package:badges/badges.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -39,6 +40,7 @@ class _HomeTabState extends State<HomeTab> {
   var status = true;
   final GlobalKey<ScaffoldState> _drawerkey = GlobalKey();
   bool showBranches = false;
+  bool dot=false;
   final _auth = FirebaseAuth.instance;
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
   Future getDevicetoken() async {
@@ -445,39 +447,65 @@ class _HomeTabState extends State<HomeTab> {
                                           },
                                         );
                                       }
-                                      return ListTile(
-                                        onTap: () async {
-                                          print(snapshot.data.docs[index]
-                                              ["gym_id"]);
-                                          var id = await snapshot
-                                              .data.docs[index]["gym_id"];
-                                          print(id);
-                                          if (mounted)
-                                            setState(() {
-                                              gymId = id;
-                                            });
-                                           InsightsTab().createState();
+                                      return StreamBuilder<Object>(
+                                        stream:  FirebaseFirestore.instance
+                                            .collection('bookings')
+                                            .where("vendorId", isEqualTo:snapshot.data.docs[index]
+                                        ["gym_id"])
+                                            .where("booking_status", isEqualTo: "upcoming")
+                                            .snapshots(),
+                                        builder: (context,AsyncSnapshot snapshot1) {
+                                          if(snapshot1.connectionState==ConnectionState.waiting){
+                                            return Center(child: CircularProgressIndicator());
+                                          }
+                                          if(snapshot1.data!.docs.isNotEmpty){
 
-                                           await Get.offAll(() => HomeScreen());
+                                            dot=true;
+                                          }
 
-                                          // Navigator.pushReplacement(
-                                          //     (context),
-                                          //     MaterialPageRoute(
-                                          //         builder: (context) =>
-                                          //             HomeScreen()));
-                                          // Navigator.pop(context);
-                                        },
-                                        title: Text(
-                                          snapshot.data.docs[index]['name'],
-                                          style: const TextStyle(
-                                              color: Colors.black),
-                                        ),
-                                        subtitle: Text(
-                                          snapshot.data.docs[index]['landmark'],
-                                          style: const TextStyle(
-                                            color: Color(0xffBDBDBD),
-                                          ),
-                                        ),
+                                          return Badge(
+                                            elevation: snapshot1.data!.docs.isNotEmpty?2:0,
+                                            badgeColor: snapshot1.data!.docs.isNotEmpty?Colors.red:Colors.white,
+                                            position: BadgePosition.topEnd(
+                                              top: 10,
+                                              end: 20
+                                            ),
+                                            child: ListTile(
+                                              onTap: () async {
+                                                print(snapshot.data.docs[index]
+                                                    ["gym_id"]);
+                                                var id = await snapshot
+                                                    .data.docs[index]["gym_id"];
+                                                print(id);
+                                                if (mounted)
+                                                  setState(() {
+                                                    gymId = id;
+                                                  });
+                                                 InsightsTab().createState();
+
+                                                 await Get.offAll(() => HomeScreen());
+
+                                                // Navigator.pushReplacement(
+                                                //     (context),
+                                                //     MaterialPageRoute(
+                                                //         builder: (context) =>
+                                                //             HomeScreen()));
+                                                // Navigator.pop(context);
+                                              },
+                                              title: Text(
+                                                snapshot.data.docs[index]['name'],
+                                                style: const TextStyle(
+                                                    color: Colors.black),
+                                              ),
+                                              subtitle: Text(
+                                                snapshot.data.docs[index]['landmark'],
+                                                style: const TextStyle(
+                                                  color: Color(0xffBDBDBD),
+                                                ),
+                                              ),
+                                            ),
+                                          );
+                                        }
                                       );
                                     }),
                                     separatorBuilder: (context, index) =>
@@ -525,45 +553,50 @@ class _HomeTabState extends State<HomeTab> {
             showBranches = !showBranches;
           });
         },
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            SizedBox(
-              height: 15,
-            ),
-            Text(
-              gymname!,
-              style: const TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.w600,
-                fontSize: 16,
-                letterSpacing: 1,
+        child: Badge(
+          position: BadgePosition.bottomEnd(bottom: 8,end: 130),
+          badgeColor: showBranches==false && dot ==true ?Colors.red:Colors.white38,
+          elevation: (showBranches==false && dot ==true) ?2:0,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              SizedBox(
+                height: 15,
               ),
-            ),
-            Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left:0),
-                  child: Text(
-                    gymLocation!,
-                    style: GoogleFonts.poppins(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      color: Color(0xffBDBDBD),
+              Text(
+                gymname!,
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 16,
+                  letterSpacing: 1,
+                ),
+              ),
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left:0),
+                    child: Text(
+                      gymLocation!,
+                      style: GoogleFonts.poppins(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        color: Color(0xffBDBDBD),
+                      ),
                     ),
                   ),
-                ),
-                Icon(
-                  !showBranches
-                      ? Icons.keyboard_arrow_down
-                      : Icons.keyboard_arrow_up,
-                  color: const Color(0xff130F26),
-                  size: 20,
-                )
-              ],
-            ),
-          ],
+                  Icon(
+                    !showBranches
+                        ? Icons.keyboard_arrow_down
+                        : Icons.keyboard_arrow_up,
+                    color: const Color(0xff130F26),
+                    size: 20,
+                  )
+                ],
+              ),
+            ],
+          ),
         ),
       ),
       // bottom: PreferredSize(
