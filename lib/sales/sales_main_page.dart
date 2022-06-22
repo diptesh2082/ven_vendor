@@ -29,19 +29,22 @@ class _TotalBookingsState extends State<TotalBookings> {
    DateTime endDate = DateTime.now();
    DateTime startDate = DateTime.now();
 
-  DateTimeRange? showDemoDialog({BuildContext? context}) {
+  Future<DateTimeRange?> showDemoDialog({BuildContext? context}) async {
     showDialog<dynamic>(
       context: context!,
       builder: (BuildContext context) => CalendarPopupView(
         barrierDismissible: true,
-        minimumDate: DateTime.now(),
-        initialEndDate: endDate,
-        initialStartDate: startDate,
+        minimumDate: DateTime(DateTime.now().year - 5),
+        initialEndDate: DateTime.now(),
+        initialStartDate:  DateTime.now(),
         onApplyClick: (DateTime startData, DateTime endData) {
-          setState(() {
-            startDate = startData;
+          // setState(() {
+            startDate =  startData;
             endDate = endData;
-          });
+            print(".............??????????//////////////");
+            print(startDate);
+            print(endDate);
+          // });
         },
       ),
     );
@@ -70,6 +73,7 @@ class _TotalBookingsState extends State<TotalBookings> {
   ) ;
   String? _selectedDate;
   String? selectedType ="all";
+
   Future<void> dropDownPackage(String? selecetValue) async {
     if(selecetValue == "all"){
 
@@ -103,21 +107,24 @@ class _TotalBookingsState extends State<TotalBookings> {
       });
     }
     if(selecetValue == "custom"){
-      final DateTimeRange? x = showDemoDialog(context: context);
-    // final DateTimeRange?  x =await showDateRangePicker(context: context, firstDate: DateTime(2022 , 1), lastDate: DateTime(2030 , 12 ,31),
-    //       currentDate: DateTime.now(),
-    //       saveText: 'Done'
-    //   );
-    if(x == null) return ;
+
+    final DateTimeRange?  x =await showDateRangePicker(context: context, firstDate: DateTime(2022 , 1), lastDate: DateTime(2030 , 12 ,31),
+          currentDate: DateTime.now(),
+          saveText: 'Done'
+      );
+      // final DateTimeRange? x = await showDemoDialog(context: context);
 
       setState(()  {
+        // if(x == null) return ;
+
+        print("XXXXXXXXXXXXXX>??????????????>>>>>>>>>>>>>>>>");
         print(x);
         selectedType=selecetValue;
-        selectDateTime=x;
+        selectDateTime= x;
 
       });
-
     }
+
   }
 
   void selectionChanged(DateRangePickerSelectionChangedArgs args) {
