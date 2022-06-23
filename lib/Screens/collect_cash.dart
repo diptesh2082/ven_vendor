@@ -8,11 +8,15 @@ import '../Services/firebase_firestore_api.dart';
 import 'order_details_screen.dart';
 
 class CollectCashPage extends StatelessWidget {
-  const CollectCashPage({Key? key,required this.userID, required this.bookingID,required this.amount,required this.online}) : super(key: key);
+  const CollectCashPage({Key? key,required this.userID, required this.bookingID,required this.amount,required this.online,required this.ven_name,required this.ven_id, required this.user_name, required this.branch}) : super(key: key);
   final userID;
   final bookingID;
   final amount;
   final bool online;
+  final ven_name;
+  final ven_id;
+  final user_name;
+  final branch;
 
   @override
   Widget build(BuildContext context) {
@@ -114,6 +118,23 @@ class CollectCashPage extends StatelessWidget {
                     .update({
                   "booking_accepted": true,
                   "booking_status":"active"
+                }).then((value) async {
+                  await FirebaseFirestore.instance
+                      .collection("booking_notifications")
+                      .doc()
+                      .set({
+                    "title": "Booking Activated",
+                    "status":"active",
+                    // "payment_done": false,
+                    "user_id":userID,
+                    "user_name":user_name,
+                    "vendor_id":ven_id,
+                    "vendor_name":ven_name,
+                    "time_stamp":DateTime.now(),
+                    "booking_id":bookingID,
+                    "seen":false,
+                    "branch":branch
+                  });
                 });
                 Get.to(
                   OrderDetails(

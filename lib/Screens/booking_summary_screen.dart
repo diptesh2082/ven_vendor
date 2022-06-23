@@ -34,6 +34,11 @@ class BookingScreen extends StatefulWidget {
 class _BookingScreenState extends State<BookingScreen> {
   String amount="";
   bool online=false;
+  String? user_name;
+
+      String? branch;
+      String? ven_id;
+     String? ven_name;
   @override
   void initState() {
     print("The otp in booking screen is : ${widget.otp}");
@@ -560,6 +565,10 @@ class _BookingScreenState extends State<BookingScreen> {
                               return const Center(
                                   child: CircularProgressIndicator());
                             }
+                            user_name=snapshot2.data.get("user_name");
+                            branch=snapshot2.data.get("gym_details")["branch"];
+                            ven_id=snapshot2.data.get("gym_details")["vendorId"];
+                            ven_name=snapshot2.data.get("gym_details")["name"];
 
                             return Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -693,7 +702,7 @@ class _BookingScreenState extends State<BookingScreen> {
                                     CollectCashPage(userID: widget.userID,
                                       bookingID: widget.bookingID,
                                       amount: amount,
-                                      online: online,)));
+                                      online: online, user_name: user_name, branch: branch, ven_id: ven_id, ven_name: ven_name,)));
                             // Get.off(
                             //   OrderDetails(
                             //     userID: widget.userID,

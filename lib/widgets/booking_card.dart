@@ -136,12 +136,7 @@ class _BookingCardState extends State<BookingCard> {
                 ),
                 ElevatedButton(
                   onPressed: () async {
-                    // print("The otp for booking is : ${widget.bookingID}");
-                    print(widget.otp);
-                    print(widget.bookingID);
-                    print(widget.userID);
-                    print(widget.bookingPlan);
-                    print(widget.bookingdate);
+
 
                     Get.to(
                         () => BookingScreen(
