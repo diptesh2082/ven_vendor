@@ -70,7 +70,7 @@ class _CardDetailsState extends State<CardDetails> {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15),
         margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-        height:120,
+        height: 118 ,
         decoration: BoxDecoration(
             color: Colors.white, borderRadius: BorderRadius.circular(15.0)),
         child: Column(
