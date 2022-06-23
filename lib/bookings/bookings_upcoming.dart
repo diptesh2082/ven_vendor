@@ -168,7 +168,6 @@ class _UpcomingBookingsState extends State<UpcomingBookings> {
                                 // bookingsStatus: ,
                               ),
                               otp:  int.parse(doc[index]['otp_pass'].toString()),
-
                               booking_status: '${doc[index]['booking_status'].toString()}',
                             ),
                           );

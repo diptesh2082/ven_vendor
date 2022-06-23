@@ -10,6 +10,7 @@ import 'package:vyam_vandor/Services/firebase_firestore_api.dart';
 import 'package:vyam_vandor/controllers/gym_controller.dart';
 import 'package:vyam_vandor/sales/sales_main_page.dart';
 
+import '../../../calendar_popup_view.dart';
 import '../../../review.dart';
 import '../../../sales/Sales.dart';
 import '../payment_history.dart';
@@ -25,6 +26,8 @@ class AllTime extends StatefulWidget {
 }
 
 class AllTimeState extends State<AllTime> {
+  DateTime startDate = DateTime.now();
+  DateTime endDate = DateTime.now().add(const Duration(days: 5));
   final _auth = FirebaseAuth.instance;
   String totalBooking = '0';
   // String totalSales = '0';
@@ -422,6 +425,7 @@ class AllTimeState extends State<AllTime> {
 
     );
   }
+
 }
 
 class ReviewsBox extends StatelessWidget {
