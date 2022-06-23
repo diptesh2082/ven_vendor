@@ -15,6 +15,7 @@ import 'package:vyam_vandor/sales/sales_all_time.dart';
 import 'package:vyam_vandor/sales/sales_month.dart';
 
 
+import '../Screens/calendar_popup_view.dart';
 import '../bookings/bookings_upcoming.dart';
 
 class TotalBookings extends StatefulWidget {
@@ -25,6 +26,30 @@ class TotalBookings extends StatefulWidget {
 }
 
 class _TotalBookingsState extends State<TotalBookings> {
+   DateTime endDate = DateTime.now();
+   DateTime startDate = DateTime.now();
+
+  Future<DateTimeRange?> showDemoDialog({BuildContext? context}) async {
+    showDialog<dynamic>(
+      context: context!,
+      builder: (BuildContext context) => CalendarPopupView(
+        barrierDismissible: true,
+        minimumDate: DateTime(DateTime.now().year - 5),
+        initialEndDate: DateTime.now(),
+        initialStartDate:  DateTime.now(),
+        onApplyClick: (DateTime startData, DateTime endData) {
+          // setState(() {
+            startDate =  startData;
+            endDate = endData;
+            print(".............??????????//////////////");
+            print(startDate);
+            print(endDate);
+          // });
+        },
+      ),
+    );
+    return DateTimeRange(start: startDate, end: endDate);
+  }
   // DateTime _startDate = DateTime.now();
   // DateTime _endDate = DateTime.now().add(Duration(days: 7));
   //
@@ -47,9 +72,8 @@ class _TotalBookingsState extends State<TotalBookings> {
     end:DateTime(2030),
   ) ;
   String? _selectedDate;
-
-  DateTime? endDate;
   String? selectedType ="all";
+
   Future<void> dropDownPackage(String? selecetValue) async {
     if(selecetValue == "all"){
 
@@ -83,19 +107,24 @@ class _TotalBookingsState extends State<TotalBookings> {
       });
     }
     if(selecetValue == "custom"){
+
     final DateTimeRange?  x =await showDateRangePicker(context: context, firstDate: DateTime(2022 , 1), lastDate: DateTime(2030 , 12 ,31),
           currentDate: DateTime.now(),
           saveText: 'Done'
       );
-    if(x == null) return ;
+      // final DateTimeRange? x = await showDemoDialog(context: context);
 
       setState(()  {
+        // if(x == null) return ;
+
+        print("XXXXXXXXXXXXXX>??????????????>>>>>>>>>>>>>>>>");
+        print(x);
         selectedType=selecetValue;
-        selectDateTime=x;
+        selectDateTime= x;
 
       });
-
     }
+
   }
 
   void selectionChanged(DateRangePickerSelectionChangedArgs args) {
@@ -167,20 +196,20 @@ class _TotalBookingsState extends State<TotalBookings> {
     start: DateTime.utc(DateTime.now().year,DateTime.now().month,DateTime.now().day-60),
     end:DateTime.utc(DateTime.now().year,DateTime.now().month,DateTime.now().day+60),
   ) ;
-  void _show()async
-  {
-    final DateTimeRange? result = await showDateRangePicker(context: context, firstDate: DateTime(2022 , 1), lastDate: DateTime(2030 , 12 ,31),
-        currentDate: DateTime.now(),
-        saveText: 'Done'
-    );
-    if(result != null)
-    {
-      print(result.start.toString());
-      setState(() {
-        _selectDateTime = result;
-      });
-    }
-  }
+  // void _show()async
+  // {
+  //   final DateTimeRange? result = await showDateRangePicker(context: context, firstDate: DateTime(2022 , 1), lastDate: DateTime(2030 , 12 ,31),
+  //       currentDate: DateTime.now(),
+  //       saveText: 'Done'
+  //   );
+  //   if(result != null)
+  //   {
+  //     print(result.start.toString());
+  //     setState(() {
+  //       _selectDateTime = result;
+  //     });
+  //   }
+  // }
 
   final Color _maleColor = HexColor("292F3D");
   @override

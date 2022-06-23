@@ -70,7 +70,7 @@ class _CardDetailsState extends State<CardDetails> {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15),
         margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-        height:110,
+        height:120,
         decoration: BoxDecoration(
             color: Colors.white, borderRadius: BorderRadius.circular(15.0)),
         child: Column(
@@ -127,7 +127,7 @@ class _CardDetailsState extends State<CardDetails> {
                     Text(
                       widget.userName!,
                       style:
-                      GoogleFonts.poppins(fontWeight: FontWeight.w600, fontSize: 4),
+                      GoogleFonts.poppins(fontWeight: FontWeight.w600, fontSize: 14),
                     ),
                     Text(
                       widget.bookingdate!,
