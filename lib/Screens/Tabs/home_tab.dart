@@ -128,10 +128,14 @@ class _HomeTabState extends State<HomeTab> {
                                 //mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   const SizedBox(
-                                    height: 80,
+                                    height: 16,
+                                  ),
+                                  SearchIt(),
+                                  const SizedBox(
+                                    height: 16,
                                   ),
                                   //Upcoming Bookings Cards
-                                  // if(Get.find<SearchCon>().search.value.isEmpty)
+                                  if(Get.find<SearchCon>().search.value.isEmpty)
                                   ExpansionTile(
                                     textColor: Colors.purple,
                                     iconColor:Colors.purple,
@@ -353,9 +357,9 @@ class _HomeTabState extends State<HomeTab> {
                                 ],
                               ),
                             ),
-                            Positioned(
-                                top: 16,
-                                child: SearchIt())
+                            // Positioned(
+                            //     top: 16,
+                            //     child: SearchIt())
                           ],
                           alignment: Alignment.center,
 
