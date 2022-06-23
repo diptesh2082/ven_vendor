@@ -121,6 +121,15 @@ class _ContactUsState extends State<ContactUs> {
                     ),
                   ),
                   ListTile(
+                    onTap: () async {
+                      final url = "https:${snapshot.data.get("website")}";
+                      if (await canLaunch(url)) {
+                        await launch(
+                          url,
+                          forceSafariVC: false,
+                        );
+                      }
+                    },
                     leading: Icon(
                       FontAwesomeIcons.earthAmericas,
                       color: Color(0xff292D32),
