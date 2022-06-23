@@ -158,7 +158,7 @@ class _HomeTabState extends State<HomeTab> {
                                               child: CircularProgressIndicator(),
                                             );
                                           }
-
+                                          //
                                           if (snap.data == null) {
                                             return Center(
                                               child: Image.asset(
@@ -282,7 +282,13 @@ class _HomeTabState extends State<HomeTab> {
                                             );
                                           }
                                           if (snap.data == null) {
-                                            return const Text("No Active Bookings");
+                                            return  Center(
+                                              child: Image.asset(
+                                                "Assets/Images/BOOKING_EMPTY .png",
+                                                height: MediaQuery.of(context).size.height*.45,
+
+                                              ),
+                                            );
 
                                           }
                                           if (snap.data.docs.isEmpty){
