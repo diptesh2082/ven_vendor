@@ -108,7 +108,7 @@ class _HomeTabState extends State<HomeTab> {
                   appBar: buildAppBar(
                     context,
                     isGymOpened: snapshot.data!.get("gym_status"),
-                    gymLocation: snapshot.data!.get("landmark"),
+                    gymLocation: snapshot.data!.get("branch"),
                     gymname: snapshot.data!.get("name"),
                     leadingCallback: () {
                       if (showBranches == false) {
@@ -502,7 +502,7 @@ class _HomeTabState extends State<HomeTab> {
                                                     color: Colors.black),
                                               ),
                                               subtitle: Text(
-                                                snapshot.data.docs[index]['landmark'],
+                                                snapshot.data.docs[index]['branch'],
                                                 style: const TextStyle(
                                                   color: Color(0xffBDBDBD),
                                                 ),

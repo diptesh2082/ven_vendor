@@ -72,7 +72,7 @@ class _UpcomingBookingsState extends State<UpcomingBookings> {
                       .collection('bookings')
                       .where("vendorId",isEqualTo: gymId)
                       .orderBy("booking_date",descending: true)
-                      .where("booking_status".toLowerCase(),whereIn: ["active","upcoming","completed","canceled"])
+                      .where("booking_status".toLowerCase(),whereIn: ["active","upcoming","completed","cancelled"])
                       .snapshots(),
                   builder: (BuildContext context,
                       AsyncSnapshot snap) {

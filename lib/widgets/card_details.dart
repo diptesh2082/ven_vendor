@@ -173,13 +173,13 @@ class _CardDetailsState extends State<CardDetails> {
                       children:  [
                         CircleAvatar(
                           radius: 3,
-                          backgroundColor: widget.booking_status.toString()=="active" && widget.bookind_end.difference(DateTime.now()).inDays >= 0 ?Colors.green: widget.booking_status.toString()=="completed"?Colors.purple: widget.booking_status.toString()=="upcoming"?Colors.amber:Colors.red,
+                          backgroundColor: widget.booking_status.toString()=="active"  ?Colors.green: widget.booking_status.toString()=="completed"?Colors.purple: widget.booking_status.toString()=="upcoming"?Colors.amber:Colors.red,
                         ),
                         SizedBox(
                           width: 3.5,
                         ),
                         Text(
-                          '${widget.booking_status.toString()=="active" && widget.bookind_end.difference(DateTime.now()).inDays <= 0 ?"completed":widget.booking_status}',
+                          '${widget.booking_status.toString()}',
                           style: GoogleFonts.poppins(fontWeight: FontWeight.w400,fontSize: 10,color: Colors.grey),
                         ),
                       ],
