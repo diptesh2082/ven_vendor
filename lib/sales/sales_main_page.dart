@@ -26,8 +26,8 @@ class TotalBookings extends StatefulWidget {
 }
 
 class _TotalBookingsState extends State<TotalBookings> {
-   DateTime endDate = DateTime.now();
-   DateTime startDate = DateTime.now();
+  DateTime endDate = DateTime.now();
+  DateTime startDate = DateTime.now();
 
   Future<DateTimeRange?> showDemoDialog({BuildContext? context}) async {
     showDialog<dynamic>(
@@ -39,11 +39,11 @@ class _TotalBookingsState extends State<TotalBookings> {
         initialStartDate:  DateTime.now(),
         onApplyClick: (DateTime startData, DateTime endData) {
           // setState(() {
-            startDate =  startData;
-            endDate = endData;
-            print(".............??????????//////////////");
-            print(startDate);
-            print(endDate);
+          startDate =  startData;
+          endDate = endData;
+          print(".............??????????//////////////");
+          print(startDate);
+          print(endDate);
           // });
         },
       ),
@@ -108,11 +108,15 @@ class _TotalBookingsState extends State<TotalBookings> {
     }
     if(selecetValue == "custom"){
 
-    final DateTimeRange?  x =await showDateRangePicker(context: context, firstDate: DateTime(2022 , 1), lastDate: DateTime(2030 , 12 ,31),
+      final DateTimeRange?  x =await showDateRangePicker(context: context, firstDate: DateTime(2022 , 1), lastDate: DateTime(2030 , 12 ,31),
           currentDate: DateTime.now(),
           saveText: 'Done'
       );
+// <<<<<<< someshwar
     if(x == null) return ;
+// =======
+//       if(x == null) return ;
+// >>>>>>> master
       // final DateTimeRange? x = await showDemoDialog(context: context);
 
       setState(()  {
@@ -142,54 +146,54 @@ class _TotalBookingsState extends State<TotalBookings> {
     DateTime sDate = args.value.startDate;
     DateTime eDate = args.value.endDate;
 
-        // setState((){
-        //     startDate = sDate;
-        //     endDate = eDate;
-        //     range=endDate?.difference(startDate!).inDays.toString();
+    // setState((){
+    //     startDate = sDate;
+    //     endDate = eDate;
+    //     range=endDate?.difference(startDate!).inDays.toString();
 
-            // print(startDate);
-            print(endDate);
-        // }
-        // );
+    // print(startDate);
+    print(endDate);
+    // }
+    // );
   }
   // void getDay()async{
   //   _show();
   //
   // }
 
- //  Future dateRange()async{
- //
- //    DateTimeRange? newDateRaange = await showDateRangePicker(
- //        context: context,
- //        firstDate: DateTime.utc(DateTime.now().year,DateTime.now().month,DateTime.now().day-60),
- //        lastDate: DateTime.utc(DateTime.now().year,DateTime.now().month,DateTime.now().day+60),)
- //
- //  }
- //  DateTimeRange initialDateRange= DateTimeRange(
- //    start: DateTime.utc(DateTime.now().year,DateTime.now().month,DateTime.now().day-60),
- //    end:DateTime.utc(DateTime.now().year,DateTime.now().month,DateTime.now().day+60),
- //  ) ;
- // showRange() async {
- //
- //
- //   // final new_date_range= await ();
- //   // return startDate;
- //    // );
- //  }
- //  void _show()async
- //  {
- //    final DateTimeRange? result = await showDateRangePicker(context: context, firstDate: DateTime(2022 , 1), lastDate: DateTime(2030 , 12 ,31),
- //        currentDate: DateTime.now(),
- //        saveText: 'Done'
- //    );
- //    if(result != null)
- //    {
- //      print(result.start.toString());
- //      setState(() {
- //        _selectDateTime = result;
- //      });
- //    }
- //  }
+  //  Future dateRange()async{
+  //
+  //    DateTimeRange? newDateRaange = await showDateRangePicker(
+  //        context: context,
+  //        firstDate: DateTime.utc(DateTime.now().year,DateTime.now().month,DateTime.now().day-60),
+  //        lastDate: DateTime.utc(DateTime.now().year,DateTime.now().month,DateTime.now().day+60),)
+  //
+  //  }
+  //  DateTimeRange initialDateRange= DateTimeRange(
+  //    start: DateTime.utc(DateTime.now().year,DateTime.now().month,DateTime.now().day-60),
+  //    end:DateTime.utc(DateTime.now().year,DateTime.now().month,DateTime.now().day+60),
+  //  ) ;
+  // showRange() async {
+  //
+  //
+  //   // final new_date_range= await ();
+  //   // return startDate;
+  //    // );
+  //  }
+  //  void _show()async
+  //  {
+  //    final DateTimeRange? result = await showDateRangePicker(context: context, firstDate: DateTime(2022 , 1), lastDate: DateTime(2030 , 12 ,31),
+  //        currentDate: DateTime.now(),
+  //        saveText: 'Done'
+  //    );
+  //    if(result != null)
+  //    {
+  //      print(result.start.toString());
+  //      setState(() {
+  //        _selectDateTime = result;
+  //      });
+  //    }
+  //  }
   DateTimeRange _selectDateTime= DateTimeRange(
     start: DateTime.utc(DateTime.now().year,DateTime.now().month,DateTime.now().day-60),
     end:DateTime.utc(DateTime.now().year,DateTime.now().month,DateTime.now().day+60),
@@ -280,22 +284,22 @@ class _TotalBookingsState extends State<TotalBookings> {
                           ),),value: "30",),
                           DropdownMenuItem(
                               child:
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.calendar_today,
-                                color: Colors.black87,
-                                size: 12,
-                              ),
-                              Text("custom",
-                                textAlign: TextAlign.start,
-                                style: GoogleFonts.poppins(
-                              fontSize: 12,
-                              color: Colors.black87,
-                              fontWeight: FontWeight.w400
-                              ),),
-                            ],
-                          ), value: "custom"),
+                              Row(
+                                children: [
+                                  Icon(
+                                    Icons.calendar_today,
+                                    color: Colors.black87,
+                                    size: 12,
+                                  ),
+                                  Text("custom",
+                                    textAlign: TextAlign.start,
+                                    style: GoogleFonts.poppins(
+                                        fontSize: 12,
+                                        color: Colors.black87,
+                                        fontWeight: FontWeight.w400
+                                    ),),
+                                ],
+                              ), value: "custom"),
                         ], onChanged: dropDownPackage),
                   ],
                 ),
@@ -350,28 +354,28 @@ class _TotalBookingsState extends State<TotalBookings> {
                   ),
                 ),
 
-          // SizedBox(
-          //   width: 100,
-          //   child: DropdownButton(
-          //         iconSize: 15,
-          //         elevation: 8,
-          //           hint: Text("Filter",
-          //             textAlign: TextAlign.center,
-          //             style: GoogleFonts.poppins(
-          //             fontSize: 12,
-          //             fontWeight: FontWeight.w400
-          //           ),),
-          //           items:  [
-          //             DropdownMenuItem(child: Text("pay per ses",style: GoogleFonts.poppins(
-          //                 fontSize: 12,
-          //                 fontWeight: FontWeight.w400
-          //             ),),value: "pay per session",),
-          //             DropdownMenuItem(child: Text("package",style: GoogleFonts.poppins(
-          //                 fontSize: 12,
-          //                 fontWeight: FontWeight.w400
-          //             ),),value: "package",),
-          //           ], onChanged: dropDownPackage),
-          // ),
+                // SizedBox(
+                //   width: 100,
+                //   child: DropdownButton(
+                //         iconSize: 15,
+                //         elevation: 8,
+                //           hint: Text("Filter",
+                //             textAlign: TextAlign.center,
+                //             style: GoogleFonts.poppins(
+                //             fontSize: 12,
+                //             fontWeight: FontWeight.w400
+                //           ),),
+                //           items:  [
+                //             DropdownMenuItem(child: Text("pay per ses",style: GoogleFonts.poppins(
+                //                 fontSize: 12,
+                //                 fontWeight: FontWeight.w400
+                //             ),),value: "pay per session",),
+                //             DropdownMenuItem(child: Text("package",style: GoogleFonts.poppins(
+                //                 fontSize: 12,
+                //                 fontWeight: FontWeight.w400
+                //             ),),value: "package",),
+                //           ], onChanged: dropDownPackage),
+                // ),
                 SingleChildScrollView(
                   child: SizedBox(
                     width: double.maxFinite,
