@@ -112,16 +112,14 @@ class _TotalBookingsState extends State<TotalBookings> {
           currentDate: DateTime.now(),
           saveText: 'Done'
       );
+    if(x == null) return ;
       // final DateTimeRange? x = await showDemoDialog(context: context);
 
       setState(()  {
-        // if(x == null) return ;
-
         print("XXXXXXXXXXXXXX>??????????????>>>>>>>>>>>>>>>>");
         print(x);
         selectedType=selecetValue;
         selectDateTime= x;
-
       });
     }
 

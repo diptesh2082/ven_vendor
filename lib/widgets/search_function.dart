@@ -222,7 +222,6 @@ class _SearchItState extends State<SearchIt> {
                       //     .toDate(),
                       // ),
                       end_date: doc[index]['plan_end_duration'].toDate(),
-
                       id: doc[index]['id'].toString(),
                     ),
                   );
