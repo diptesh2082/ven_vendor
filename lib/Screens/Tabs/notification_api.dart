@@ -6,14 +6,14 @@ class NotificationApi {
   final Stream<QuerySnapshot> getnotification = FirebaseFirestore.instance
       .collection('user_details')
       .doc(gymId)
-      .collection("notification")
+      .collection("booking_notifications")
       .snapshots();
 
   Future clearNotificationList() async {
     var remainderFirestore = FirebaseFirestore.instance
         .collection('user_details')
         .doc(gymId)
-        .collection("notification");
+        .collection("booking_notifications");
 
     try {
       await remainderFirestore.get().then((value) {
