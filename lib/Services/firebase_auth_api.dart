@@ -49,13 +49,13 @@ class FirebaseAuthApi {
         );
       } else {
         //GetLocationScreen
-        Navigator.pushAndRemoveUntil(
-          context!,
-          MaterialPageRoute(
-            builder: ((context) => const GetLocationScreen()),
-          ),
-          (route) => false,
-        );
+        // Navigator.pushAndRemoveUntil(
+        //   context!,
+        //   MaterialPageRoute(
+        //     builder: ((context) => const GetLocationScreen()),
+        //   ),
+        //   (route) => false,
+        // );
       }
 
       print("User Sent to Home Page");
