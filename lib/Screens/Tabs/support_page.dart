@@ -33,7 +33,7 @@ class _ContactUsState extends State<ContactUs> {
             ),
           ),
           body: StreamBuilder<DocumentSnapshot>(
-            stream:  FirebaseFirestore.instance.collection("app details").doc("contact_us").snapshots(),
+            stream:  FirebaseFirestore.instance.collection("app_details").doc("contact_us").snapshots(),
             builder: (context,AsyncSnapshot snapshot) {
               if(snapshot.connectionState==ConnectionState.waiting){
                 return Container(

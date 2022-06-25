@@ -3,10 +3,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:vyam_vandor/Services/firebase_firestore_api.dart';
 
 class NotificationApi {
-  final Stream<QuerySnapshot> getnotification = FirebaseFirestore.instance
-      .collection('user_details')
-      .doc(gymId)
-      .collection("notification")
+  final Stream<QuerySnapshot> getnotification = FirebaseFirestore.instance   .collection("booking_notifications")
+      .orderBy("time_stamp",descending: true)
+      .where("vendor_id",isEqualTo: gymId)
       .snapshots();
 
   Future clearNotificationList() async {
