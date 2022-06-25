@@ -21,6 +21,17 @@ class AllTimePay extends StatelessWidget {
                 child:  StreamBuilder<DocumentSnapshot>(
                     stream: FirebaseFirestore.instance.collection("product_details").doc(gymId).snapshots(),
                     builder: (context, snapshot) {
+                      if (snapshot.connectionState ==
+                          ConnectionState.waiting) {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+
+                      if (snapshot.data == null) {
+                        return Center(child: const Text("No Upcoming Bookings"));
+                      }
+
                       var details=snapshot.data;
                     return Card(
                       shape: RoundedRectangleBorder(
@@ -34,7 +45,7 @@ class AllTimePay extends StatelessWidget {
                             Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              children: const [
+                              children:  [
                                 Text(
                                   'Due payment',
                                   style: TextStyle(
@@ -45,7 +56,7 @@ class AllTimePay extends StatelessWidget {
                                 ),
                                 // SizedBox(height: 5),
                                 Text(
-                                  'For January',
+                                  'For ${DateFormat("MMMM").format(DateTime.now())}',
                                   style: TextStyle(
                                       color: Colors.black,
                                       fontFamily: "Poppins",
@@ -79,6 +90,7 @@ class AllTimePay extends StatelessWidget {
                 child: StreamBuilder<QuerySnapshot>(
                   stream: FirebaseFirestore.instance.collection("payment")
                       .where("gym_id",isEqualTo: gymId)
+                      .orderBy("timestamp",descending: true)
                       .snapshots(),
                   builder: (context,AsyncSnapshot snapshot) {
                     if (snapshot.connectionState ==
