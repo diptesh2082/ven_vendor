@@ -1,136 +1,20 @@
 {
   "project_info": {
-    "project_number": "307925634075",
-    "project_id": "vyam-f99ab",
-    "storage_bucket": "vyam-f99ab.appspot.com"
+    "project_number": "649320715683",
+    "project_id": "vyam-2",
+    "storage_bucket": "vyam-2.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:307925634075:android:538a578d411d2af008fcbe",
-        "android_client_info": {
-          "package_name": "com.example.admin_panel_vyam"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "307925634075-eor486qatoohnsg2hlcc0ehe55v6b77r.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCda5p31iGswCodulgMqLELDARSg21NRR4"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "307925634075-eor486qatoohnsg2hlcc0ehe55v6b77r.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "307925634075-vafpsied9j7v6smng4pt5hoedsss7pc5.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.vyam2Final"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:307925634075:android:f5338cb56fc958cb08fcbe",
-        "android_client_info": {
-          "package_name": "com.example.vyam2"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "307925634075-2qg5gqv4226ajgjsdoen00v9mstksor0.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.vyam2",
-            "certificate_hash": "bcebb6c85ecc659500f68190b019e4c50db51072"
-          }
-        },
-        {
-          "client_id": "307925634075-eor486qatoohnsg2hlcc0ehe55v6b77r.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCda5p31iGswCodulgMqLELDARSg21NRR4"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "307925634075-eor486qatoohnsg2hlcc0ehe55v6b77r.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "307925634075-vafpsied9j7v6smng4pt5hoedsss7pc5.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.vyam2Final"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:307925634075:android:64936e0987369a3208fcbe",
-        "android_client_info": {
-          "package_name": "com.example.vyam_vandor"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "307925634075-eor486qatoohnsg2hlcc0ehe55v6b77r.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCda5p31iGswCodulgMqLELDARSg21NRR4"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "307925634075-eor486qatoohnsg2hlcc0ehe55v6b77r.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "307925634075-vafpsied9j7v6smng4pt5hoedsss7pc5.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.vyam2Final"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:307925634075:android:3ff0c227a477095508fcbe",
+        "mobilesdk_app_id": "1:649320715683:android:444356ed4587358e683616",
         "android_client_info": {
           "package_name": "com.findnearestfitness.vyam"
         }
       },
       "oauth_client": [
         {
-          "client_id": "307925634075-tc0970ttfa53ci1mipshgc710q5kkhll.apps.googleusercontent.com",
+          "client_id": "649320715683-ir9jarj32t8flvq24tkua502s4pi2f30.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.findnearestfitness.vyam",
@@ -138,28 +22,29 @@
           }
         },
         {
-          "client_id": "307925634075-eor486qatoohnsg2hlcc0ehe55v6b77r.apps.googleusercontent.com",
+          "client_id": "649320715683-kgtes74dv3dimin9biif4jhtquto89pd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.findnearestfitness.vyam",
+            "certificate_hash": "225d5814ddd98fb67af4f1bdcb01f908e9d870a5"
+          }
+        },
+        {
+          "client_id": "649320715683-ntgc6qg61uorgbou7gfp1rcr6evp60a7.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCda5p31iGswCodulgMqLELDARSg21NRR4"
+          "current_key": "AIzaSyAs18d002-1IIln51ls1gtO1hVkrPAjGdM"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "307925634075-eor486qatoohnsg2hlcc0ehe55v6b77r.apps.googleusercontent.com",
+              "client_id": "649320715683-ntgc6qg61uorgbou7gfp1rcr6evp60a7.apps.googleusercontent.com",
               "client_type": 3
-            },
-            {
-              "client_id": "307925634075-vafpsied9j7v6smng4pt5hoedsss7pc5.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.vyam2Final"
-              }
             }
           ]
         }
@@ -167,115 +52,28 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:307925634075:android:12e20b21e980c07308fcbe",
+        "mobilesdk_app_id": "1:649320715683:android:d03610af1be4273f683616",
         "android_client_info": {
           "package_name": "com.findnearestfitness.vyamserviceprovider"
         }
       },
       "oauth_client": [
         {
-          "client_id": "307925634075-eor486qatoohnsg2hlcc0ehe55v6b77r.apps.googleusercontent.com",
+          "client_id": "649320715683-ntgc6qg61uorgbou7gfp1rcr6evp60a7.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCda5p31iGswCodulgMqLELDARSg21NRR4"
+          "current_key": "AIzaSyAs18d002-1IIln51ls1gtO1hVkrPAjGdM"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "307925634075-eor486qatoohnsg2hlcc0ehe55v6b77r.apps.googleusercontent.com",
+              "client_id": "649320715683-ntgc6qg61uorgbou7gfp1rcr6evp60a7.apps.googleusercontent.com",
               "client_type": 3
-            },
-            {
-              "client_id": "307925634075-vafpsied9j7v6smng4pt5hoedsss7pc5.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.vyam2Final"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:307925634075:android:b7893f42cbfe5f1608fcbe",
-        "android_client_info": {
-          "package_name": "com.vyam.vyam_2_final"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "307925634075-eor486qatoohnsg2hlcc0ehe55v6b77r.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCda5p31iGswCodulgMqLELDARSg21NRR4"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "307925634075-eor486qatoohnsg2hlcc0ehe55v6b77r.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "307925634075-vafpsied9j7v6smng4pt5hoedsss7pc5.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.vyam2Final"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:307925634075:android:e5d29c2e07072f6008fcbe",
-        "android_client_info": {
-          "package_name": "com.vyamdip.vyam_2_final"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "307925634075-sop3pj8pujqg58hhiu2msa7hkok8pasj.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.vyamdip.vyam_2_final",
-            "certificate_hash": "f4304cd4c25f4e5807c7d92a677f7c085fc53028"
-          }
-        },
-        {
-          "client_id": "307925634075-eor486qatoohnsg2hlcc0ehe55v6b77r.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCda5p31iGswCodulgMqLELDARSg21NRR4"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "307925634075-eor486qatoohnsg2hlcc0ehe55v6b77r.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "307925634075-vafpsied9j7v6smng4pt5hoedsss7pc5.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.vyam2Final"
-              }
             }
           ]
         }
