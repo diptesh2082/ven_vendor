@@ -662,20 +662,20 @@ class ProfileTile extends StatelessWidget {
           Container(
             width: double.maxFinite,
             height: coverheight,
-            decoration: const BoxDecoration(
+            decoration:  BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage("Assets/Images/rectangle_14.png"),
+                    image:CachedNetworkImageProvider(imageUrl),
                     fit: BoxFit.cover)),
           ),
-          Positioned(
-            top: top,
-            left: 16,
-            child: CircleAvatar(
-              radius: 55,
-              backgroundColor: Colors.white,
-              backgroundImage: CachedNetworkImageProvider(imageUrl),
-            ),
-          )
+          // Positioned(
+          //   top: top,
+          //   left: 16,
+          //   child: CircleAvatar(
+          //     radius: 55,
+          //     backgroundColor: Colors.white,
+          //     backgroundImage: CachedNetworkImageProvider(imageUrl),
+          //   ),
+          // )
         ]);
   }
 }
