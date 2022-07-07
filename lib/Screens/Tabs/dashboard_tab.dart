@@ -123,11 +123,11 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                         profileheight: profileheight,
                         imageUrl: snapshot.data.get('display_picture'),
                       ),
-                      SizedBox(
-                        height: 15,
-                      ),
+                      // SizedBox(
+                      //   height: 15,
+                      // ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 12.0, top: 50),
+                        padding: const EdgeInsets.only(left: 12.0, top: 30),
                         child: Text(
                           snapshot.data.get('name').toString().toUpperCase(),
                           style: const TextStyle(
@@ -661,7 +661,7 @@ class ProfileTile extends StatelessWidget {
         children: [
           Container(
             width: double.maxFinite,
-            height: coverheight,
+            height: coverheight+40,
             decoration:  BoxDecoration(
                 image: DecorationImage(
                     image:CachedNetworkImageProvider(imageUrl),
