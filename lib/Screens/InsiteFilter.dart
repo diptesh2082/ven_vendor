@@ -90,11 +90,13 @@ class InsitesFilter extends StatelessWidget {
                                         height: 42,
                                       ),
                                       Obx(
-                                        () => Text(
-                                          "₹${(Get.find<BookingController>().on_line_7.value + Get.find<BookingController>().off_line_7.value)}", // DATABASE CALLLING FOR TOTAL SALES VALUE
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 35,
+                                        () => FittedBox(
+                                          child: Text(
+                                            "₹${(Get.find<BookingController>().on_line_7.value + Get.find<BookingController>().off_line_7.value)}", // DATABASE CALLLING FOR TOTAL SALES VALUE
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 30,
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -172,11 +174,13 @@ class InsitesFilter extends StatelessWidget {
                                         height: 42,
                                       ),
                                       Obx(
-                                        () => Text(
-                                          "₹${(Get.find<BookingController>().on_line_month.value + Get.find<BookingController>().off_line_month.value)}", // DATABASE CALLLING FOR TOTAL SALES VALUE
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 35,
+                                        () => FittedBox(
+                                          child: Text(
+                                            "₹${(Get.find<BookingController>().on_line_month.value + Get.find<BookingController>().off_line_month.value)}", // DATABASE CALLLING FOR TOTAL SALES VALUE
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 30,
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -254,11 +258,13 @@ class InsitesFilter extends StatelessWidget {
                                         height: 42,
                                       ),
                                       Obx(
-                                        () => Text(
-                                          "₹${(Get.find<BookingController>().on_line_month.value + Get.find<BookingController>().off_line_month.value)}", // DATABASE CALLLING FOR TOTAL SALES VALUE
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 35,
+                                        () => FittedBox(
+                                          child: Text(
+                                            "₹${(Get.find<BookingController>().on_line_month.value + Get.find<BookingController>().off_line_month.value)}", // DATABASE CALLLING FOR TOTAL SALES VALUE
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 30,
+                                            ),
                                           ),
                                         ),
                                       ),

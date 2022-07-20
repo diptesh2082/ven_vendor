@@ -187,8 +187,7 @@ class AllTimeState extends State<AllTime> {
                       children: [
                         Row(
                           children: [
-                            Obx(
-                        ()=> GestureDetector(
+                           GestureDetector(
                                 onTap: () {
                                   Get.to(() => const Sales());
                                 },
@@ -248,11 +247,15 @@ class AllTimeState extends State<AllTime> {
                                             const SizedBox(
                                               height: 50,
                                             ),
-                                            Text(
-                                              "₹${bookingController.total_sales.value.toString()}", // DATABASE CALLLING FOR TOTAL SALES VALUE
-                                              style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 30,
+                                            Obx(
+                                                ()=> FittedBox(
+                                                child: Text(
+                                                  "₹${bookingController.total_sales.value.toString()}", // DATABASE CALLLING FOR TOTAL SALES VALUE
+                                                  style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 30,
+                                                  ),
+                                                ),
                                               ),
                                             ),
                                             const SizedBox(
@@ -270,7 +273,7 @@ class AllTimeState extends State<AllTime> {
                                   ),
                                 ),
                               ),
-                            ),
+
                             const Spacer(),
                             // const SizedBox(
                             //   width: 10,
