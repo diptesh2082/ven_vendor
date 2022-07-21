@@ -21,10 +21,10 @@ import '../../widgets/booking_card.dart';
 import '../../widgets/drawer_tile.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
-import 'package:url_launcher/url_launcher.dart';
+// import 'package:url_launcher/url_launcher.dart';
 
-import '../../widgets/past_booking.dart';
-import '../reset_password.dart';
+// import '../../widgets/past_booking.dart';
+// import '../reset_password.dart';
 import 'Insights/insights.dart';
 import 'notifications.dart';
 
@@ -42,11 +42,11 @@ class _HomeTabState extends State<HomeTab> {
   var status = true;
   AlertDialog showAlertDialog(
       BuildContext context, FirebaseRemoteConfig remoteConfig) {
-    Widget cancel = TextButton(
-        onPressed: () {
-          Navigator.pop(context);
-        },
-        child: Text("Cancel"));
+    // Widget cancel = TextButton(
+    //     onPressed: () {
+    //       Navigator.pop(context);
+    //     },
+    //     child: Text("Cancel"));
     Widget update = SizedBox(
         width: 140,
         height: 45,
