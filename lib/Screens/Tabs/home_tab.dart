@@ -84,7 +84,7 @@ class _HomeTabState extends State<HomeTab> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(height: 300, child: Image.asset('assets/icons/roc.png')),
+            SizedBox(height: 300, child: Image.asset('Assets/Images/roc.png')),
             SizedBox(
               height: 20,
             ),
