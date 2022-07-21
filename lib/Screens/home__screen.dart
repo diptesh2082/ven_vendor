@@ -1,3 +1,4 @@
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -62,10 +63,29 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List<Widget> _buildScreens() {
     return [
-      const HomeTab(),
+      FutureBuilder<FirebaseRemoteConfig>(
+        future: setupRemoteConfig(),
+        builder: (BuildContext context,
+            AsyncSnapshot<FirebaseRemoteConfig> snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(child: CircularProgressIndicator());
+          }
+          if (snapshot.hasError) {
+            return Center(child: Container());
+          }
+          return HomeTab(remoteConfig: snapshot.requireData);
+        },
+      ),
       const InsightsTab(),
       const DashBoardScreen(),
     ];
+  }
+
+  Future<FirebaseRemoteConfig> setupRemoteConfig() async {
+    final FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.instance;
+    await remoteConfig.fetch();
+    await remoteConfig.activate();
+    return remoteConfig;
   }
 
   PersistentTabController? _persistentTabController;
@@ -88,7 +108,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Get.lazyPut(() => BookingController(),fenix: true);
+    Get.lazyPut(() => BookingController(), fenix: true);
     return SafeArea(
       child: Scaffold(
         backgroundColor: const Color(0xffF4F4F4),
