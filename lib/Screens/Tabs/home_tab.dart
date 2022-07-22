@@ -146,7 +146,8 @@ class _HomeTabState extends State<HomeTab> {
   Widget build(BuildContext context) {
     Get.lazyPut(() => SearchCon());
     print("hi this is my gym  $gymId");
-    var update = widget.remoteConfig.getBool("Update");
+    var update = widget.remoteConfig.getBool("vendorupdate");
+    print('++++++++$update');
 
     return SafeArea(
       child: update

@@ -20,6 +20,13 @@ class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
 }
 
+Future<FirebaseRemoteConfig> setupRemoteConfig() async {
+  final FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.instance;
+  await remoteConfig.fetch();
+  await remoteConfig.activate();
+  return remoteConfig;
+}
+
 class _HomeScreenState extends State<HomeScreen> {
   List<PersistentBottomNavBarItem> _navBarsItems() {
     return [
@@ -79,13 +86,6 @@ class _HomeScreenState extends State<HomeScreen> {
       const InsightsTab(),
       const DashBoardScreen(),
     ];
-  }
-
-  Future<FirebaseRemoteConfig> setupRemoteConfig() async {
-    final FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.instance;
-    await remoteConfig.fetch();
-    await remoteConfig.activate();
-    return remoteConfig;
   }
 
   PersistentTabController? _persistentTabController;
