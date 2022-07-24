@@ -12,18 +12,15 @@ import 'package:vyam_vandor/Services/firebase_firestore_api.dart';
 import 'package:vyam_vandor/widgets/dashboard_map.dart';
 import 'Screens/home__screen.dart';
 
-late AndroidNotificationChannel channel ;
+late AndroidNotificationChannel channel;
 late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
-
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
   print("A bg message just showed up : ${message.messageId}");
 }
 
-
-Future<void>main() async {
-
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   try {
@@ -33,21 +30,20 @@ Future<void>main() async {
   }
 
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-  if(!kIsWeb) {
+  if (!kIsWeb) {
     channel = const AndroidNotificationChannel(
         'high_importance_channel', // id
         'High Importance Noti'
             'fications', // title
         description:
-        'This channel is used for important notifications.', // description
+            'This channel is used for important notifications.', // description
         importance: Importance.high,
         playSound: true);
-
 
     flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
     await flutterLocalNotificationsPlugin
         .resolvePlatformSpecificImplementation<
-        AndroidFlutterLocalNotificationsPlugin>()!
+            AndroidFlutterLocalNotificationsPlugin>()!
         .createNotificationChannel(channel);
 
     await FirebaseMessaging.instance
@@ -57,8 +53,6 @@ Future<void>main() async {
       sound: true,
     );
   }
-
-
 
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
@@ -83,11 +77,10 @@ class _MyAppState extends State<MyApp> {
     // TODO: implement initState
     FirebaseMessaging.instance.getInitialMessage();
 
-    FirebaseMessaging.onMessage.listen((RemoteMessage message){
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       RemoteNotification? notification = message.notification;
       AndroidNotification? android = message.notification?.android;
-      if(notification!=null && android != null && !kIsWeb)
-      {
+      if (notification != null && android != null && !kIsWeb) {
         flutterLocalNotificationsPlugin.show(
           notification.hashCode,
           notification.title,
@@ -102,11 +95,9 @@ class _MyAppState extends State<MyApp> {
           ),
         );
       }
-
     });
 
-    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message)
-    {
+    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
       print('A new onMessageOpenedApp event was published');
       // final routeFromMessage = message.data["GymDetails"];
       // print(routeFromMessage);
@@ -136,10 +127,10 @@ class _MyAppState extends State<MyApp> {
             );
           }
           if (snapshot.hasData) {
-            return HomeScreen(
+            return HomeS(
 
                 // email: gymId,
-            );
+                );
           }
           return const LoginScreen();
         },

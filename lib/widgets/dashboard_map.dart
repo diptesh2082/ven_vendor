@@ -159,16 +159,18 @@ class _DashboardMapState extends State<DashboardMap> {
           ],
         ),
         floatingActionButton: ElevatedButton(
-          onPressed: () async{
-          await  FirebaseFirestore.instance.collection("product_details")
+          onPressed: () async {
+            await FirebaseFirestore.instance
+                .collection("product_details")
                 .doc(gymId.toString())
                 .update({
-              "legit":true,
-              "address":"${_placeMark!.subLocality!} ${_placeMark!.locality!}${_placeMark!.street!} ${_placeMark!.administrativeArea!}  ${_placeMark!.name!} ${_placeMark!.postalCode!}",
-              "locality":"${_placeMark!.locality!.toLowerCase()}",
-              "location":GeoPoint(_latLong!.latitude,_latLong!.longitude)
+              "legit": true,
+              "address":
+                  "${_placeMark!.subLocality!} ${_placeMark!.locality!}${_placeMark!.street!} ${_placeMark!.administrativeArea!}  ${_placeMark!.name!} ${_placeMark!.postalCode!}",
+              "locality": "${_placeMark!.locality!.toLowerCase()}",
+              "location": GeoPoint(_latLong!.latitude, _latLong!.longitude)
             });
-            Get.off(()=>HomeScreen());
+            Get.off(() => HomeS());
           },
           child: Text("Get Address"),
           style: ElevatedButton.styleFrom(

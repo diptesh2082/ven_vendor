@@ -58,7 +58,7 @@ class FirebaseMessagingApi {
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
       print("handler called app is opened");
       Map map = message.data;
-      Get.to(()=> HomeScreen());
+      Get.to(() => HomeS());
       print(map['MovieID']);
     }, onError: (e) {
       print(e);
